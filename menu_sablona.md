@@ -14,20 +14,20 @@
 
 * **S1: Yogurt Bowl**
   * **Složení:** Jogurt, granola, ovoce (kombinace mraženého základu a čerstvého sezónního), sirup.
-  * **Diety:** [Doplnit dle matice: např. Vegetariánské]
 * **S2: Teplá kaše**
   * **Složení:** Rýžová nebo ovesná kaše, sirup.
-  * **Diety:** Primárně bez laktózy.
+  
 
 ### 🥪 SLANÉ SNÍDANĚ (Fixní nabídka)
 
-* **M1: Avokádový toast**
-  * **Složení:** Pečivo, avokádo (možnost obohatit o vajíčko, slaninu nebo uzeného lososa).
-  * **Diety:** Možnost výběru bezlepkového pečiva.
-* **M2: Vajíčka na pánvi**
-  * **Složení:** Míchaná vajíčka / omeleta / volské oko (zákazník si vybere preferovanou úpravu přímo u obsluhy).
-* **M3: [Místo pro 3. slanou položku]** – *(v plánu je mít poměr 2 sladké a 4 slané snídaně)*
-* **M4: [Místo pro 4. slanou položku]**
+* **M1: Avokádový toast s uzeným lososem**
+  * **Složení:** Pečivo, avokádo uzený losos, zelenina, olivový olej.
+* **M2: Vajíčka na pánvi s toastem**
+  * **Složení:** Míchaná vajíčka / omeleta / volské oko (zákazník si vybere preferovanou úpravu přímo u obsluhy), tast s máslem a pažitkou, zelenina.
+* **M3: Vajíčka s avokádvím tastem a slaninkou**
+  * **Složení:** Míchaná vajíčka / omeleta / volské oko, avokádo, pečivo, slanina, zelenina, olivový olej.
+* **M4: Tast Caprese**
+  * **Složení:** Pečivo, bazalkové pesto, mozzarella, rajčata, olivový olej.
 
 ### 🍲 OBĚDOVÉ MENU (Podáváno od 10:00 do 13:30)
 
