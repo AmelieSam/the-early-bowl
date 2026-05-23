@@ -22,7 +22,7 @@
 
 * **M1: Avokádový toast s uzeným lososem**
   * **Složení:** Pečivo, avokádo uzený losos, zelenina, olivový olej.
-* **M2: Vajíčka na pánvi s toastem**
+* **M2: Vajíčka s toastem**
   * **Složení:** Míchaná vajíčka / omeleta / volské oko (zákazník si vybere preferovanou úpravu přímo u obsluhy), tast s máslem a pažitkou, zelenina.
 * **M3: Vajíčka s avokádvím tastem a slaninkou**
   * **Složení:** Míchaná vajíčka / omeleta / volské oko, avokádo, pečivo, slanina, zelenina, olivový olej.
