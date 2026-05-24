@@ -1,31 +1,113 @@
-**Šablona marketingového plánu pro The Early Bowl**
+# Marketingový plán — The Early Bowl
 
-Tato šablona vychází z prodiskutované vize projektu a je připravena pro přímé začlenění do projektové dokumentace.
+*Vstup pro praktickou část projektové dokumentace (sekce „Marketingový plán" a „Cílová skupina"). Detailní persony, kanály a vizuální identita jsou napojeny na [PRD.md](PRD.md), [DESIGN.md](DESIGN.md) a [zapis_konzultace.md](zapis_konzultace.md).*
 
-### 1. CÍLOVÁ SKUPINA A ZÁKLADNÍ SDĚLENÍ
+---
 
-* **Hlavní cílová skupina:** Mladí lidé, vysokoškoláci (především ze Slezské univerzity), studenti místních středních škol a sportovci/návštěvníci přilehlého fitness centra.
-* **Hodnota pro zákazníka (Value Proposition):** Rychlá, zdravá a dostupná snídaně nebo dopolední jídlo (od 6:00 do 13:30). Možnost zastavit se na zdravou stravu po ranním tréninku nebo před začátkem školní výuky.
+## 1. Cílová skupina a klíčové sdělení
 
-### 2. ONLINE MARKETING A SOCIÁLNÍ SÍTĚ
+### Persony
+| Persona | Věk | Kde ji najdeš | Co řeší |
+|---|---|---|---|
+| **Studentka Slezské univerzity** | 21 | Kampus, MHD ráno, Instagram | Nestihne snídani doma, hledá rychlé a zdravé jídlo cestou na přednášku |
+| **Středoškolák** | 17 | Místní SŠ, TikTok, Instagram | Před maturitou potřebuje pořádné jídlo, šetří |
+| **Sportovec po tréninku** | 28 | Fitness centrum vedle, ranní směny | Po cardiu hledá protein a sacharidy, ne shake |
+| **Ranní pracovník** | 35 | Ranní směna v okolí, auto, mobil | Místo croissantu na cestě hledá něco zdravého |
 
-* **Primární komunikační kanál:** **Instagram** bude sloužit jako hlavní centrum pro komunikaci, sběr zpětné vazby od zákazníků a veškerý marketing.
-* **Facebook:** Bude existovat, ale obsah se na něj bude pouze automaticky zrcadlit (propojovat) z Instagramu, aby nebyla tříštěna pozornost.
-* **Pravidelný obsahový plán:** Každou neděli se na sociálních sítích zveřejní fixní menu pro nadcházející týden (případně se zmíní sezónní variace surovin).
+### Hodnota pro zákazníka (Value Proposition)
+> **Rychlá, zdravá a dostupná snídaně nebo dopolední jídlo (6:00–13:30).**
+> Zastav se před školou, po tréninku, místo na cestě do práce.
 
-### 3. WEBOVÁ PREZENTACE A BRANDING
+### Pozicionování
+* **Cena:** 25–110 Kč → konkurence-schopná s pekárnou, ne s restaurací.
+* **Kvalita:** vyšší než snack v automatu, srovnatelná s domácí přípravou.
+* **Čas:** objednávka telefonem → výdej za pár minut.
+* **Brand:** jako jediný v okolí nabízí konzistentní hand-drawn brand identitu = vizuálně se odliší.
 
-* **Vizuální identita:** Silný důraz na unikátní estetiku. Jak web, tak sítě budou využívat originální **vektorovou grafiku v "clipartovém" / "cartoon" stylu** (vytvořenou v Inkscape), která podnik vizuálně odliší od konkurence.
-* **Web jako Landing Page:** Web bude přehledný, zaměřený hlavně na zobrazení menu s unikátními identifikátory pro snadné objednání.
-* **Absence cookies lišty:** Z marketingového a UX hlediska bude web pro uživatele velmi příjemný, protože se záměrně vyhne používání invazivních cookies (např. Google Analytics), čímž odpadá nutnost otravné odsouhlasovací lišty.
-* **Časová osa (Budování příběhu značky):** Na webu bude vizualizována "road mapa" neboli vize rozvoje, aby zákazníci viděli, kam projekt směřuje. Bude obsahovat plány jako:
-  * *Fáze 2:* Zavedení předobjednávek (zákazník si jídlo jen vyzvedne) a rezervačního systému na stoly.
-  * *Fáze 3:* Dovážka jídel.
-  * *Dlouhodobá vize:* Letní prodejní vozíček s jídlem do parku.
+---
 
-### 4. OFFLINE MARKETING A LOKÁLNÍ SPOLUPRÁCE (Partnerships)
+## 2. Online marketing a sociální sítě
 
-Vzhledem k umístění v obchodním domě Stará Breda a omezenému budgetu se marketing zaměří na lokální synergie:
+### Instagram (primární kanál)
+* **Účel:** hlavní centrum komunikace, sběr zpětné vazby, brand storytelling.
+* **Pravidelný obsah:**
+  * **Neděle:** týdenní menu (fixní nabídka + případné sezónní variace).
+  * **Středa:** příběh suroviny / receptu (např. „proč používáme český jogurt").
+  * **Pátek:** behind-the-scenes (tým, příprava, atmosféra).
+* **Formát:** kombinace fotografie reálného jídla + brand-konzistentní vektorové „nálepky" (sluníčka, šipky, textové bubliny) — viz [DESIGN.md](DESIGN.md) §10.2.
+* **Stories:** denní polévka, otevřeno/zavřeno, akce.
+* **Highlights:** Menu, Akce, O nás, Recepty, Recenze.
 
-* **Spolupráce s Gymem:** Domluvení partnerství s fitness centrem přímo v areálu. Cílem je umístit reklamu na jejich obrazovky nebo informační tabule a nalákat cvičící na zdravé potréninkové jídlo.
-* **Letáková kampaň na školách:** Fyzická distribuce letáčků s nabídkou zacílená přímo na místní střední školy v okolí.
+### Facebook (sekundární)
+* Pouze automatické zrcadlení obsahu z Instagramu (přes Meta Business Suite).
+* Cíl: existovat pro hledající přes Google a starší publikum, ne tříštit pozornost.
+
+### Web (digitální vizitka)
+* **Účel:** přehledné menu, informace, kontakt, brand prezentace.
+* **Hlavní CTA:** „Mrkni na menu" → telefonické objednávky.
+* **Sekundární CTA:** „Sleduj nás na Instagramu" (pro budování komunity).
+* **Bez cookies, bez trackingu** → bez otravných lišt = lepší UX (viz [PRD.md](PRD.md) §7.7).
+
+### Časová osa značky (na webu jako roadmap)
+Vizualizace vize buduje vztah a důvěru — zákazníci vidí, kam směřujeme:
+* **Fáze 1 (Aktuální):** Menu + telefonické objednávky.
+* **Fáze 2 (6–12 měsíců):** Online předobjednávky + rezervace stolů.
+* **Fáze 3 (12+ měsíců):** Doručování jídel.
+* **Vize:** Letní prodejní vozíček v parku.
+
+---
+
+## 3. Vizuální identita & branding
+
+* **Hand-drawn cartoon styl** (vychází z loga) odlišuje od konkurence — viz [DESIGN.md](DESIGN.md) §1.
+* **Konzistence napříč kanály:** web, Instagram, Facebook, tisk používají identickou paletu (smetanová, hnědá, jahodová, borůvková, medová) a fonty (Baloo 2, Quicksand).
+* **Ilustrace jídel:** AI-generované bitmapy v brand stylu, ne fotografie. Důvod: snazší konzistence, levnější, modernější vibe — viz [DESIGN.md](DESIGN.md) §7.
+
+---
+
+## 4. Offline marketing & lokální partnership
+
+Vzhledem k umístění a omezenému budgetu se marketing zaměří na **lokální synergie**.
+
+### Spolupráce s fitness centrem
+* **Cíl:** přivést cvičící na zdravou potréninkovou snídani.
+* **Realizace:** reklama na obrazovkách / nástěnce v gymu výměnou za zmínku na našem Instagramu.
+* **Kvantifikovatelný cíl:** 10+ nových zákazníků z gymu / týden po spuštění.
+
+### Letáková kampaň na školách
+* **Cíl:** zasáhnout středoškoláky a vysokoškoláky.
+* **Realizace:** distribuce A6 letáčků (smetanový papír, hand-drawn styl, QR kód na web/IG) před místními SŠ a v kampusu Slezské univerzity.
+* **Náklad:** 500 ks pro pilot.
+
+### Word-of-mouth
+* Cílení na sousedící instituce (sportovní oddíly, jazykové školy, kanceláře v okolí).
+* Loyalty mechanika (Fáze 2): „Každá 10. snídaně zdarma" — papírová kartička s razítky.
+
+---
+
+## 5. Lokální SEO
+
+* **Google Business Profile** s kompletními údaji (adresa, hodiny, foto, menu).
+* **Klíčová slova:** „snídaně Opava", „zdravá snídaně Opava", „avokádový toast Opava", „bowl Opava", „kde snídat Opava".
+* **Sběr recenzí:** aktivní žádost spokojených zákazníků o Google review (cílem 30+ recenzí za první 3 měsíce).
+
+---
+
+## 6. Měření úspěchu (KPI)
+
+| Metrika | Cíl po 3 měsících | Měření |
+|---|---|---|
+| Instagram followers | 200+ | IG analytics |
+| Engagement rate | > 5 % | IG analytics |
+| Týdenní návštěvy webu | 300+ | Cloudflare Web Analytics (cookie-less) |
+| Telefonické objednávky / den | 8–12 | manuální záznam |
+| Google reviews | 30+ | GBP dashboard |
+| Repeat zákazníci | > 40 % | manuální (poznávání tváří, dotaz u baru) |
+
+---
+
+## Reference
+
+* Cílová skupina detailně: [PRD.md](PRD.md) §3
+* Brand & vizuální styl: [DESIGN.md](DESIGN.md)
+* Roadmap: [PRD.md](PRD.md) §12
