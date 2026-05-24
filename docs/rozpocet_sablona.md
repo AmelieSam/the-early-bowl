@@ -150,5 +150,5 @@ V rámci školního projektu je doporučeno zahrnout **žádost o dotaci od měs
 ## Reference
 
 * Prodejní ceny a menu: [menu_sablona.md](menu_sablona.md)
-* Roadmap rozvoje (kdy která fáze přijde): [PRD.md](PRD.md) §12
+* Roadmap rozvoje (kdy která fáze přijde): [PRD.md](../specs/PRD.md) §12
 * Marketingové aktivity (vstup do nákladů): [marketing_plan_sablona.md](marketing_plan_sablona.md)

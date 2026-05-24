@@ -77,20 +77,37 @@ Explicitní záznam rozhodnutí. Formát: **co** / **proč** / **zvažované alt
 * 🔬 Zadavatel poslal screenshot: `ě` a `č` ve Fredoce vypadají špatně. Postavil jsem srovnávací stránku (7 fontů, český pangram) a vyrenderoval ji **Playwrightem** (chromium, deviceScaleFactor 2, `document.fonts.ready`).
 * 💡 **Zjištění (potvrzeno screenshotem):** **Fredoka nemá vlastní háčky** pro `ě č ř š ž ň ť ď` — háček se dotahoval z tenkého systémového fallbacku → stylový nesoulad s tučným fontem. To je příčina problému ze screenshotu.
 * 🔬 Programové ověření kandidáta: `document.fonts.check("700 40px 'Baloo 2'", "ě")` → `true`; vizuální render H1 čistý a konzistentní.
-* 🧭 Rozhodnutí **D-13** — Fredoka → **Baloo 2**. Promítnuto do `stylesheet.html`, [DESIGN.md](DESIGN.md) §4.1, marketing plánu i PLAN.md.
+* 🧭 Rozhodnutí **D-13** — Fredoka → **Baloo 2**. Promítnuto do `stylesheet.html`, [DESIGN.md](../specs/DESIGN.md) §4.1, marketing plánu i PLAN.md.
 * 💡 **Poučení do procesu:** nové fonty **vždy** vizuálně testovat na českém pangramu přes Playwright, ne jen kontrolovat CSS/unicode-range.
 
 **Provedeno (6. iterace, vstup zadavatele):**
 
 * 🧭 Rozhodnutí **D-14** — video bez voiceoveru. ElevenLabs odebrán z PLAN.md a PRD.md, sdělení ponese on-screen text.
-* ✅ Vytvořen samostatný **[TECH-STACK.md](TECH-STACK.md)** — kompletní přehled použitých nástrojů a technologií (podklad pro „Použité zdroje a nástroje" v dokumentaci, ZADANI §2B).
+* ✅ Vytvořen samostatný **[TECH-STACK.md](../specs/TECH-STACK.md)** — kompletní přehled použitých nástrojů a technologií (podklad pro „Použité zdroje a nástroje" v dokumentaci, ZADANI §2B).
 
 **Provedeno (7. iterace, vstup zadavatele):**
 
 * 🧭 Rozhodnutí **D-15** — (a) doména generická `*.pages.dev` (zdarma, žádná vlastní doména); (b) **Typst zamítnut** pro dokumentaci — místo něj Markdown → HTML + tisková CSS → PDF přes headless Chromium (Playwright `page.pdf()`).
 * ✅ Promítnuto: PLAN.md (odchylky, Fáze A4/D-3, vyřešená rozhodnutí), PRD.md (doména, JSON-LD url → `the-early-bowl.pages.dev`), rozpocet (doména 400→0 Kč, přepočet celků), TECH-STACK.md.
 
-**Další krok:** Zahájit Fázi A/B dle [PLAN.md](PLAN.md) — favicon, master prompt pro ilustrace, generování obrázků jídel.
+**Provedeno (8. iterace — scaffold webu):**
+
+* ✅ Vytvořena cookie-cutter struktura `web/` dle [PRD.md](../specs/PRD.md) §7.2: 5 stránek + `stylesheet.html`, `css/` (tokens.css reálný, reset/base/components/pages), `js/` (nav/copy-id/form stuby), `images/` (.gitkeep), config soubory `_headers`/`_redirects`/`wrangler.toml`/`robots.txt`/`sitemap.xml` + `web/README.md`.
+* ✅ `stylesheet.html` přesunut z rootu do `web/` (patří k webu); odkazy v DESIGN.md a README aktualizovány.
+* 💡 HTML stránky jsou validní kostry (head s meta/fonty/CSS, header/nav, main placeholder, footer) — připravené k naplnění obsahem dle PRD §9/§11.
+* ⚠️ Binární assety (favicon, logo.svg, hero/og/menu obrázky, 404.html) zatím chybí — seznam TODO v `web/README.md`, doplní se ve Fázi B.
+
+**Provedeno (9. iterace — úklid struktury repozitáře):**
+
+* ✅ Dokumenty roztříděny do složek: `specs/` (PRD, DESIGN, TECH-STACK), `docs/` (PLAN, DENIK, zapis_konzultace + 3 šablony), `assets/` (logo). V kořeni zůstal jen `README.md` a `ZADANI.md` + složky `specs/ docs/ web/ assets/`.
+* ✅ Přesun přes `git mv` (zachová historii); přepsáno všech ~100 vzájemných odkazů na nové relativní cesty.
+* ✅ Ověřeno Python skriptem: všech 100 interních odkazů vede na existující soubory.
+
+**Provedeno (10. iterace — verzování):**
+
+* ✅ Scaffold webu (8. iterace), úklid struktury (9. iterace) a doprovodné úpravy dokumentů zacommitovány a pushnuty na GitHub (`origin/main`, `AmelieSam/the-early-bowl`).
+
+**Další krok:** Fáze A2/A3/B — favicon, master prompt pro ilustrace, generování obrázků jídel; pak naplnit obsah stránek (Fáze C2–C6).
 
 ---
 
@@ -132,6 +149,6 @@ Explicitní záznam rozhodnutí. Formát: **co** / **proč** / **zvažované alt
 ## Reference
 
 * Plán a harmonogram: [PLAN.md](PLAN.md)
-* Specifikace webu: [PRD.md](PRD.md)
-* Design systém: [DESIGN.md](DESIGN.md)
+* Specifikace webu: [PRD.md](../specs/PRD.md)
+* Design systém: [DESIGN.md](../specs/DESIGN.md)
 * Originální brief (kotva): [zapis_konzultace.md](zapis_konzultace.md)

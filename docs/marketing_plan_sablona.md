@@ -1,6 +1,6 @@
 # Marketingový plán — The Early Bowl
 
-*Vstup pro praktickou část projektové dokumentace (sekce „Marketingový plán" a „Cílová skupina"). Detailní persony, kanály a vizuální identita jsou napojeny na [PRD.md](PRD.md), [DESIGN.md](DESIGN.md) a [zapis_konzultace.md](zapis_konzultace.md).*
+*Vstup pro praktickou část projektové dokumentace (sekce „Marketingový plán" a „Cílová skupina"). Detailní persony, kanály a vizuální identita jsou napojeny na [PRD.md](../specs/PRD.md), [DESIGN.md](../specs/DESIGN.md) a [zapis_konzultace.md](zapis_konzultace.md).*
 
 ---
 
@@ -34,7 +34,7 @@
   * **Neděle:** týdenní menu (fixní nabídka + případné sezónní variace).
   * **Středa:** příběh suroviny / receptu (např. „proč používáme český jogurt").
   * **Pátek:** behind-the-scenes (tým, příprava, atmosféra).
-* **Formát:** kombinace fotografie reálného jídla + brand-konzistentní vektorové „nálepky" (sluníčka, šipky, textové bubliny) — viz [DESIGN.md](DESIGN.md) §10.2.
+* **Formát:** kombinace fotografie reálného jídla + brand-konzistentní vektorové „nálepky" (sluníčka, šipky, textové bubliny) — viz [DESIGN.md](../specs/DESIGN.md) §10.2.
 * **Stories:** denní polévka, otevřeno/zavřeno, akce.
 * **Highlights:** Menu, Akce, O nás, Recepty, Recenze.
 
@@ -46,7 +46,7 @@
 * **Účel:** přehledné menu, informace, kontakt, brand prezentace.
 * **Hlavní CTA:** „Mrkni na menu" → telefonické objednávky.
 * **Sekundární CTA:** „Sleduj nás na Instagramu" (pro budování komunity).
-* **Bez cookies, bez trackingu** → bez otravných lišt = lepší UX (viz [PRD.md](PRD.md) §7.7).
+* **Bez cookies, bez trackingu** → bez otravných lišt = lepší UX (viz [PRD.md](../specs/PRD.md) §7.7).
 
 ### Časová osa značky (na webu jako roadmap)
 Vizualizace vize buduje vztah a důvěru — zákazníci vidí, kam směřujeme:
@@ -59,9 +59,9 @@ Vizualizace vize buduje vztah a důvěru — zákazníci vidí, kam směřujeme:
 
 ## 3. Vizuální identita & branding
 
-* **Hand-drawn cartoon styl** (vychází z loga) odlišuje od konkurence — viz [DESIGN.md](DESIGN.md) §1.
+* **Hand-drawn cartoon styl** (vychází z loga) odlišuje od konkurence — viz [DESIGN.md](../specs/DESIGN.md) §1.
 * **Konzistence napříč kanály:** web, Instagram, Facebook, tisk používají identickou paletu (smetanová, hnědá, jahodová, borůvková, medová) a fonty (Baloo 2, Quicksand).
-* **Ilustrace jídel:** AI-generované bitmapy v brand stylu, ne fotografie. Důvod: snazší konzistence, levnější, modernější vibe — viz [DESIGN.md](DESIGN.md) §7.
+* **Ilustrace jídel:** AI-generované bitmapy v brand stylu, ne fotografie. Důvod: snazší konzistence, levnější, modernější vibe — viz [DESIGN.md](../specs/DESIGN.md) §7.
 
 ---
 
@@ -108,6 +108,6 @@ Vzhledem k umístění a omezenému budgetu se marketing zaměří na **lokáln�
 
 ## Reference
 
-* Cílová skupina detailně: [PRD.md](PRD.md) §3
-* Brand & vizuální styl: [DESIGN.md](DESIGN.md)
-* Roadmap: [PRD.md](PRD.md) §12
+* Cílová skupina detailně: [PRD.md](../specs/PRD.md) §3
+* Brand & vizuální styl: [DESIGN.md](../specs/DESIGN.md)
+* Roadmap: [PRD.md](../specs/PRD.md) §12

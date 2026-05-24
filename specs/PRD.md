@@ -6,7 +6,7 @@
 
 > **Vizuální identita:** Tento dokument **nedefinuje** barvy, fonty ani ilustrační styl. Single source of truth je [DESIGN.md](DESIGN.md). PRD určuje **co** se staví a **jak funguje**; DESIGN určuje **jak to vypadá**.
 >
-> **Plán a termíny:** viz [PLAN.md](PLAN.md).
+> **Plán a termíny:** viz [PLAN.md](../docs/PLAN.md).
 
 ---
 
@@ -58,7 +58,7 @@ Web je **prezentační, ne e-shop**. Online platby ani košík nejsou v Fázi 1 
 | Personál | 1 osoba na směnu (2–3 brigádníci v rotaci) |
 | Menu | 11 položek (3 nápoje, 2 sladké, 4 slané, 1 oběd, 1 polévka) |
 
-Detailní menu viz [menu_sablona.md](menu_sablona.md). Cenotvorba a marže viz [rozpocet_sablona.md](rozpocet_sablona.md).
+Detailní menu viz [menu_sablona.md](../docs/menu_sablona.md). Cenotvorba a marže viz [rozpocet_sablona.md](../docs/rozpocet_sablona.md).
 
 ---
 
@@ -135,7 +135,7 @@ Tabulka s checkboxy: řádky = jídla, sloupce = vlastnosti (bez lepku, bez lakt
 
 ### 7.2 Struktura projektu
 ```
-the-early-bowl-web/
+web/                         # deploy root pro Cloudflare Pages (build output dir = web)
 ├── index.html              # Homepage
 ├── menu.html
 ├── o-nas.html
@@ -415,7 +415,7 @@ V Fázi 1 stačí, když je JSON inlinovaný jako `<script type="application/jso
 - [ ] Všechny linky fungují (žádné `#` placeholdery)
 - [ ] Všechny obrázky mají alt text
 - [ ] Žádný typo (korektura 2 osobami)
-- [ ] Všechny ceny v menu odpovídají [menu_sablona.md](menu_sablona.md)
+- [ ] Všechny ceny v menu odpovídají [menu_sablona.md](../docs/menu_sablona.md)
 - [ ] Telefon a email správné
 - [ ] Favicon a apple-touch-icon nastaveny
 - [ ] OG image se zobrazuje při sdílení (test např. v https://opengraph.xyz/)
@@ -548,10 +548,10 @@ Web je hotový, když:
 
 | Dokument | Účel |
 |---|---|
-| [ZADANI.md](ZADANI.md) | Zdroj všech školních požadavků |
-| [PLAN.md](PLAN.md) | Harmonogram a deliverables |
+| [ZADANI.md](../ZADANI.md) | Zdroj všech školních požadavků |
+| [PLAN.md](../docs/PLAN.md) | Harmonogram a deliverables |
 | [DESIGN.md](DESIGN.md) | **Single source of truth pro design** |
-| [menu_sablona.md](menu_sablona.md) | Finální menu (ID, popisy, ceny) |
-| [marketing_plan_sablona.md](marketing_plan_sablona.md) | Marketing strategie (vstup pro dokumentaci) |
-| [rozpocet_sablona.md](rozpocet_sablona.md) | Rozpočet a cenotvorba (vstup pro dokumentaci) |
-| [zapis_konzultace.md](zapis_konzultace.md) | Originální brief — zachovat beze změn |
+| [menu_sablona.md](../docs/menu_sablona.md) | Finální menu (ID, popisy, ceny) |
+| [marketing_plan_sablona.md](../docs/marketing_plan_sablona.md) | Marketing strategie (vstup pro dokumentaci) |
+| [rozpocet_sablona.md](../docs/rozpocet_sablona.md) | Rozpočet a cenotvorba (vstup pro dokumentaci) |
+| [zapis_konzultace.md](../docs/zapis_konzultace.md) | Originální brief — zachovat beze změn |

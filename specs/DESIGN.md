@@ -1,8 +1,8 @@
 # DESIGN.md — Vizuální identita a design systém „The Early Bowl"
 
 **Status:** Single source of truth pro veškerá designová rozhodnutí.
-**Kotva:** Logo `Theearlybowlmiska.png` — všechny barvy, kontury a styl ilustrací z něj přímo vychází.
-**Živá implementace:** [`stylesheet.html`](stylesheet.html) — všechny tokeny a komponenty z tohoto dokumentu jako funkční HTML/CSS ukázka.
+**Kotva:** Logo `../assets/Theearlybowlmiska.png` — všechny barvy, kontury a styl ilustrací z něj přímo vychází.
+**Živá implementace:** [`web/stylesheet.html`](../web/stylesheet.html) — všechny tokeny a komponenty z tohoto dokumentu jako funkční HTML/CSS ukázka. Tokeny jsou v [`web/css/tokens.css`](../web/css/tokens.css).
 
 ---
 
@@ -19,7 +19,7 @@ The Early Bowl kombinuje energii čerstvého rána s pohodlím a radostí ze skv
 
 ## 2. Logo
 
-Oficiální logo (`Theearlybowlmiska.png`) je vlajkový vizuální prvek.
+Oficiální logo (`../assets/Theearlybowlmiska.png`) je vlajkový vizuální prvek.
 
 * **Konstrukce:** keramická miska s jogurtem/kaší, čerstvé ovoce (jahody, borůvky, plátky banánu), granola a medový přeliv. Všechny objekty obtažené silnější, jemně nepravidelnou hnědou konturou.
 * **Typografie v logu:** „THE EARLY BOWL" je vyvedeno ručně kresleným bezpatkovým písmem s oblými hranami, zasazeným do těla misky.
@@ -81,7 +81,7 @@ Barvy vychází z tónů snídaňových ingrediencí a teplého ranního světla
 * **Body text:** **Quicksand** (Google Fonts) — čistý, geometrický, mírně zaoblený. Alternativa: Nunito Sans.
 
 > **⚠️ Čeština — důležité (ověřeno Playwrightem 24. 5. 2026):**
-> Původně byla pro nadpisy zvolena **Fredoka**, ale vizuální test odhalil, že **Fredoka nemá vlastní glyfy pro české háčky** (`ě č ř š ž ň ť ď`) — prohlížeč je dotahoval ze systémového fallbacku, takže háček byl tenký a stylově nesedící k tučnému fontu. **Fredoka proto zamítnuta** (rozhodnutí D-13 v [DENIK.md](DENIK.md)).
+> Původně byla pro nadpisy zvolena **Fredoka**, ale vizuální test odhalil, že **Fredoka nemá vlastní glyfy pro české háčky** (`ě č ř š ž ň ť ď`) — prohlížeč je dotahoval ze systémového fallbacku, takže háček byl tenký a stylově nesedící k tučnému fontu. **Fredoka proto zamítnuta** (rozhodnutí D-13 v [DENIK.md](../docs/DENIK.md)).
 >
 > **Baloo 2** renderuje kompletní českou diakritiku správně a konzistentně (ověřeno `document.fonts.check(font, "ě")` → `true` + screenshotem).
 >

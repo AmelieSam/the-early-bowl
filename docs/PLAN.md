@@ -3,7 +3,7 @@
 **Verze:** 1.0
 **Datum sestavení:** 2026-05-24
 **Předmět:** Závěrečný projekt z informatiky („Můj online business")
-**Zadání:** viz [ZADANI.md](ZADANI.md)
+**Zadání:** viz [ZADANI.md](../ZADANI.md)
 
 ---
 
@@ -24,7 +24,7 @@
 
 ## 1. Deliverables — co se odevzdává
 
-Z [ZADANI.md](ZADANI.md) vyplývají tyto výstupy:
+Z [ZADANI.md](../ZADANI.md) vyplývají tyto výstupy:
 
 | # | Deliverable | Forma | Bodové ohodnocení |
 |---|---|---|---|
@@ -45,7 +45,7 @@ ZADANI explicitně dovoluje volbu nástrojů; níže shrnujeme všechna místa, 
 | **Obrázky jídel** | „vlastní nebo vlastnoručně vygenerované fotografie" + DESIGN.md zmiňuje Inkscape | **AI-generovaná bitmapová grafika** (Recraft / Midjourney / DALL-E / Stable Diffusion) konzistentní se stylem loga | Rychlejší, výsledek vizuálně silnější, splňuje literu zadání („vygenerované"). Konzistenci zajistí společný prompt-template (viz DESIGN.md §7) |
 | **Propagační video** | „vlastní nebo vygenerované z fotografií + AI audio komentář" | **[HeyGen Hyperframes](https://github.com/heygen-com/hyperframes)** — napíšeme HTML, framework vyrenderuje video. **Bez mluveného komentáře** — sdělení nese on-screen text, audio max. royalty-free hudební podkres | HTML→video workflow je nativně vhodný pro AI agenty a umožňuje použít stejný brand stylesheet jako web → 100% vizuální konzistence. Vědomě se vzdáváme voiceoveru (ZADANI ho navrhuje, ale nevyžaduje) — text na obrazovce je čitelnější a méně rušivý |
 | **Slide deck prezentace** | (ZADANI nespecifikuje nástroj) | **[Marp](https://marp.app/)** — slidy psané v Markdownu, export do PDF/HTML | Verzovatelné v gitu, konzistentní s brand CSS tématem, rychlé |
-| **E-shop / košík** | „v případě e-shopu funkční košík" | **Děláme prezentační web, ne e-shop** — objednávky telefonicky pomocí ID položek (S1, M1...) | Zadání dovoluje „web/e-shop". Online objednávky jsou na roadmapě jako Fáze 2 (viz [PRD.md](PRD.md) §15) |
+| **E-shop / košík** | „v případě e-shopu funkční košík" | **Děláme prezentační web, ne e-shop** — objednávky telefonicky pomocí ID položek (S1, M1...) | Zadání dovoluje „web/e-shop". Online objednávky jsou na roadmapě jako Fáze 2 (viz [PRD.md](../specs/PRD.md) §15) |
 | **Prototyp produktu** | Příklad: šperk, svícen, sýr | **Reálně připravený Yogurt Bowl** (S1) přinesený do třídy | Restaurace = jídlo. Yogurt Bowl je vizuálně reprezentativní (matchuje logo) a jednoduchý na přípravu |
 | **Forma dokumentace** | „textový editor, PDF, typografická pravidla" | **Markdown (obsah) → HTML + tisková CSS (`@page`) → PDF přes headless Chromium** (Playwright `page.pdf()`); volitelně Pandoc na MD→HTML | Bez nového toolchainu (Typst zamítnut, viz D-15) — znovupoužije brand CSS, plná typografická kontrola (čísla stránek, okraje, vdovy/sirotci, dělení slov `lang="cs"`) |
 
@@ -61,7 +61,7 @@ ZADANI explicitně dovoluje volbu nástrojů; níže shrnujeme všechna místa, 
 
 | Krok | Výstup | Závisí na |
 |---|---|---|
-| A1 | Finalizace značky: paleta, typografie, logo varianty (z [DESIGN.md](DESIGN.md)) | — |
+| A1 | Finalizace značky: paleta, typografie, logo varianty (z [DESIGN.md](../specs/DESIGN.md)) | — |
 | A2 | **Favicon** (32×32, 16×16, apple-touch-icon) — výřez z loga | A1 |
 | A3 | **Master prompt** pro AI generování ilustrací jídel (viz DESIGN.md §7) | A1 |
 | A4 | Repo + Cloudflare Pages projekt na generické `*.pages.dev` doméně | — |
@@ -112,14 +112,14 @@ Probíhá paralelně s Fází B (web se staví na placeholderech, assety se post
 
 **Obsah praktické části** (struktura podle ZADANI §2B):
 
-1. **Příběh značky** (čerpá z [DESIGN.md](DESIGN.md) §1 + [zapis_konzultace.md](zapis_konzultace.md))
+1. **Příběh značky** (čerpá z [DESIGN.md](../specs/DESIGN.md) §1 + [zapis_konzultace.md](zapis_konzultace.md))
 2. **Vizuální identita** — paleta, fonty, psychologie barev (proč jahodová červená = chuť, hnědá = řemeslo, smetanová = útulnost)
 3. **Cenotvorba** — food cost vs. prodejní cena, marže (z [rozpocet_sablona.md](rozpocet_sablona.md))
 4. **Cílová skupina** — persona studenti/sportovci (z [marketing_plan_sablona.md](marketing_plan_sablona.md) §1)
 5. **Marketingový plán** — Instagram + lokální partnership (z [marketing_plan_sablona.md](marketing_plan_sablona.md))
 6. **Reflexe tvorby** — co fungovalo, co ne, co příště jinak (vyplnit na konci)
 7. **Screenshot úvodní stránky**
-8. **Použité zdroje a nástroje** — AI nástroje (Claude, Recraft, HeyGen Hyperframes), Cloudflare Pages, Marp, Formspree, Google Fonts (úplný přehled v [TECH-STACK.md](TECH-STACK.md))
+8. **Použité zdroje a nástroje** — AI nástroje (Claude, Recraft, HeyGen Hyperframes), Cloudflare Pages, Marp, Formspree, Google Fonts (úplný přehled v [TECH-STACK.md](../specs/TECH-STACK.md))
 
 ### Fáze E — Prezentace (T+9 až T+10)
 
@@ -144,7 +144,7 @@ Pro každé kritérium z ZADANI §4 mapujeme, kde se „vyhrávají body":
 - Responzivita ověřena na 3+ breakpointech (C7)
 - Lighthouse skóre ≥ 90 (C8, C9)
 - HTTPS aktivní (C9)
-- **Checklist v** [PRD.md](PRD.md) §11
+- **Checklist v** [PRD.md](../specs/PRD.md) §11
 
 ### 4.2 Estetika a grafická úroveň (15 b)
 
@@ -207,9 +207,9 @@ Pro každé kritérium z ZADANI §4 mapujeme, kde se „vyhrávají body":
 
 | Dokument | Účel |
 |---|---|
-| [ZADANI.md](ZADANI.md) | Zdroj všech požadavků |
-| [PRD.md](PRD.md) | Funkční a technická specifikace webu |
-| [DESIGN.md](DESIGN.md) | Vizuální identita a design systém (single source of truth pro design) |
+| [ZADANI.md](../ZADANI.md) | Zdroj všech požadavků |
+| [PRD.md](../specs/PRD.md) | Funkční a technická specifikace webu |
+| [DESIGN.md](../specs/DESIGN.md) | Vizuální identita a design systém (single source of truth pro design) |
 | [menu_sablona.md](menu_sablona.md) | Finální menu s ID, popisy, cenami |
 | [marketing_plan_sablona.md](marketing_plan_sablona.md) | Vstup pro praktickou část dokumentace §5 |
 | [rozpocet_sablona.md](rozpocet_sablona.md) | Vstup pro praktickou část dokumentace §3 |

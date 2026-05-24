@@ -1,0 +1,75 @@
+/* =========================================================
+   components.css — opakované UI prvky (DESIGN.md §6)
+   Plně rozpracované referenční chování viz web/stylesheet.html
+   ========================================================= */
+
+/* --- Tlačítka (§6.1) — "press-down" efekt --- */
+.btn {
+  display: inline-block;
+  font-family: var(--font-head); font-size: 16px; font-weight: 600; line-height: 1;
+  padding: 14px 24px;
+  border: 2px solid var(--outline-brown); border-radius: var(--radius-md);
+  box-shadow: 3px 3px 0 var(--outline-brown);
+  text-decoration: none; cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn:hover  { transform: translate(1px, 1px); box-shadow: 2px 2px 0 var(--outline-brown); }
+.btn:active { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--outline-brown); }
+.btn--primary   { background: var(--strawberry); color: #fff; }
+.btn--secondary { background: var(--cream); color: var(--outline-brown); }
+
+/* --- Karty (§6.2) --- */
+.card {
+  background: var(--milk);
+  border: 2px solid var(--outline-brown); border-radius: var(--radius-lg);
+  padding: 20px; box-shadow: 4px 4px 0 var(--outline-brown);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--outline-brown); }
+
+/* --- ID badge (§6.3) --- */
+.id-badge {
+  display: inline-block; background: var(--outline-brown); color: var(--cream);
+  font-family: var(--font-head); font-weight: 600; font-size: 14px; letter-spacing: 0.05em;
+  padding: 4px 10px; border-radius: var(--radius-pill);
+}
+
+/* --- Dietní badge (§6.5) --- */
+.diet {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-family: var(--font-head); font-weight: 600; font-size: 13px;
+  padding: 4px 12px; border-radius: var(--radius-pill);
+  border: 1.5px solid var(--outline-brown);
+}
+.diet--vegan   { background: var(--leaf); color: #fff; }
+.diet--gluten  { background: var(--honey); color: var(--outline-brown); }
+.diet--lactose { background: var(--cream-shadow); color: var(--outline-brown); }
+.diet--protein { background: var(--strawberry); color: #fff; }
+
+/* --- Input (§6.4) --- */
+.field input, .field textarea {
+  width: 100%; font-family: var(--font-body); font-size: 16px;
+  background: var(--milk); color: var(--outline-brown);
+  border: 2px solid var(--outline-brown); border-radius: var(--radius-md);
+  padding: 12px 16px;
+}
+.field--invalid input, .field--invalid textarea { border-color: var(--error); background: #FCEEEE; }
+
+/* --- Hlavička / navigace (TODO: doladit) --- */
+.site-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--space-md); border-bottom: 2px solid var(--cream-shadow);
+}
+.site-header .logo { font-family: var(--font-head); font-weight: 700; font-size: 20px; text-decoration: none; color: var(--outline-brown); }
+.nav-list { display: flex; gap: var(--space-lg); }
+.nav-toggle { display: none; background: none; border: none; font-size: 24px; cursor: pointer; }
+
+/* --- Patička --- */
+.site-footer { background: var(--cream-shadow); padding: var(--space-2xl) var(--space-md); margin-top: var(--space-3xl); }
+
+/* --- Mobilní navigace (TODO) --- */
+@media (max-width: 767px) {
+  .nav-toggle { display: block; }
+  .nav-list { display: none; }
+  .nav-list.is-open { display: flex; flex-direction: column; }
+}

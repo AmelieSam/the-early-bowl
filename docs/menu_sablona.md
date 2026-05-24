@@ -1,7 +1,7 @@
 # Menu — The Early Bowl
 
 *Každá položka má unikátní identifikátor (např. **S1**) pro snadné objednání telefonem nebo u baru.*
-*Vizuální zobrazení na webu: AI-generované ilustrace ve stylu loga — viz [DESIGN.md](DESIGN.md) §7.*
+*Vizuální zobrazení na webu: AI-generované ilustrace ve stylu loga — viz [DESIGN.md](../specs/DESIGN.md) §7.*
 
 ---
 
@@ -82,6 +82,6 @@ Polévka je samostatně 65 Kč.
 
 ## Reference
 
-* Tone of voice a popisky pro web: [PRD.md](PRD.md) §11
-* Styl ilustrací: [DESIGN.md](DESIGN.md) §7
+* Tone of voice a popisky pro web: [PRD.md](../specs/PRD.md) §11
+* Styl ilustrací: [DESIGN.md](../specs/DESIGN.md) §7
 * Cenotvorba a marže: [rozpocet_sablona.md](rozpocet_sablona.md)
