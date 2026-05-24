@@ -227,7 +227,9 @@ Malé kulaté chips, kolorované podle významu:
 
 ## 7. Ilustrace — AI generování
 
-Veškerá doprovodná grafika (jídla, hero, dekorace) je generována **AI bitmapovými nástroji** (Recraft, Midjourney, DALL-E 3, Stable Diffusion XL). Cílem je vizuál konzistentní s logem.
+Veškerá doprovodná grafika (jídla, hero, dekorace) je generována **AI** (cílový nástroj: **ChatGPT Images 2.0**). Cílem je vizuál konzistentní s logem.
+
+> 📁 **Hotové copy-paste prompty** pro každý obrázek jsou v [`../docs/prompts/`](../docs/prompts/README.md) — jeden soubor na obrázek (10 jídel, hero, OG, 404, pattern, favicon, logo, 4 dietní ikony). Sekce §7.1–§7.4 níže jsou referenční „zdroj pravdy" stylu, ze kterého ty prompty vychází.
 
 ### 7.1 Master style prompt (základ pro každé generování)
 ```

@@ -42,14 +42,15 @@ directory = `web`** (žádný build command).
 
 ## ⚠️ Co ještě chybí (binární assety — TODO)
 
-Tyto soubory nelze vygenerovat textově; doplnit dle [DESIGN.md](../specs/DESIGN.md) §7:
+Vygenerovat podle hotových promptů v [../docs/prompts/](../docs/prompts/README.md) (ChatGPT Images 2.0):
 
-- [ ] `favicon.ico` + `apple-touch-icon.png` (výřez loga, DESIGN.md §2.2)
-- [ ] `images/logo.svg`
-- [ ] `images/hero.png` (hero ilustrace)
-- [ ] `images/og.png` (1200×630 share image)
-- [ ] `images/menu/*.png` — 11 ilustrací jídel (N1–N3, S1–S2, M1–M4, P1)
-- [ ] `404.html` (DESIGN.md §7.4)
+- [ ] `favicon.ico` + `apple-touch-icon.png` (prompt `favicon.md`)
+- [ ] `images/logo.png` / `images/logo-horizontal.png` (prompt `logo-varianty.md`)
+- [ ] `images/hero.png` (prompt `hero.md`)
+- [ ] `images/og.png` (prompt `og-image.md`)
+- [ ] `images/menu/*.png` — 10 ilustrací jídel (N1–N3, S1–S2, M1–M4, P1)
+- [ ] `images/404.png` (prompt `404.md`)
+- [ ] `images/icons/diet-*.png` — 4 dietní ikony
 
 ## Pořadí naplňování (viz ../PLAN.md Fáze C)
 

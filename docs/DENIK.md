@@ -107,7 +107,18 @@ Explicitní záznam rozhodnutí. Formát: **co** / **proč** / **zvažované alt
 
 * ✅ Scaffold webu (8. iterace), úklid struktury (9. iterace) a doprovodné úpravy dokumentů zacommitovány a pushnuty na GitHub (`origin/main`, `AmelieSam/the-early-bowl`).
 
-**Další krok:** Fáze A2/A3/B — favicon, master prompt pro ilustrace, generování obrázků jídel; pak naplnit obsah stránek (Fáze C2–C6).
+**Provedeno (11. iterace — prompty pro obrázky):**
+
+* ✅ Vytvořena sada **20 promptů** v [`docs/prompts/`](prompts/README.md) (jeden markdown na obrázek) pro **ChatGPT Images 2.0**: 10 jídel, hero, OG, 404, background pattern, favicon, logo varianty, 4 dietní ikony + index README s postupem.
+* 💡 Každý prompt je samostatný (obsahuje stylový blok), žádá přiložení loga jako stylové reference, definuje rozměr/pozadí a cílový soubor v `web/images/`.
+* 💡 U textových prvků (OG, logo) upozornění na kontrolu pravopisu „THE EARLY BOWL" (riziko zkomolení) + doporučení radši dosadit reálné logo.
+* ✅ Propojeno z [DESIGN.md](../specs/DESIGN.md) §7.
+
+**Provedeno (12. iterace):**
+
+* ✅ Doplněn `web/404.html` (Cloudflare Pages ho servíruje automaticky pro neexistující cesty) — text z PRD §11.2, odkaz na `images/404.png`. Aktualizován `web/README.md` a `_redirects`.
+
+**Další krok:** Vygenerovat obrázky podle promptů (uživatel v ChatGPT Images 2.0), uložit do `web/images/`, pak naplnit obsah stránek (Fáze C2–C6).
 
 ---
 
