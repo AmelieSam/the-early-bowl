@@ -36,6 +36,7 @@ Web je **prezentační, ne e-shop**. Online platby ani košík nejsou v Fázi 1 
 ## 3. Cílová skupina
 
 ### Primární segmenty
+
 | Segment | Charakteristika |
 |---|---|
 | Vysokoškoláci | Studenti Slezské univerzity, 19–26 let, mobilní first, citliví na cenu |
@@ -44,6 +45,7 @@ Web je **prezentační, ne e-shop**. Online platby ani košík nejsou v Fázi 1 
 | Ranní pracovníci | 25–40 let, ranní směny, hledají rychlé a zdravé snídaně |
 
 ### Value proposition
+>
 > „Rychlá, zdravá a dostupná snídaně 6:00–13:30. Před školou, po tréninku, místo nicotného croissantu na cestě do práce."
 
 ---
@@ -75,20 +77,24 @@ Detailní menu viz [menu_sablona.md](../docs/menu_sablona.md). Cenotvorba a mar�
 ### 5.2 Klíčové funkce
 
 #### Objednávání (Fáze 1)
+
 * Telefonické objednávky s referencí na ID (`„Dejte mi prosím dvakrát M1 a jeden N2."`).
 * Tlačítko **„Kopírovat ID"** u každé položky → uloží `S1` do clipboardu (snadno se vloží do SMS).
 * Telefon na webu jako `tel:` link (mobil → přímé vytočení).
 
 #### Allergen matrix
+
 Tabulka s checkboxy: řádky = jídla, sloupce = vlastnosti (bez lepku, bez laktózy, vegan, vegetariánské, obsahuje ryby/ořechy/vejce). Render na `/menu` pod kartami.
 
 #### Kontaktní formulář
+
 * Pole: jméno, email, zpráva.
 * Backend: **[Formspree](https://formspree.io/)** (free tier 50 zpráv/měsíc) nebo **[Web3Forms](https://web3forms.com/)**.
 * Bez Captcha (low spam risk); honeypot field jako antispam.
 * Po odeslání: success message v souladu s tone of voice (viz §11).
 
 #### Sdílení & sociální sítě
+
 * Open Graph + Twitter Card meta tagy (sdílení na IG, FB).
 * Odkaz na Instagram v footeru a v hero CTA „Sleduj nás".
 * Žádný embed feed (omezení Instagram API; budeme přidávat manuálně až ve Fázi 2).
@@ -112,6 +118,7 @@ Tabulka s checkboxy: řádky = jídla, sloupce = vlastnosti (bez lepku, bez lakt
 > PRD na DESIGN.md odkazuje a **nereplikuje** jeho obsah. Při konfliktu vyhrává DESIGN.md.
 
 ### 6.1 Klíčová pravidla pro implementaci
+
 * Design tokens (barvy, spacing, fonty) implementovat jako **CSS custom properties** v `:root`.
 * Implementace musí přesně reflektovat hodnoty z DESIGN.md §3 (barvy), §4 (typo), §5 (spacing), §6 (komponenty).
 * Žádné inline style overrides, žádné magic numbers — vše přes proměnné.
@@ -121,6 +128,7 @@ Tabulka s checkboxy: řádky = jídla, sloupce = vlastnosti (bez lepku, bez lakt
 ## 7. Technické řešení
 
 ### 7.1 Stack
+
 | Vrstva | Volba | Důvod |
 |---|---|---|
 | Frontend | **HTML5 + CSS3 + Vanilla JS** (žádný framework) | 5 statických stránek nepotřebuje React. Lighthouse score 100. |
@@ -134,6 +142,7 @@ Tabulka s checkboxy: řádky = jídla, sloupce = vlastnosti (bez lepku, bez lakt
 | Analytics | **Cloudflare Web Analytics** (cookie-less) nebo žádné | Bez Google Analytics → bez cookie baneru. |
 
 ### 7.2 Struktura projektu
+
 ```
 web/                         # deploy root pro Cloudflare Pages (build output dir = web)
 ├── index.html              # Homepage
@@ -170,6 +179,7 @@ web/                         # deploy root pro Cloudflare Pages (build output di
 > **stylesheet.html** je interní referenční stránka (není v navigaci ani v sitemap). Slouží jako živá ukázka všech design tokens a komponent z [DESIGN.md](DESIGN.md) — vývojář i hodnotitel na ní vidí celý vizuální systém na jednom místě.
 
 ### 7.3 Data — menu jako JSON
+
 Centrální zdroj pravdy pro menu (umožní v budoucnu snadný admin panel nebo regenerace HTML):
 
 ```json
@@ -199,6 +209,7 @@ Centrální zdroj pravdy pro menu (umožní v budoucnu snadný admin panel nebo 
 V Fázi 1 stačí, když je JSON inlinovaný jako `<script type="application/json" id="menu-data">` v `menu.html` a vyrenderuje se vanilla JS šablonou.
 
 ### 7.4 Performance cíle
+
 | Metrika | Cíl mobile | Cíl desktop |
 |---|---|---|
 | LCP (Largest Contentful Paint) | < 2.5 s | < 1.5 s |
@@ -209,6 +220,7 @@ V Fázi 1 stačí, když je JSON inlinovaný jako `<script type="application/jso
 | Page weight (homepage) | < 500 KB | < 500 KB |
 
 **Optimalizace:**
+
 * WebP/AVIF formát pro obrázky, PNG fallback.
 * `loading="lazy"` na off-screen obrázcích.
 * `font-display: swap` pro Google Fonts.
@@ -218,12 +230,14 @@ V Fázi 1 stačí, když je JSON inlinovaný jako `<script type="application/jso
 ### 7.5 SEO
 
 **On-page:**
+
 * `<title>` a `<meta name="description">` na každé stránce, unikátní.
 * Sémantické HTML (`<header>`, `<nav>`, `<main>`, `<article>`, `<footer>`).
 * `alt` text u všech obrázků (popisující jídlo).
 * `lang="cs"` na `<html>`.
 
 **Strukturovaná data (JSON-LD na homepage):**
+
 ```json
 {
   "@context": "https://schema.org",
@@ -245,12 +259,15 @@ V Fázi 1 stačí, když je JSON inlinovaný jako `<script type="application/jso
 ```
 
 **Off-page:**
+
 * Google Business Profile registrace (lokální SEO).
 * Sitemap submitnut do Google Search Console.
 
 ### 7.6 Bezpečnost
+
 * **HTTPS povinné** (Cloudflare automaticky, „Always Use HTTPS").
 * **Security headers** v souboru `_headers` (Cloudflare Pages):
+
   ```
   /*
     X-Content-Type-Options: nosniff
@@ -259,10 +276,12 @@ V Fázi 1 stačí, když je JSON inlinovaný jako `<script type="application/jso
     Permissions-Policy: camera=(), microphone=(), geolocation=()
     Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src fonts.gstatic.com; img-src 'self' data:; frame-src www.google.com; connect-src 'self' formspree.io
   ```
+
 * Honeypot field v kontaktním formuláři.
 * Formspree má vlastní spam filtr.
 
 ### 7.7 GDPR & privacy
+
 * **Žádné cookies** (vlastní ani třetích stran).
 * **Žádný tracking** (bez Google Analytics; Cloudflare Web Analytics je cookie-less a bez fingerprinting).
 * **Třetí strany:**
@@ -292,6 +311,7 @@ V Fázi 1 stačí, když je JSON inlinovaný jako `<script type="application/jso
 ## 9. Wireframy (low-fi struktura)
 
 ### 9.1 Homepage
+
 ```
 ┌─────────────────────────────────────────┐
 │ HEADER (logo | nav | IG ikona)          │
@@ -320,6 +340,7 @@ V Fázi 1 stačí, když je JSON inlinovaný jako `<script type="application/jso
 ```
 
 ### 9.2 Menu
+
 ```
 ┌─────────────────────────────────────────┐
 │ HEADER                                  │
@@ -355,6 +376,7 @@ V Fázi 1 stačí, když je JSON inlinovaný jako `<script type="application/jso
 ```
 
 ### 9.3 Kontakt
+
 ```
 ┌─────────────────────────────────────────┐
 │ HEADER                                  │
@@ -382,12 +404,14 @@ V Fázi 1 stačí, když je JSON inlinovaný jako `<script type="application/jso
 ## 10. Testování & QA
 
 ### 10.1 Funkční scénáře
+
 * Homepage: všechny linky vedou na správné stránky, CTA tlačítka fungují.
 * Menu: všech 11 položek se zobrazí, „Kopírovat ID" funguje, filtry filtrují, allergen matrix se vykreslí.
 * Kontakt: telefon je clickable, email je clickable, mapa se načte, formulář odešle a zobrazí success message.
 * Navigace: aktivní stránka zvýrazněna, mobile menu se otevírá a zavírá.
 
 ### 10.2 Cross-browser & device
+
 | Browser | Test |
 |---|---|
 | Chrome (latest) | ✓ |
@@ -397,37 +421,42 @@ V Fázi 1 stačí, když je JSON inlinovaný jako `<script type="application/jso
 | Chrome Mobile (Android) | ✓ |
 
 **Device:**
+
 * iPhone (Safari, 375 px)
 * Android (Chrome, 412 px)
 * iPad (Safari, 768 px)
 * Desktop (1440 px, 1920 px)
 
 ### 10.3 Performance
+
 * Lighthouse audit (mobil) ≥ 90 ve všech kategoriích.
 * PageSpeed Insights real-user metrics.
 
 ### 10.4 Accessibility
+
 * Lighthouse Accessibility ≥ 95.
 * Manuální test klávesnice (`Tab` projde celý web logicky).
 * WAVE nebo axe DevTools — 0 errors.
 
 ### 10.5 Manuální checklist před deploy
+
 - [ ] Všechny linky fungují (žádné `#` placeholdery)
-- [ ] Všechny obrázky mají alt text
-- [ ] Žádný typo (korektura 2 osobami)
-- [ ] Všechny ceny v menu odpovídají [menu_sablona.md](../docs/menu_sablona.md)
-- [ ] Telefon a email správné
-- [ ] Favicon a apple-touch-icon nastaveny
-- [ ] OG image se zobrazuje při sdílení (test např. v https://opengraph.xyz/)
-- [ ] Sitemap.xml a robots.txt existují
-- [ ] Privacy policy přístupná z footeru
-- [ ] HTTPS aktivní, žádné mixed content warnings
+* [ ] Všechny obrázky mají alt text
+* [ ] Žádný typo (korektura 2 osobami)
+* [ ] Všechny ceny v menu odpovídají [menu_sablona.md](../docs/menu_sablona.md)
+* [ ] Telefon a email správné
+* [ ] Favicon a apple-touch-icon nastaveny
+* [ ] OG image se zobrazuje při sdílení (test např. v <https://opengraph.xyz/>)
+* [ ] Sitemap.xml a robots.txt existují
+* [ ] Privacy policy přístupná z footeru
+* [ ] HTTPS aktivní, žádné mixed content warnings
 
 ---
 
 ## 11. Copy & tone of voice
 
 ### 11.1 Pravidla
+
 * Tykání („Stav se", „Mrkni").
 * Krátké věty, jasné sdělení.
 * Žádný corporate speak.
@@ -454,7 +483,13 @@ V Fázi 1 stačí, když je JSON inlinovaný jako `<script type="application/jso
 > „Máš alergii nebo dietu? Tady vidíš, co pro tebe máme."
 
 **O nás (úryvek):**
-> „Jsme malý tým, který věří, že snídaně rozhoduje o tom, jaký bude celý den. Nemáme čas na složitosti — ani ty. Tak jsme vzali nejlepší ingredience, udělali z nich pár solidních jídel a otevřeli dveře v šest ráno. Tečka."
+> Náš Příběh
+>
+> Začalo to jednoduše. Hledali jsme místo, kde bychom si mohli dát rychlou, ale poctivou snídani plnou chuti a energie. Protože jsme ho nenašli, rozhodli jsme se ho vytvořit.
+>
+> The Early Bowl není jen kavárna nebo bistro. Je to ranní rituál. Věříme v suroviny, které dávají mysl, v barvy, které zlepší náladu, a v to, že dobré ráno opravdu dělá dobrý den. Přijďte si k nám pro tu svou misku optimismu.
+>
+> Jsme malý tým, který věří, že snídaně rozhoduje o tom, jaký bude celý den. Nemáme čas na složitosti — ani ty. Tak jsme vzali nejlepší ingredience, udělali z nich pár solidních jídel a otevřeli dveře v šest ráno. Tečka."
 
 **Kontaktní formulář:**
 > Pole: „Tvoje jméno", „Tvůj e-mail", „Co potřebuješ?"
@@ -465,6 +500,7 @@ V Fázi 1 stačí, když je JSON inlinovaný jako `<script type="application/jso
 > „Ouha. Tahle stránka neexistuje — asi jsme ji snědli k snídani. [Zpátky na úvod]"
 
 ### 11.3 Příklady popisků jídel
+>
 > **S1 — Yogurt Bowl**
 > Smetanový jogurt, domácí granola, čerstvé sezónní ovoce, kapka medu. Dokonalý start do dne.
 
@@ -479,21 +515,25 @@ V Fázi 1 stačí, když je JSON inlinovaný jako `<script type="application/jso
 ## 12. Roadmap
 
 ### Fáze 1 (Aktuální — MVP)
+
 * Statický web (5 podstránek)
 * Menu s ID + telefonické objednávky
 * Brand identita, ilustrace, propagační video
 
 ### Fáze 2 (6–12 měsíců po launchi)
+
 * Online předobjednávky (zákazník vyzvedne v krabičce)
 * Rezervační systém na stoly
 * Email notifikace (SendGrid)
 * Jednoduchý admin panel pro úpravu menu (např. headless CMS — Sanity, Tina)
 
 ### Fáze 3 (12+ měsíců)
+
 * Doručování (integrace s Wolt / Bolt Food / Foodora)
 * Vlastní rozvozový systém pro okolí
 
 ### Dlouhodobá vize
+
 * Letní prodejní vozíček v parku
 * Rozšíření menu (sezónní speciály)
 * Expanze na další lokalitu
@@ -517,27 +557,32 @@ V Fázi 1 stačí, když je JSON inlinovaný jako `<script type="application/jso
 Web je hotový, když:
 
 **Funkčnost (25 b):**
+
 * Všech 5 stránek se načte bez JS errorů
 * Všechny interaktivní prvky fungují (nav, copy ID, formulář)
 * Kontaktní formulář odešle email a zobrazí success
 * HTTPS aktivní, doména funguje
 
 **Design (15 b):**
+
 * Implementace 1:1 odpovídá [DESIGN.md](DESIGN.md)
 * Logo a favicon nasazeny
 * Všech 11 ilustrací jídel + hero + OG image hotové
 
 **Performance & SEO:**
+
 * Lighthouse ≥ 90 mobile, ≥ 95 desktop
 * Meta tagy + JSON-LD + sitemap + robots
 * Validní HTML (W3C validator)
 
 **Accessibility:**
+
 * Lighthouse a11y ≥ 95
 * Klávesnicová navigace funguje
 * Kontrasty splňují WCAG AA
 
 **Obsah:**
+
 * Žádný typo (2 korektoři)
 * Všechny ceny správné a konzistentní
 * Privacy policy publikována

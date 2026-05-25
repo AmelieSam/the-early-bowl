@@ -39,6 +39,24 @@ Explicitní záznam rozhodnutí. Formát: **co** / **proč** / **zvažované alt
 
 ## Chronologie
 
+### 25. 5. 2026 — Brand story a generování obrázků
+
+**Provedeno (13. iterace, vstup zadavatele):**
+
+* ✅ Doplněn a sloučen brand příběh **„Náš příběh"** — finální syntéza zadavatelovy verze (zakládací příběh „hledali jsme, nenašli, vytvořili", „miska optimismu") s původním úryvkem (malý tým, „nemáme čas na složitosti — ani ty", otevřeno v šest). Uloženo jako kanonický text do [PRD.md](../specs/PRD.md) §11.2.
+* ✏️ Drobná editace „suroviny, které dávají mysl" → „…dávají energii" (ladí s hodnotou energie).
+* ℹ️ Stránka `web/o-nas.html` zatím ponechána jako kostra — obsah se dosadí ve Fázi C.
+
+**Provedeno (14. iterace — generování obrázků):**
+
+* ✅ **Codex** vygeneroval všech **21 obrázků** podle promptů v [`docs/prompts/`](prompts/README.md): 10 ilustrací jídel, hero, OG, 404, background pattern, favicon (icon-source + `favicon.ico` + `apple-touch-icon.png`), logo + horizontální lockup, 4 dietní ikony. Uloženo do `web/images/`.
+* 🔬 Kontrola: ověřeny rozměry a typy (validní PNG/ICO ve správných rozměrech) + vizuální kontaktní montáž přes ImageMagick.
+* 💡 **Zjištění:** sada je **stylově i kompozičně konzistentní** s logem (hnědé kontury, ploché barvy, smetanové pozadí, jednotná paleta). Wordmark „THE EARLY BOWL" v logo variantách vyšel správně — avizované riziko zkomolení textu se nepotvrdilo.
+
+**Další krok:** Dosadit obrázky do HTML stránek a naplnit obsah (Fáze C2–C6); poté responzivita, SEO, deploy na Cloudflare Pages.
+
+---
+
 ### 24. 5. 2026 — Předání projektu Claude Code
 
 **🔬 Co:** Projekt předán nástroji Claude Code (Opus 4.7) k review dokumentace, harmonizaci a tvorbě plánu.
@@ -117,8 +135,6 @@ Explicitní záznam rozhodnutí. Formát: **co** / **proč** / **zvažované alt
 **Provedeno (12. iterace):**
 
 * ✅ Doplněn `web/404.html` (Cloudflare Pages ho servíruje automaticky pro neexistující cesty) — text z PRD §11.2, odkaz na `images/404.png`. Aktualizován `web/README.md` a `_redirects`.
-
-**Další krok:** Vygenerovat obrázky podle promptů (uživatel v ChatGPT Images 2.0), uložit do `web/images/`, pak naplnit obsah stránek (Fáze C2–C6).
 
 ---
 
