@@ -21,7 +21,8 @@
 * **[web/](web/)** — skeleton statického webu (HTML/CSS/JS) připravený k naplnění; deploy na Cloudflare Pages. Detaily v [web/README.md](web/README.md).
 
 ### 📊 Vstupy pro projektovou dokumentaci
-* **[menu_sablona.md](docs/menu_sablona.md)** — finální menu s ID, popisy, cenami, allergen maticí.
+* **[menu_sablona.md](docs/menu_sablona.md)** — finální menu s ID, popisy, cenami.
+* **[menu-matrix.md](docs/menu-matrix.md)** — matice vhodnosti pro diety a obsažených alergenů.
 * **[marketing_plan_sablona.md](docs/marketing_plan_sablona.md)** — marketingová strategie a persony.
 * **[rozpocet_sablona.md](docs/rozpocet_sablona.md)** — počáteční investice, fixní/variabilní náklady, cenotvorba, financování.
 

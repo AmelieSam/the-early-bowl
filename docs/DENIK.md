@@ -34,6 +34,7 @@ Explicitní záznam rozhodnutí. Formát: **co** / **proč** / **zvažované alt
 | **D-13** | 24.5. | Font nadpisů **Fredoka → Baloo 2** (body zůstává Quicksand) | Fredoka nemá vlastní glyfy českých háčků (`ě č ř š ž`), padaly na systémový fallback; Baloo 2 je drží správně a zachovává hravý zaoblený charakter | Fredoka (zamítnuta); Nunito 800, Baloo Bhaijaan 2 (OK, ale méně „chunky") |
 | **D-14** | 24.5. | Propagační video **bez voiceoveru** (on-screen text + volitelný hudební podkres) | Pokyn zadavatele; text na obrazovce je čitelnější a méně rušivý, odpadá ladění TTS | AI voiceover (ElevenLabs) — zamítnuto |
 | **D-15** | 24.5. | Doména = **generická `*.pages.dev`** (zdarma); dokumentace **Markdown → HTML + tisková CSS → PDF přes Chromium**, **Typst zamítnut** | Pokyn zadavatele (doména); Typst je zbytečný nový toolchain — HTML+CSS znovupoužije brand styl a dá plnou typografickou kontrolu | Vlastní doména (~400 Kč/rok); Typst; čistý MD→PDF (slabá kontrola sazby) |
+| **D-16** | 25.5. | Menu jako data = **`web/data/menu.yaml`** (zdroj pravdy) + plánovaný generátor → `menu.json` (web) a `menu-matrix.md` (docs) | Pohodlná editace s komentáři, jeden zdroj → web i matice nedriftují, menu se mění bez zásahu do kódu stránek | Čisté JSON bez buildu (bez komentářů, ruční matice); menu natvrdo v HTML |
 
 ---
 
@@ -53,7 +54,22 @@ Explicitní záznam rozhodnutí. Formát: **co** / **proč** / **zvažované alt
 * 🔬 Kontrola: ověřeny rozměry a typy (validní PNG/ICO ve správných rozměrech) + vizuální kontaktní montáž přes ImageMagick.
 * 💡 **Zjištění:** sada je **stylově i kompozičně konzistentní** s logem (hnědé kontury, ploché barvy, smetanové pozadí, jednotná paleta). Wordmark „THE EARLY BOWL" v logo variantách vyšel správně — avizované riziko zkomolení textu se nepotvrdilo.
 
-**Další krok:** Dosadit obrázky do HTML stránek a naplnit obsah (Fáze C2–C6); poté responzivita, SEO, deploy na Cloudflare Pages.
+**Provedeno (15. iterace — matice diet a rozvaha datového modelu):**
+
+* ✅ Vytvořena samostatná **[menu-matrix.md](menu-matrix.md)** — vhodnost pro diety (A) + obsažené alergeny (B), rozdělené pro přehlednost. Matice vyjmuta z [menu_sablona.md](menu_sablona.md) (zůstal odkaz → jeden zdroj, žádný drift). Referencováno z PRD §5.2 a README.
+* ✏️ Oprava: PRD §4 „11 položek" → **10** (P1 = obědová polévka byla počítána dvakrát).
+* 💬 **Rozvaha (čeká na rozhodnutí zadavatele) — datový zdroj menu:**
+  * **A) YAML + generátor** (`web/data/menu.yaml` → skript → `web/data/menu.json` pro web + auto-gen `menu-matrix.md`). Pohodlná editace s komentáři, matice nedriftuje; cena = malý ruční build krok (Node).
+  * **B) Čisté JSON** (`web/data/menu.json`, prohlížeč načítá nativně přes `fetch`, bez build kroku). Jednodušší, ale bez komentářů a matice se udržuje ručně.
+  * Diety/alergeny: definice patří do **datového souboru** (zdroj pravdy); Markdown matice je *pohled* (ideálně generovaný). → potvrzeno, že matice jako samostatný MD dává smysl pro přehled/rozvahu.
+
+**Provedeno (16. iterace, vstup zadavatele):**
+
+* 🧭 Rozhodnutí **D-16** — varianta **A (YAML + generátor)**.
+* ✅ Vytvořen datový soubor **[`web/data/menu.yaml`](../web/data/menu.yaml)** se 10 položkami + číselníky diet a alergenů + příznaky (`diet_suitable` / `diet_adjustable` / `allergens` / `allergens_adjustable` / `varies`). PRD §7.3 aktualizováno.
+* 📌 **Generátor** (`menu.yaml → menu.json` + `menu-matrix.md`) odložen na později — zařazeno do [PLAN.md](PLAN.md) Fáze C.
+
+**Další krok:** Implementovat generátor (Fáze C) a stránku Menu čtoucí `menu.json`; dosadit obrázky + obsah do stránek (Fáze C2–C6); poté responzivita, SEO, deploy.
 
 ---
 

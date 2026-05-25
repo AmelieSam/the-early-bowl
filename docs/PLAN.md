@@ -83,8 +83,9 @@ Probíhá paralelně s Fází B (web se staví na placeholderech, assety se post
 | Krok | Výstup | Závisí na |
 |---|---|---|
 | C1 | Projekt skeleton (HTML/CSS/JS, design tokens jako CSS custom properties z DESIGN.md) | A1 |
+| C1b | **Generátor menu** (`scripts/build-menu.mjs`) — z `web/data/menu.yaml` vyrobí `web/data/menu.json` (web) + `docs/menu-matrix.md` (docs); npm skript `build:menu`. Datový soubor už existuje (D-16) | A1 |
 | C2 | **Homepage** (`index.html`) — hero, value props, featured menu, roadmap, IG CTA, footer | C1, B2 |
-| C3 | **Menu** (`menu.html`) — kategorie, karty s ID, ceny, alergeny, matrix tabulka | C1, B1 |
+| C3 | **Menu** (`menu.html`) — vykreslení z `menu.json` (kategorie, karty s ID, ceny, dietní badges, allergen matrix) | C1, C1b, B1 |
 | C4 | **O nás** (`about.html`) — příběh, mise, hodnoty | C1 |
 | C5 | **Kontakt** (`contact.html`) — adresa, telefon, email, mapa, formulář (Formspree) | C1 |
 | C6 | **Obchodní podmínky / Privacy** (`podminky.html`) — pokrývá ZADANI „Obchodní podmínky" | C1 |

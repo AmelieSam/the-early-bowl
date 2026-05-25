@@ -58,7 +58,7 @@ Web je **prezentační, ne e-shop**. Online platby ani košík nejsou v Fázi 1 
 | Kapacita | 15 míst (12 u stolů + 3 u baru) |
 | Lokace | Obchodní dům Stará Breda, Opava (fiktivní adresa pro účely projektu) |
 | Personál | 1 osoba na směnu (2–3 brigádníci v rotaci) |
-| Menu | 11 položek (3 nápoje, 2 sladké, 4 slané, 1 oběd, 1 polévka) |
+| Menu | 10 položek (3 nápoje, 2 sladké, 4 slané, 1 obědová polévka) |
 
 Detailní menu viz [menu_sablona.md](../docs/menu_sablona.md). Cenotvorba a marže viz [rozpocet_sablona.md](../docs/rozpocet_sablona.md).
 
@@ -84,7 +84,7 @@ Detailní menu viz [menu_sablona.md](../docs/menu_sablona.md). Cenotvorba a mar�
 
 #### Allergen matrix
 
-Tabulka s checkboxy: řádky = jídla, sloupce = vlastnosti (bez lepku, bez laktózy, vegan, vegetariánské, obsahuje ryby/ořechy/vejce). Render na `/menu` pod kartami.
+Tabulka s checkboxy: řádky = jídla, sloupce = vlastnosti (bez lepku, bez laktózy, vegan, vegetariánské, obsahuje ryby/ořechy/vejce). Render na `/menu` pod kartami. Zdroj dat a lidsky čitelný přehled: [menu-matrix.md](../docs/menu-matrix.md).
 
 #### Kontaktní formulář
 
@@ -206,7 +206,9 @@ Centrální zdroj pravdy pro menu (umožní v budoucnu snadný admin panel nebo 
 }
 ```
 
-V Fázi 1 stačí, když je JSON inlinovaný jako `<script type="application/json" id="menu-data">` v `menu.html` a vyrenderuje se vanilla JS šablonou.
+Menu se vykresluje z tohoto **jednoho datového zdroje** (žádná data natvrdo v HTML) — při změně menu se nezasahuje do kódu stránek. Z téhož zdroje se generuje i lidsky čitelná [menu-matrix.md](../docs/menu-matrix.md).
+
+> **Zdroj dat (rozhodnuto — D-16):** zdroj pravdy je **[`web/data/menu.yaml`](../web/data/menu.yaml)** (komentovatelný, číselníky diet/alergenů). Plánovaný generátor z něj vyrobí `web/data/menu.json` (runtime pro web, tvar viz výše) a `docs/menu-matrix.md`. Detail viz [DENIK.md](../docs/DENIK.md) a [PLAN.md](../docs/PLAN.md).
 
 ### 7.4 Performance cíle
 

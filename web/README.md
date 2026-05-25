@@ -15,7 +15,8 @@ web/
 ├── stylesheet.html   # Living style guide (noindex)
 ├── css/              # tokens → reset → base → components → pages
 ├── js/               # nav.js, copy-id.js, form.js
-├── images/           # menu/ ilustrace, hero, og, logo (TODO doplnit)
+├── data/             # menu.yaml (zdroj pravdy) → menu.json (generovaný, čte web)
+├── images/           # menu/ ilustrace, hero, og, logo
 ├── _headers          # bezpečnostní hlavičky (Cloudflare)
 ├── _redirects        # pretty URL přesměrování
 ├── wrangler.toml     # Cloudflare Pages konfigurace

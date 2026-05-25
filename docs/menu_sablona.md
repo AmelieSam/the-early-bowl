@@ -59,24 +59,7 @@ Polévka je samostatně 65 Kč.
 
 ## Matice alergenů a dietních vlastností
 
-✅ = obsahuje / vyhovuje, — = neobsahuje / nevyhovuje
-
-| ID | Bez lepku | Bez laktózy | Vegan | Vegetariánské | Obsahuje ryby | Obsahuje vejce |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|
-| N1 Voda s citronem | ✅ | ✅ | ✅ | ✅ | — | — |
-| N2 Fresh OJ | ✅ | ✅ | ✅ | ✅ | — | — |
-| N3 Čaj | ✅ | ✅ | ✅ | ✅ | — | — |
-| S1 Yogurt Bowl | * | — | — | ✅ | — | — |
-| S2 Teplá kaše | * | * | ✅** | ✅ | — | — |
-| M1 Avokádový toast s lososem | — | ✅ | — | — | ✅ | — |
-| M2 Vajíčka s toastem | — | — | — | ✅ | — | ✅ |
-| M3 Vajíčka s avokádem a slaninou | — | — | — | — | — | ✅ |
-| M4 Toast Caprese | — | — | — | ✅ | — | — |
-| P1 Denní polévka | ✦ | ✦ | ✦ | ✦ | ✦ | ✦ |
-
-\* lze připravit v bezlepkové / bezlaktózové variantě po domluvě (granola má lepek; jogurt obsahuje laktózu, ale lze použít rostlinný)
-\*\* veganská varianta s rostlinným mlékem a bez medu
-✦ závisí na konkrétní polévce daného dne
+➡️ Vhodnost položek pro diety a přehled obsažených alergenů je v samostatném souboru: **[menu-matrix.md](menu-matrix.md)**.
 
 ---
 
