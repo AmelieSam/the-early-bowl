@@ -27,6 +27,13 @@
 }
 .card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--outline-brown); }
 
+/* Menu card — obsahové bloky (layout: ID nahoře, název + cena na řádku) */
+.menu-card__body { display: flex; flex-direction: column; gap: var(--space-xs); flex: 1; }
+.menu-card .id-badge { align-self: flex-start; }
+.menu-card__titlerow { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-md); }
+.menu-card__title { font-family: var(--font-head); font-weight: 600; font-size: 18px; line-height: 1.25; }
+.menu-card__price { font-family: var(--font-head); font-weight: 700; font-size: 20px; color: var(--strawberry); white-space: nowrap; }
+
 /* --- ID badge (§6.3) --- */
 .id-badge {
   display: inline-block; background: var(--outline-brown); color: var(--cream);

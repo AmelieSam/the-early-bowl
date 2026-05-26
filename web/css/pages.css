@@ -3,8 +3,16 @@
    Navazuje na tokens / reset / base / components.
    ========================================================= */
 
+/* --- Jemný brand vzor na pozadí (DESIGN §7.4) --- */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background-image: url(../images/bg-pattern.webp);
+  background-size: 360px auto; background-repeat: repeat;
+  opacity: 0.05;
+}
+
 /* --- Sdílené sekce --- */
-.section--alt { background: var(--cream-shadow); }
+.section--alt { background: var(--cream-shadow); position: relative; }
 .section__head { text-align: center; max-width: 60ch; margin-inline: auto; margin-bottom: var(--space-2xl); }
 .section__head p { margin-inline: auto; }
 .eyebrow {
@@ -94,16 +102,17 @@
 .menu-card__desc { color: var(--deep-cocoa); }
 .menu-card__note { font-size: 13px; color: var(--deep-cocoa); opacity: 0.8; font-style: normal; margin-top: var(--space-sm); }
 
-/* Dietní ikony */
-.menu-card__diets { display: flex; flex-wrap: wrap; gap: 6px; margin-top: var(--space-sm); }
-.diet-icon { width: 36px; height: 36px; display: inline-block; vertical-align: middle; }
+/* Dietní ikony — jednotná velikost (PNG i emoji chip) */
+.menu-card__diets { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: var(--space-sm); }
+.diet-icon { width: 34px; height: 34px; display: inline-grid; place-items: center; vertical-align: middle; }
 img.diet-icon { object-fit: contain; }
-.diet-icon--emoji { border-radius: var(--radius-pill); border: 2px solid var(--outline-brown);
-  background: var(--leaf); color: #fff; display: inline-grid; place-items: center; font-size: 17px; }
+.diet-icon--veg { width: 32px; height: 32px; border-radius: var(--radius-pill);
+  border: 2px solid var(--outline-brown); background: var(--leaf); color: #fff;
+  font-family: var(--font-head); font-weight: 700; font-size: 16px; line-height: 1; }
 .diet-icon--adj { opacity: 0.5; }
 
 /* Kopírovat ID */
-.copy-id { align-self: flex-start; margin-top: var(--space-sm); cursor: pointer;
+.copy-id { align-self: flex-start; margin-top: auto; cursor: pointer;
   font-family: var(--font-head); font-weight: 600; font-size: 13px; color: var(--outline-brown);
   background: var(--cream); border: 2px solid var(--outline-brown); border-radius: var(--radius-pill);
   padding: 6px 14px; transition: background 0.15s ease; }

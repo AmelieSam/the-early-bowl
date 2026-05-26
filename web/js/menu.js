@@ -13,7 +13,7 @@
     glutenfree: 'images/icons/diet-bez-lepku.png',
     lactosefree: 'images/icons/diet-bez-laktozy.png'
   };
-  var DIET_EMOJI = { vegetarian: '🥗' };
+  var DIET_TEXT = { vegetarian: 'V' };
 
   function esc(s) {
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -26,8 +26,8 @@
     if (DIET_ICON[id]) {
       return '<img class="' + cls + '" src="' + DIET_ICON[id] + '" alt="" title="' + esc(label) + '" loading="lazy" width="36" height="36">';
     }
-    var emoji = DIET_EMOJI[id] || '•';
-    return '<span class="' + cls + ' diet-icon--emoji" title="' + esc(label) + '" role="img" aria-label="' + esc(label) + '">' + emoji + '</span>';
+    var glyph = DIET_TEXT[id] || '•';
+    return '<span class="' + cls + ' diet-icon--veg" title="' + esc(label) + '" role="img" aria-label="' + esc(label) + '">' + glyph + '</span>';
   }
 
   function dietRow(item) {
@@ -48,14 +48,14 @@
 
   function card(item) {
     return '' +
-      '<article class="menu-card card">' +
+      '<article class="menu-card card" id="' + esc(item.id) + '">' +
         '<div class="menu-card__img">' + picture(item.image, item.name, 'menu-card__photo') + '</div>' +
         '<div class="menu-card__body">' +
-          '<div class="menu-card__head">' +
-            '<span class="id-badge">' + esc(item.id) + '</span>' +
+          '<span class="id-badge">' + esc(item.id) + '</span>' +
+          '<div class="menu-card__titlerow">' +
+            '<h3 class="menu-card__title">' + esc(item.name) + '</h3>' +
             '<span class="menu-card__price">' + esc(item.price) + ' Kč</span>' +
           '</div>' +
-          '<h3 class="menu-card__title">' + esc(item.name) + '</h3>' +
           '<p class="menu-card__desc">' + esc(item.description || '') + '</p>' +
           dietRow(item) +
           '<button class="copy-id" type="button" data-id="' + esc(item.id) + '">Kopírovat ID</button>' +

@@ -94,7 +94,15 @@ Explicitní záznam rozhodnutí. Formát: **co** / **proč** / **zvažované alt
 * ✅ **Optimalizace obrázků:** 15 MB → 6 MB; resize + WebP (`<picture>` s PNG fallbackem), hero 1,1 MB→73 KB WebP.
 * 🔬 **Playwright QA:** všechny stránky desktop + mobil, **0 JS chyb / 0 selhaných requestů**; menu = 10 karet/4 kategorie/21 dietních ikon, copy-id funguje, featured = 4; ověřeno i přes `file://` (10 karet, 10 obrázků). Mobilní menu = čistý rozbalovací panel.
 
-**Další krok:** Doladění detailů dle zpětné vazby; volitelně propagační video (HeyGen); deploy na GitHub Pages; sazba dokumentace + slide deck (Fáze D/E).
+**Provedeno (20. iterace — doladění dle zpětné vazby):**
+
+* 🐛 **Oprava layoutu karty:** chyběly styly `.menu-card__head/__title/__price` (byly jen ve `stylesheet.html`, ne v `components.css`) → ID a cena se překrývaly. Doplněno + přepracováno na čistší layout: **ID badge nahoře, název + cena na jednom řádku**.
+* 🐛 **Dietní piktogram „Vegetariánské"** byl větší a stylově nesedící (barevné emoji 🥗) → nahrazen plochým **„V" chipem** v brand stylu (leaf-green kruh, hnědá kontura), jednotná velikost s PNG ikonami.
+* 🎨 **bg-pattern** nasazen jako velmi jemný (opacity 0.05) fixní podklad celého webu.
+* ✅ Tlačítka „Kopírovat ID" zarovnána na spodek karet (`margin-top:auto`).
+* 🔬 Ověřeno Playwrightem (server i file://): 0 chyb, layout opraven, piktogramy jednotné.
+
+**Další krok:** Volitelně propagační video (HeyGen); deploy na GitHub Pages; sazba dokumentace + slide deck (Fáze D/E).
 
 ---
 
