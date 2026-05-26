@@ -99,7 +99,7 @@ Vzhledem k umístění a omezenému budgetu se marketing zaměří na **lokáln�
 |---|---|---|
 | Instagram followers | 200+ | IG analytics |
 | Engagement rate | > 5 % | IG analytics |
-| Týdenní návštěvy webu | 300+ | Cloudflare Web Analytics (cookie-less) |
+| Týdenní návštěvy webu | 300+ | bez webových analytics (školní web) — odhad z IG prokliků |
 | Telefonické objednávky / den | 8–12 | manuální záznam |
 | Google reviews | 30+ | GBP dashboard |
 | Repeat zákazníci | > 40 % | manuální (poznávání tváří, dotaz u baru) |

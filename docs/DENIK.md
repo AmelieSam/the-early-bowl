@@ -35,6 +35,8 @@ Explicitní záznam rozhodnutí. Formát: **co** / **proč** / **zvažované alt
 | **D-14** | 24.5. | Propagační video **bez voiceoveru** (on-screen text + volitelný hudební podkres) | Pokyn zadavatele; text na obrazovce je čitelnější a méně rušivý, odpadá ladění TTS | AI voiceover (ElevenLabs) — zamítnuto |
 | **D-15** | 24.5. | Doména = **generická `*.pages.dev`** (zdarma); dokumentace **Markdown → HTML + tisková CSS → PDF přes Chromium**, **Typst zamítnut** | Pokyn zadavatele (doména); Typst je zbytečný nový toolchain — HTML+CSS znovupoužije brand styl a dá plnou typografickou kontrolu | Vlastní doména (~400 Kč/rok); Typst; čistý MD→PDF (slabá kontrola sazby) |
 | **D-16** | 25.5. | Menu jako data = **`web/data/menu.yaml`** (zdroj pravdy) + plánovaný generátor → `menu.json` (web) a `menu-matrix.md` (docs) | Pohodlná editace s komentáři, jeden zdroj → web i matice nedriftují, menu se mění bez zásahu do kódu stránek | Čisté JSON bez buildu (bez komentářů, ruční matice); menu natvrdo v HTML |
+| **D-17** | 25.5. | Hosting **Cloudflare Pages → GitHub Pages** (generická doména `ameliesam.github.io/the-early-bowl/`) | Pokyn zadavatele | Cloudflare (D-05, nahrazeno); vlastní doména. Dopad: GH Pages neumí custom HTTP hlavičky/`_redirects`, web běží na podcestě → **relativní cesty** |
+| **D-18** | 25.5. | **Upřesnění MVP webu** (před vývojem): bez kontaktního formuláře, bez email notifikací, **bez allergen tabulky na webu** (jen dietní ikony u položek), sociální sítě jen **IG proklik**, menu čteno **přímo z `menu.yaml`** (inline blok + malý JS parser, **žádný JSON, žádný build**, funguje i přes `file://`), video jen **placeholder** (HeyGen později), realistické performance cíle, SEO úměrně | Pokyn zadavatele; jednoduchost, statický web bez backendu, splnitelné cíle | Generátor `menu.json` (z D-16 — zrušeno); formulář (Formspree); souhrnná matice na webu; Twitter/FB |
 
 ---
 
@@ -69,7 +71,21 @@ Explicitní záznam rozhodnutí. Formát: **co** / **proč** / **zvažované alt
 * ✅ Vytvořen datový soubor **[`web/data/menu.yaml`](../web/data/menu.yaml)** se 10 položkami + číselníky diet a alergenů + příznaky (`diet_suitable` / `diet_adjustable` / `allergens` / `allergens_adjustable` / `varies`). PRD §7.3 aktualizováno.
 * 📌 **Generátor** (`menu.yaml → menu.json` + `menu-matrix.md`) odložen na později — zařazeno do [PLAN.md](PLAN.md) Fáze C.
 
-**Další krok:** Implementovat generátor (Fáze C) a stránku Menu čtoucí `menu.json`; dosadit obrázky + obsah do stránek (Fáze C2–C6); poté responzivita, SEO, deploy.
+**Provedeno (17. iterace, vstup zadavatele — předvývojová revize PRD):**
+
+* 🧭 Rozhodnutí **D-17** (hosting → GitHub Pages) a **D-18** (upřesnění MVP webu).
+* ✅ Přepsán **PRD.md v4.0**: site map (Menu = dietní ikony + video placeholder, Kontakt bez formuláře), §5.2 (dietní ikony / video / jen IG), §7.1 stack (GitHub Pages, bez buildu, grafika ✅ Codex), §7.2 struktura (`.nojekyll`, `data/`, `vendor/yaml-mini.js`, pryč Cloudflare soubory), §7.3 (menu z YAML inline + parser, žádný JSON), §7.4 (realistické cíle + nutná optimalizace velkých PNG), §7.5 (SEO úměrně, adresa do JSON-LD), §7.6 (GH Pages neumí hlavičky), §7.7 (bez formuláře/analytics), wireframy, §10 (Playwright), §12 roadmap (stručná zákazník-facing), §13 rizika, §14 done.
+* ✅ Sladěno: TECH-STACK (hosting/integrace/náklady), PLAN (Fáze C, hosting, lokalita, rizika), rozpočet (hosting), marketing (analytics). Adresa všude → **Náměstí Republiky 159/10, Opava**.
+* 📌 Generátor `menu.json` z D-16 **zrušen** (D-18) — web čte YAML přímo.
+
+**Provedeno (18. iterace — sladění scaffoldu před vývojem):**
+
+* ✅ Smazány Cloudflare-specifické soubory (`web/_headers`, `_redirects`, `wrangler.toml`) a `web/js/form.js`; přidán `web/.nojekyll`.
+* ✅ **Všechny cesty převedeny na relativní** (`/css/…` → `css/…` atd.) ve všech HTML — ověřeno Playwrightem, že web teď funguje i přes `file://` (CSS i fonty se načtou, 0 selhaných requestů).
+* ✅ Z `kontakt.html` odebrán formulář; adresa všude → **Náměstí Republiky 159/10, Opava**; OG/JSON-LD + robots + sitemap → `ameliesam.github.io/the-early-bowl`; TODO komentáře sladěny (bez Formspree/matice).
+* ✅ `web/README.md` přepsán (GitHub Pages, relativní cesty, stav assetů, pořadí vývoje).
+
+**Další krok:** Vývoj webu (Fáze C) — doplnit menu data layer (inline YAML + `yaml-mini.js` + `menu.js`), obsah stránek, dietní ikony, video placeholder; optimalizovat obrázky; průběžně Playwright; deploy na GitHub Pages.
 
 ---
 

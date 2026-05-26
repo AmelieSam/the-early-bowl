@@ -1,8 +1,8 @@
 # PRD — Webová prezentace „The Early Bowl"
 
-**Verze:** 3.0 (harmonizovaná)
-**Status:** Fáze 1 — MVP development
-**Datum:** 2026-05-24
+**Verze:** 4.0 (předvývojová — upřesnění MVP před tvorbou webu)
+**Status:** Fáze 1 — připraveno k vývoji webu
+**Datum:** 2026-05-25
 
 > **Vizuální identita:** Tento dokument **nedefinuje** barvy, fonty ani ilustrační styl. Single source of truth je [DESIGN.md](DESIGN.md). PRD určuje **co** se staví a **jak funguje**; DESIGN určuje **jak to vypadá**.
 >
@@ -12,7 +12,7 @@
 
 ## 1. Executive summary
 
-**The Early Bowl** je smyšlená snídaňová restaurace zaměřená na zdravou výživu, situovaná v obchodním domě Stará Breda v Opavě. Web slouží jako primární digitální vizitka s důrazem na:
+**The Early Bowl** je smyšlená snídaňová restaurace zaměřená na zdravou výživu, na adrese Náměstí Republiky 159/10 v Opavě. Web slouží jako primární digitální vizitka s důrazem na:
 
 * přehledné menu s unikátními ID položek pro snadné telefonické objednání,
 * unikátní hand-drawn brand vzhled (viz [DESIGN.md](DESIGN.md)),
@@ -56,7 +56,7 @@ Web je **prezentační, ne e-shop**. Online platby ani košík nejsou v Fázi 1 
 |---|---|
 | Provozní doba | Pondělí–Neděle, **6:00–13:30** |
 | Kapacita | 15 míst (12 u stolů + 3 u baru) |
-| Lokace | Obchodní dům Stará Breda, Opava (fiktivní adresa pro účely projektu) |
+| Lokace | Náměstí Republiky 159/10, Opava (fiktivní provoz pro účely projektu) |
 | Personál | 1 osoba na směnu (2–3 brigádníci v rotaci) |
 | Menu | 10 položek (3 nápoje, 2 sladké, 4 slané, 1 obědová polévka) |
 
@@ -68,11 +68,11 @@ Detailní menu viz [menu_sablona.md](../docs/menu_sablona.md). Cenotvorba a mar�
 
 ### 5.1 Site map (5 podstránek — splňuje ZADANI)
 
-1. **Homepage** (`/`) — hero, value props, featured menu, roadmap, IG CTA, kontakt teaser.
-2. **Menu** (`/menu`) — všechny položky s ID, popisem, cenou, dietními badges, allergen matrix.
-3. **O nás** (`/o-nas`) — příběh značky, mise, hodnoty.
-4. **Kontakt** (`/kontakt`) — adresa, telefon, email, mapa, kontaktní formulář.
-5. **Obchodní podmínky & Privacy** (`/podminky`) — provozovatel, ochrana osobních údajů, podmínky.
+1. **Homepage** (`index.html`) — hero, value props, featured menu, roadmap, IG CTA, kontakt teaser.
+2. **Menu** (`menu.html`) — položky s ID, popisem, cenou a **dietními ikonami**; níže **placeholder pro budoucí video** přípravy S1 (viz §5.2).
+3. **O nás** (`o-nas.html`) — příběh značky, mise, hodnoty.
+4. **Kontakt** (`kontakt.html`) — adresa, telefon, e-mail, mapa. **Bez kontaktního formuláře.**
+5. **Obchodní podmínky & Privacy** (`podminky.html`) — provozovatel, ochrana osobních údajů, podmínky.
 
 ### 5.2 Klíčové funkce
 
@@ -82,31 +82,28 @@ Detailní menu viz [menu_sablona.md](../docs/menu_sablona.md). Cenotvorba a mar�
 * Tlačítko **„Kopírovat ID"** u každé položky → uloží `S1` do clipboardu (snadno se vloží do SMS).
 * Telefon na webu jako `tel:` link (mobil → přímé vytočení).
 
-#### Allergen matrix
+#### Dietní ikony u položek
 
-Tabulka s checkboxy: řádky = jídla, sloupce = vlastnosti (bez lepku, bez laktózy, vegan, vegetariánské, obsahuje ryby/ořechy/vejce). Render na `/menu` pod kartami. Zdroj dat a lidsky čitelný přehled: [menu-matrix.md](../docs/menu-matrix.md).
+* U každé položky se zobrazí **ikony diet**, pro které je vhodná (bez lepku, bez laktózy, vegan, vegetariánské) — zdroj: `diet_suitable` v [`menu.yaml`](../web/data/menu.yaml), ikony `web/images/icons/diet-*.png`.
+* **Žádná souhrnná allergen tabulka na webu.** Kompletní matice diet/alergenů zůstává jen jako interní dokument [menu-matrix.md](../docs/menu-matrix.md).
 
-#### Kontaktní formulář
+#### Video (placeholder pro Fázi B)
 
-* Pole: jméno, email, zpráva.
-* Backend: **[Formspree](https://formspree.io/)** (free tier 50 zpráv/měsíc) nebo **[Web3Forms](https://web3forms.com/)**.
-* Bez Captcha (low spam risk); honeypot field jako antispam.
-* Po odeslání: success message v souladu s tone of voice (viz §11).
+* Na stránce Menu (níže, pod položkami) je **placeholder — bílý obdélník** v poměru videa, rezervovaný pro budoucí krátké **animované video přípravy Yogurt Bowl (S1)**, pohled shora, ve stylu ostatních ilustrací.
+* Video se **zatím negeneruje**; přidá se později přes **HeyGen Hyperframes**. Placeholder drží layout, ať se po doplnění videa nic neposune.
 
-#### Sdílení & sociální sítě
+#### Sociální sítě
 
-* Open Graph + Twitter Card meta tagy (sdílení na IG, FB).
-* Odkaz na Instagram v footeru a v hero CTA „Sleduj nás".
-* Žádný embed feed (omezení Instagram API; budeme přidávat manuálně až ve Fázi 2).
+* **Jen proklik na Instagram** (ikona/odkaz v hlavičce nebo patičce a v hero CTA).
+* Žádný embed feed, žádný Facebook, žádné Twitter/X karty.
 
 ### 5.3 Co web NEMÁ (out of scope pro Fázi 1)
 
-* Online platby ani košík
-* Rezervace stolů (Fáze 2)
-* Doručování (Fáze 3)
-* Vícejazyčnost (jen čeština)
-* Login/registrace
-* Newsletter
+* **Kontaktní formulář** (objednává se telefonicky; e-mail jako `mailto:` odkaz stačí)
+* **Souhrnná allergen tabulka** na webu (jen dietní ikony u položek)
+* E-mailové notifikace, online platby ani košík
+* Rezervace stolů (Fáze 2), doručování (Fáze 3)
+* Vícejazyčnost (jen čeština), login/registrace, newsletter
 * Cookie banner (nepoužíváme tracking → neexistuje povinnost)
 
 ---
@@ -122,6 +119,7 @@ Tabulka s checkboxy: řádky = jídla, sloupce = vlastnosti (bez lepku, bez lakt
 * Design tokens (barvy, spacing, fonty) implementovat jako **CSS custom properties** v `:root`.
 * Implementace musí přesně reflektovat hodnoty z DESIGN.md §3 (barvy), §4 (typo), §5 (spacing), §6 (komponenty).
 * Žádné inline style overrides, žádné magic numbers — vše přes proměnné.
+* **Relativní cesty u všech assetů a odkazů** (`./css/…`, `images/…`, `o-nas.html`), **nikdy root-absolutní `/css/…`**. Důvod: web musí fungovat jak po otevření `index.html` (file://), tak na GitHub Pages pod podcestou `/the-early-bowl/`.
 
 ---
 
@@ -131,166 +129,139 @@ Tabulka s checkboxy: řádky = jídla, sloupce = vlastnosti (bez lepku, bez lakt
 
 | Vrstva | Volba | Důvod |
 |---|---|---|
-| Frontend | **HTML5 + CSS3 + Vanilla JS** (žádný framework) | 5 statických stránek nepotřebuje React. Lighthouse score 100. |
-| Build | **Vite** (pro hot reload v dev) nebo žádný build (jen `index.html`) | Volitelné — můžeme jít čistě bez buildu pro maximální jednoduchost. |
+| Frontend | **HTML5 + CSS3 + Vanilla JS** (žádný framework) | Statické stránky nepotřebují React. |
+| Build | **Žádný** — web funguje otevřením `index.html` | Bez build pipeline; deployují se přímo statické soubory ze `web/`. |
 | AI codegen | **Claude** (přes Claude Code) | Generování HTML/CSS/JS s důsledným použitím design tokens. |
-| Image gen | **Recraft / Midjourney / DALL-E 3** | Bitmapové ilustrace dle prompt templates v [DESIGN.md](DESIGN.md) §7. |
-| Video (prezentace) | **[HeyGen Hyperframes](https://github.com/heygen-com/hyperframes)** (HTML → video) | Propagační video ~30 s, **bez mluveného komentáře** (sdělení nese on-screen text, audio max. royalty-free podkres). Píšeme HTML, hyperframes vyrenderuje video — workflow nativně vhodný pro AI agenty a konzistentní s naším brand stylesheetem. |
-| Kontaktní formulář | **Formspree** nebo Web3Forms | Bez vlastního backendu, splňuje GDPR. |
-| Hosting | **Cloudflare Pages** (free tier) | Git push → deploy, HTTPS automaticky, globální CDN. Konfigurace přes `_headers` a `_redirects` soubory + `wrangler.toml`. |
-| Doména | **generická `*.pages.dev`** (např. `the-early-bowl.pages.dev`) | Zdarma a plně dostačuje pro prototyp; vlastní doména volitelně později. |
-| Analytics | **Cloudflare Web Analytics** (cookie-less) nebo žádné | Bez Google Analytics → bez cookie baneru. |
+| Grafika | **✅ hotovo** — vygenerováno **Codexem** (ChatGPT Images 2.0) dle promptů v [`docs/prompts/`](../docs/prompts/) | Bitmapy ve stylu loga, uloženo v `web/images/` (10 jídel, hero, OG, 404, logo, ikony, favicon). |
+| Video | **[HeyGen Hyperframes](https://github.com/heygen-com/hyperframes)** — **zatím jen placeholder** | Animované video přípravy S1 se doplní později; teď bílý obdélník na stránce Menu (§5.2). Bez voiceoveru. |
+| Hosting | **GitHub Pages** (free) | Statický hosting přímo z repozitáře, HTTPS automaticky. **Neumí custom HTTP hlavičky ani `_redirects`** (viz §7.6). |
+| Doména | **generická GitHub** — `https://ameliesam.github.io/the-early-bowl/` | Zdarma. Web běží na **podcestě `/the-early-bowl/`** → nutné **relativní cesty** k assetům (viz §6.1). |
+| Analytics | **Žádné** | Školní prototyp; bez trackingu → bez cookie lišty. |
 
 ### 7.2 Struktura projektu
 
 ```
-web/                         # deploy root pro Cloudflare Pages (build output dir = web)
+web/                         # deploy root pro GitHub Pages (publikuje se obsah této složky)
 ├── index.html              # Homepage
 ├── menu.html
 ├── o-nas.html
 ├── kontakt.html
 ├── podminky.html
+├── 404.html
 ├── stylesheet.html         # Living style guide (showcase design systému)
+├── .nojekyll               # vypne Jekyll processing na GitHub Pages
 ├── css/
 │   ├── tokens.css          # CSS custom properties (z DESIGN.md)
 │   ├── reset.css
 │   ├── base.css            # typografie, body, links
-│   ├── components.css      # button, card, badge, input
-│   └── pages.css           # page-specific overrides
+│   ├── components.css      # button, card, badge, diet-icon
+│   └── pages.css           # page-specific styly (hero, menu grid, …)
 ├── js/
 │   ├── nav.js              # mobile menu toggle
-│   ├── copy-id.js          # copy-to-clipboard
-│   └── form.js             # client-side validace
-├── images/
-│   ├── menu/               # n1.png, s1.png, m1.png, p1.png, ...
-│   ├── hero.png
-│   ├── og.png
-│   └── logo.svg
+│   ├── copy-id.js          # copy-to-clipboard ID položky
+│   ├── menu.js             # render menu z menu.yaml
+│   └── vendor/
+│       └── yaml-mini.js    # malý YAML parser (bez závislostí, ~pár KB)
+├── data/
+│   └── menu.yaml           # ZDROJ PRAVDY pro menu (viz §7.3)
+├── images/                 # ✅ vygenerováno (Codex): menu/, hero.png, og.png,
+│   │                       #    404.png, logo.png, logo-horizontal.png,
+│   ├── menu/               #    bg-pattern.png, icon-source.png
+│   └── icons/              #    diet-vegan/bez-lepku/bez-laktozy/protein.png
 ├── favicon.ico
 ├── apple-touch-icon.png
 ├── robots.txt
 ├── sitemap.xml
-├── _headers                # Cloudflare Pages — security & cache headers
-├── _redirects              # Cloudflare Pages — přesměrování (404, atd.)
-├── wrangler.toml           # Cloudflare Pages konfigurace
 └── README.md
 ```
 
-> **stylesheet.html** je interní referenční stránka (není v navigaci ani v sitemap). Slouží jako živá ukázka všech design tokens a komponent z [DESIGN.md](DESIGN.md) — vývojář i hodnotitel na ní vidí celý vizuální systém na jednom místě.
+> **stylesheet.html** je interní referenční stránka (není v navigaci ani v sitemap). Slouží jako živá ukázka všech design tokens a komponent z [DESIGN.md](DESIGN.md).
+>
+> **Deploy:** obsah `web/` se publikuje na GitHub Pages (např. GitHub Actions `upload-pages-artifact` s `path: web`, čistě publikace bez buildu; nebo větev/složka v nastavení Pages).
 
-### 7.3 Data — menu jako JSON
+### 7.3 Data — menu z YAML (bez JSON, bez buildu)
 
-Centrální zdroj pravdy pro menu (umožní v budoucnu snadný admin panel nebo regenerace HTML):
+**Zdroj pravdy = [`web/data/menu.yaml`](../web/data/menu.yaml)** (číselníky diet/alergenů, kategorie, 10 položek s cenami a příznaky). Menu na webu se renderuje z těchto dat — **žádné položky natvrdo v HTML**, při změně menu se needituje kód stránky. **Žádný `menu.json` se nevytváří** (rozhodnutí D-16 upraveno → D-18).
 
-```json
-{
-  "categories": [
-    { "id": "drinks", "name": "Nápoje", "icon": "🥤" },
-    { "id": "sweet",  "name": "Sladké snídaně", "icon": "🥣" },
-    { "id": "savory", "name": "Slané snídaně", "icon": "🥪" },
-    { "id": "lunch",  "name": "Obědové menu (od 10:00)", "icon": "🍲" }
-  ],
-  "items": [
-    {
-      "id": "S1",
-      "category": "sweet",
-      "name": "Yogurt Bowl",
-      "description": "Smetanový jogurt, domácí granola, čerstvé sezónní ovoce a kapka medu.",
-      "price": 90,
-      "image": "/images/menu/s1-yogurt-bowl.png",
-      "diet": ["vegetarian"],
-      "allergens": ["dairy", "gluten", "nuts"]
-    }
-    // ...
-  ]
-}
-```
+**Jak to čte web bez buildu a i přes `file://`:**
 
-Menu se vykresluje z tohoto **jednoho datového zdroje** (žádná data natvrdo v HTML) — při změně menu se nezasahuje do kódu stránek. Z téhož zdroje se generuje i lidsky čitelná [menu-matrix.md](../docs/menu-matrix.md).
+* Data jsou na stránce vložená jako **inline blok** `<script type="text/yaml" id="menu-data">…</script>`, jehož obsah **zrcadlí `web/data/menu.yaml`** (kanonický editovatelný zdroj).
+* `js/vendor/yaml-mini.js` (malý parser bez závislostí) ho naparsuje, `js/menu.js` vykreslí karty a dietní ikony.
+* Důvod inline místo `fetch('data/menu.yaml')`: `fetch` se na `file://` v Chrome blokuje, a my chceme, aby web fungoval i pouhým otevřením `index.html`.
 
-> **Zdroj dat (rozhodnuto — D-16):** zdroj pravdy je **[`web/data/menu.yaml`](../web/data/menu.yaml)** (komentovatelný, číselníky diet/alergenů). Plánovaný generátor z něj vyrobí `web/data/menu.json` (runtime pro web, tvar viz výše) a `docs/menu-matrix.md`. Detail viz [DENIK.md](../docs/DENIK.md) a [PLAN.md](../docs/PLAN.md).
+> **Synchronizace:** `web/data/menu.yaml` je zdroj, inline blok je jeho kopie. Při ~10 zřídka měněných položkách stačí ruční sync (volitelně jednoduchý `cp`/node snippet — **ne build krok**). Tatáž data plní i „featured" položky na homepage.
 
-### 7.4 Performance cíle
+Kompletní matice diet/alergenů zůstává jen jako interní dokument [menu-matrix.md](../docs/menu-matrix.md) (na web nejde — jen ikony u položek, §5.2).
+
+### 7.4 Performance cíle (realistické pro školní projekt)
 
 | Metrika | Cíl mobile | Cíl desktop |
 |---|---|---|
-| LCP (Largest Contentful Paint) | < 2.5 s | < 1.5 s |
-| FCP (First Contentful Paint) | < 1.2 s | < 0.8 s |
+| LCP (Largest Contentful Paint) | < 3.0 s | < 2.0 s |
 | CLS (Cumulative Layout Shift) | < 0.1 | < 0.1 |
-| TTI (Time to Interactive) | < 3 s | < 1.5 s |
-| Lighthouse Performance | ≥ 90 | ≥ 95 |
-| Page weight (homepage) | < 500 KB | < 500 KB |
+| Lighthouse Performance | ≥ 85 | ≥ 90 |
+| Hmotnost stránky (po optimalizaci obrázků) | < 1.2 MB | < 1.2 MB |
+
+> ⚠️ **Vygenerované PNG jsou velké** (hero ~1,4 MB, položky 0,5–1 MB). **Před nasazením je nutné zmenšit** na zobrazované rozměry (jídla ~480 px, hero ~1280 px) a převést na **WebP** (PNG fallback). Bez toho jsou cíle nereálné.
 
 **Optimalizace:**
 
-* WebP/AVIF formát pro obrázky, PNG fallback.
-* `loading="lazy"` na off-screen obrázcích.
-* `font-display: swap` pro Google Fonts.
-* Žádné JS frameworky.
-* CSS a JS minifikace na deployi (Cloudflare Pages „Auto Minify" nebo build krok).
+* Zmenšit + komprimovat obrázky, WebP s PNG fallbackem (`<picture>`).
+* `loading="lazy"` + `width`/`height` na off-screen obrázcích (drží CLS).
+* `font-display: swap` pro Google Fonts, `preconnect`.
+* Žádné JS frameworky; skripty `defer`.
 
-### 7.5 SEO
+### 7.5 SEO (úměrně školnímu projektu — neřešit nad rámec)
 
-**On-page:**
+**Základní on-page (stačí):**
 
-* `<title>` a `<meta name="description">` na každé stránce, unikátní.
-* Sémantické HTML (`<header>`, `<nav>`, `<main>`, `<article>`, `<footer>`).
-* `alt` text u všech obrázků (popisující jídlo).
-* `lang="cs"` na `<html>`.
+* Unikátní `<title>` a `<meta name="description">` na každé stránce.
+* Sémantické HTML (`<header>`, `<nav>`, `<main>`, `<footer>`).
+* `alt` text u všech obrázků, `lang="cs"` na `<html>`.
+* Open Graph tagy (title, description, image, url) — kvůli náhledu při sdílení odkazu. **Žádné Twitter/X karty.**
+* `robots.txt` + `sitemap.xml` (existují).
 
-**Strukturovaná data (JSON-LD na homepage):**
+**Strukturovaná data (jedno jednoduché JSON-LD na homepage):**
 
 ```json
 {
   "@context": "https://schema.org",
   "@type": "Restaurant",
   "name": "The Early Bowl",
-  "image": "https://the-early-bowl.pages.dev/og.png",
+  "image": "https://ameliesam.github.io/the-early-bowl/images/og.png",
   "description": "Zdravá snídaňová restaurace v Opavě, 6:00–13:30",
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "Náměstí Republiky 159/10",
     "addressLocality": "Opava",
+    "postalCode": "746 01",
     "addressCountry": "CZ"
   },
   "telephone": "+420 777 000 111",
-  "url": "https://the-early-bowl.pages.dev/",
+  "url": "https://ameliesam.github.io/the-early-bowl/",
   "openingHours": "Mo-Su 06:00-13:30",
   "servesCuisine": ["Breakfast", "Healthy"],
   "priceRange": "$"
 }
 ```
 
-**Off-page:**
-
-* Google Business Profile registrace (lokální SEO).
-* Sitemap submitnut do Google Search Console.
+> Žádné Google Business Profile / Search Console — pro fiktivní školní web zbytečné.
 
 ### 7.6 Bezpečnost
 
-* **HTTPS povinné** (Cloudflare automaticky, „Always Use HTTPS").
-* **Security headers** v souboru `_headers` (Cloudflare Pages):
-
-  ```
-  /*
-    X-Content-Type-Options: nosniff
-    X-Frame-Options: SAMEORIGIN
-    Referrer-Policy: strict-origin-when-cross-origin
-    Permissions-Policy: camera=(), microphone=(), geolocation=()
-    Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src fonts.gstatic.com; img-src 'self' data:; frame-src www.google.com; connect-src 'self' formspree.io
-  ```
-
-* Honeypot field v kontaktním formuláři.
-* Formspree má vlastní spam filtr.
+* **HTTPS** automaticky (GitHub Pages, `*.github.io`).
+* **Custom HTTP security headers nejsou na GitHub Pages možné** (nelze nastavit `_headers` jako u Cloudflare). Pro školní statický web bez formuláře a bez uživatelských dat je to akceptovatelné.
+* Volitelně lze přidat **CSP přes `<meta http-equiv="Content-Security-Policy">`** v `<head>` (omezenější než HTTP hlavička, ale lepší než nic).
+* Web nezpracovává žádný uživatelský vstup (žádný formulář) → minimální útočná plocha.
 
 ### 7.7 GDPR & privacy
 
-* **Žádné cookies** (vlastní ani třetích stran).
-* **Žádný tracking** (bez Google Analytics; Cloudflare Web Analytics je cookie-less a bez fingerprinting).
+* **Žádné cookies, žádný tracking, žádné analytics.**
+* **Žádný formulář** → web nesbírá žádné osobní údaje.
 * **Třetí strany:**
-  * Google Fonts (load přes CDN — DPA Google).
-  * Google Maps iframe na `/kontakt` (DPA Google).
-  * Formspree pro odesílání zpráv (jméno + email + zpráva → email majitele).
-* **Privacy stránka** pokrývá: kdo provozuje, jaké data se sbírají (jen formulář), kdo zpracovává (Formspree), jak dlouho se uchovávají, práva subjektu (GDPR).
+  * Google Fonts (load přes CDN).
+  * Google Maps iframe na stránce Kontakt.
+* **Privacy stránka** pokrývá: kdo provozuje, že se nesbírají žádné osobní údaje (web bez formuláře a bez trackingu), zmínka o vloženém Google Maps a Google Fonts.
 
 ---
 
@@ -356,26 +327,23 @@ Menu se vykresluje z tohoto **jednoho datového zdroje** (žádná data natvrdo 
 │  │ obrázek │ │ obrázek │ │ obrázek │    │
 │  │ Voda... │ │ Fresh...│ │ Čaj     │    │
 │  │ 25 Kč   │ │ 55 Kč   │ │ 35 Kč   │    │
-│  │ [kopír] │ │ [kopír] │ │ [kopír] │    │
+│  │🌱 [kopír]│ │🌱 [kopír]│ │🌱 [kopír]│   │  ← dietní ikony + Kopírovat ID
 │  └─────────┘ └─────────┘ └─────────┘    │
 ├─────────────────────────────────────────┤
-│ Sladké snídaně 🥣                       │
-│  [S1] [S2]                              │
+│ Sladké 🥣  [S1] [S2]                     │
+│ Slané 🥪   [M1] [M2] [M3] [M4]           │
+│ Obědy 🍲   [P1]                          │
 ├─────────────────────────────────────────┤
-│ Slané snídaně 🥪                        │
-│  [M1] [M2] [M3] [M4]                    │
+│ JAK OBJEDNAT  „Zavolej +420… a řekni ID."│
 ├─────────────────────────────────────────┤
-│ Obědové menu 🍲                         │
-│  [P1]                                   │
-├─────────────────────────────────────────┤
-│ ALLERGEN MATRIX (tabulka)               │
-├─────────────────────────────────────────┤
-│ JAK OBJEDNAT (instrukce)                │
-│  „Zavolej +420... a řekni nám ID."      │
+│ VIDEO (placeholder — bílý obdélník)     │
+│  budoucí animace přípravy S1 (shora)    │
 ├─────────────────────────────────────────┤
 │ FOOTER                                  │
 └─────────────────────────────────────────┘
 ```
+
+*(Bez souhrnné allergen tabulky — vhodnost pro diety je jen jako ikony u karet.)*
 
 ### 9.3 Kontakt
 
@@ -384,33 +352,33 @@ Menu se vykresluje z tohoto **jednoho datového zdroje** (žádná data natvrdo 
 │ HEADER                                  │
 ├─────────────────────────────────────────┤
 │ H1: „Stav se za námi"                   │
-│  📍 Adresa                               │
+│  📍 Náměstí Republiky 159/10, Opava      │
 │  📞 Telefon (tel: link)                  │
-│  ✉️ Email (mailto: link)                 │
+│  ✉️ E-mail (mailto: link)                │
 │  ⏰ Provozní doba 6:00–13:30             │
+│  📷 Instagram (proklik)                  │
 ├─────────────────────────────────────────┤
-│ GOOGLE MAPS iframe (400×400)            │
-├─────────────────────────────────────────┤
-│ KONTAKTNÍ FORMULÁŘ                      │
-│  [Jméno]                                │
-│  [Email]                                │
-│  [Zpráva]                               │
-│  [Pošli zprávu]                         │
+│ GOOGLE MAPS iframe                      │
 ├─────────────────────────────────────────┤
 │ FOOTER                                  │
 └─────────────────────────────────────────┘
 ```
 
+*(Bez kontaktního formuláře — objednává se telefonicky, e-mail je `mailto:` odkaz.)*
+
 ---
 
 ## 10. Testování & QA
 
+> **Nástroj pro vývoj a zpětnou vazbu: [Playwright](https://playwright.dev/)** (chromium) — průběžně renderovat stránky, dělat screenshoty a ověřovat layout/diakritiku/konzistenci během vývoje (ne až na konci).
+
 ### 10.1 Funkční scénáře
 
-* Homepage: všechny linky vedou na správné stránky, CTA tlačítka fungují.
-* Menu: všech 11 položek se zobrazí, „Kopírovat ID" funguje, filtry filtrují, allergen matrix se vykreslí.
-* Kontakt: telefon je clickable, email je clickable, mapa se načte, formulář odešle a zobrazí success message.
-* Navigace: aktivní stránka zvýrazněna, mobile menu se otevírá a zavírá.
+* Homepage: všechny odkazy vedou na správné stránky, CTA fungují, IG proklik vede na Instagram.
+* Menu: všech **10 položek** se vykreslí z `menu.yaml`, u položek jsou správné dietní ikony, „Kopírovat ID" funguje, video placeholder drží místo.
+* Kontakt: telefon (`tel:`) a e-mail (`mailto:`) jsou clickable, mapa se načte. (Žádný formulář.)
+* Navigace: aktivní stránka zvýrazněná, mobilní menu se otevírá/zavírá.
+* **Cesty:** web funguje jak otevřením `index.html` (file://), tak na GitHub Pages pod `/the-early-bowl/` (relativní cesty).
 
 ### 10.2 Cross-browser & device
 
@@ -442,16 +410,18 @@ Menu se vykresluje z tohoto **jednoho datového zdroje** (žádná data natvrdo 
 
 ### 10.5 Manuální checklist před deploy
 
-- [ ] Všechny linky fungují (žádné `#` placeholdery)
-* [ ] Všechny obrázky mají alt text
+* [ ] Všechny odkazy fungují (žádné `#` placeholdery), **cesty relativní**
+* [ ] Web funguje otevřením `index.html` (file://) i na GitHub Pages (`/the-early-bowl/`)
+* [ ] Všechny obrázky mají alt text a jsou optimalizované (WebP, zmenšené)
+* [ ] Menu (10 položek + ceny + dietní ikony) odpovídá [`menu.yaml`](../web/data/menu.yaml)
 * [ ] Žádný typo (korektura 2 osobami)
-* [ ] Všechny ceny v menu odpovídají [menu_sablona.md](../docs/menu_sablona.md)
-* [ ] Telefon a email správné
+* [ ] Telefon, e-mail a adresa správné
 * [ ] Favicon a apple-touch-icon nastaveny
-* [ ] OG image se zobrazuje při sdílení (test např. v <https://opengraph.xyz/>)
+* [ ] OG image se zobrazuje při sdílení
 * [ ] Sitemap.xml a robots.txt existují
-* [ ] Privacy policy přístupná z footeru
-* [ ] HTTPS aktivní, žádné mixed content warnings
+* [ ] Privacy stránka přístupná z footeru
+* [ ] Video placeholder na stránce Menu drží layout
+* [ ] HTTPS aktivní, žádné mixed-content warnings
 
 ---
 
@@ -481,8 +451,8 @@ Menu se vykresluje z tohoto **jednoho datového zdroje** (žádná data natvrdo 
 **Menu intro:**
 > „Tady je celé menu. Vyber si, zavolej a řekni nám ID jídla. Žádné komplikace."
 
-**Allergen sekce:**
-> „Máš alergii nebo dietu? Tady vidíš, co pro tebe máme."
+**Dietní ikony (u položek):**
+> Malé ikony u jídla říkají, pro koho je vhodné — bez lepku, bez laktózy, veganské, vegetariánské.
 
 **O nás (úryvek):**
 > Náš Příběh
@@ -493,10 +463,8 @@ Menu se vykresluje z tohoto **jednoho datového zdroje** (žádná data natvrdo 
 >
 > Jsme malý tým, který věří, že snídaně rozhoduje o tom, jaký bude celý den. Nemáme čas na složitosti — ani ty. Tak jsme vzali nejlepší ingredience, udělali z nich pár solidních jídel a otevřeli dveře v šest ráno. Tečka."
 
-**Kontaktní formulář:**
-> Pole: „Tvoje jméno", „Tvůj e-mail", „Co potřebuješ?"
-> Tlačítko: „Pošli zprávu"
-> Success: „Díky! Ozveme se ti do 24 hodin. 💚"
+**Kontakt (bez formuláře):**
+> „Máš dotaz? Zavolej nám na +420 777 000 111 nebo napiš na info@theearlybowl.cz. Nebo se prostě stav — Náměstí Republiky 159/10, Opava."
 
 **404 stránka:**
 > „Ouha. Tahle stránka neexistuje — asi jsme ji snědli k snídani. [Zpátky na úvod]"
@@ -516,29 +484,14 @@ Menu se vykresluje z tohoto **jednoho datového zdroje** (žádná data natvrdo 
 
 ## 12. Roadmap
 
-### Fáze 1 (Aktuální — MVP)
+Stručná, zákazník-facing časová osa (zobrazí se i na webu jako „kam směřujeme"):
 
-* Statický web (5 podstránek)
-* Menu s ID + telefonické objednávky
-* Brand identita, ilustrace, propagační video
+* **Teď** — Snídaně a obědové polévky na místě, objednávka telefonem.
+* **Brzy** — Online předobjednávky (vyzvedneš si připravené) a rezervace stolu.
+* **Pak** — Rozvoz k tobě.
+* **Sen** — Letní pojízdný vozíček s miskami v parku. 🌳
 
-### Fáze 2 (6–12 měsíců po launchi)
-
-* Online předobjednávky (zákazník vyzvedne v krabičce)
-* Rezervační systém na stoly
-* Email notifikace (SendGrid)
-* Jednoduchý admin panel pro úpravu menu (např. headless CMS — Sanity, Tina)
-
-### Fáze 3 (12+ měsíců)
-
-* Doručování (integrace s Wolt / Bolt Food / Foodora)
-* Vlastní rozvozový systém pro okolí
-
-### Dlouhodobá vize
-
-* Letní prodejní vozíček v parku
-* Rozšíření menu (sezónní speciály)
-* Expanze na další lokalitu
+> Implementační detaily (systémy, integrace) sem nepatří — roadmap je o příběhu a vizi pro zákazníka.
 
 ---
 
@@ -546,11 +499,12 @@ Menu se vykresluje z tohoto **jednoho datového zdroje** (žádná data natvrdo 
 
 | Riziko | P | Dopad | Mitigace |
 |---|---|---|---|
-| AI ilustrace nejsou stylově konzistentní | M | V | Master prompt + reference image, viz [DESIGN.md](DESIGN.md) §7 |
-| Formspree free tier vyčerpán | N | N | Mock submit v dev, ostré jen pro finální QA |
-| Cloudflare Pages deploy fail těsně před termínem | N | V | Deploy průběžně, ne až na konci |
-| Performance budget překročen | N | S | Lighthouse audit po každé větší změně |
-| Cross-browser bug v Safari | S | S | Test na reálném zařízení, ne jen DevTools |
+| **Rozbité cesty na GitHub Pages** (podcesta `/the-early-bowl/`) nebo při file:// | S | V | Důsledně **relativní cesty** (§6.1); ověřit Playwrightem na serveru i přes file:// |
+| **Velké PNG → pomalý web** (hero 1,4 MB, jídla ~0,5–1 MB) | V | S | Zmenšit + WebP + lazy-load před nasazením (§7.4) |
+| **GitHub Pages neumí security hlavičky/CSP** | jistota | N | Akceptováno (statický web bez formuláře); volitelně meta-CSP |
+| Inline menu YAML se rozejde s `menu.yaml` | N | N | Drobný ruční/`cp` sync, ověřit při QA; jen 10 položek |
+| AI ilustrace nejsou stylově konzistentní | — | — | ✅ vyřešeno — sada hotová a ověřená (DENIK 14. iterace) |
+| Cross-browser bug (hlavně Safari) | S | S | Test na reálném zařízení + Playwright |
 
 ---
 
@@ -558,36 +512,35 @@ Menu se vykresluje z tohoto **jednoho datového zdroje** (žádná data natvrdo 
 
 Web je hotový, když:
 
-**Funkčnost (25 b):**
+**Funkčnost:**
 
-* Všech 5 stránek se načte bez JS errorů
-* Všechny interaktivní prvky fungují (nav, copy ID, formulář)
-* Kontaktní formulář odešle email a zobrazí success
-* HTTPS aktivní, doména funguje
+* Všech 5 stránek (+ 404) se načte bez JS errorů
+* Interaktivní prvky fungují: navigace (vč. mobilní), „Kopírovat ID", IG proklik
+* Menu se vykreslí z `menu.yaml` (10 položek, ceny, dietní ikony)
+* Web funguje **otevřením `index.html` (file://) i na GitHub Pages** (relativní cesty)
+* HTTPS aktivní
 
-**Design (15 b):**
+**Design:**
 
-* Implementace 1:1 odpovídá [DESIGN.md](DESIGN.md)
+* Implementace 1:1 odpovídá [DESIGN.md](DESIGN.md), Baloo 2 + Quicksand
 * Logo a favicon nasazeny
-* Všech 11 ilustrací jídel + hero + OG image hotové
+* ✅ Grafika hotová — 10 ilustrací jídel + hero + OG + ikony (Codex), **optimalizovaná** (WebP, zmenšená)
+* Video placeholder na stránce Menu drží layout
 
-**Performance & SEO:**
+**Performance & SEO (realisticky):**
 
-* Lighthouse ≥ 90 mobile, ≥ 95 desktop
-* Meta tagy + JSON-LD + sitemap + robots
+* Lighthouse Performance ≥ 85 mobile / ≥ 90 desktop
+* Title/description/OG + jednoduché JSON-LD + sitemap + robots
 * Validní HTML (W3C validator)
 
 **Accessibility:**
 
-* Lighthouse a11y ≥ 95
-* Klávesnicová navigace funguje
-* Kontrasty splňují WCAG AA
+* Lighthouse a11y ≥ 95, klávesnicová navigace, kontrasty WCAG AA
 
 **Obsah:**
 
-* Žádný typo (2 korektoři)
-* Všechny ceny správné a konzistentní
-* Privacy policy publikována
+* Žádný typo (2 korektoři), ceny a adresa správné
+* Privacy stránka publikovaná (web bez formuláře/trackingu)
 
 ---
 

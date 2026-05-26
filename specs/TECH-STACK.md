@@ -50,23 +50,24 @@ Kompletní přehled nástrojů a technologií projektu **The Early Bowl**. Slou�
 
 | Nástroj | Účel | Cena |
 |---|---|---|
-| **Cloudflare Pages** | Hosting statického webu, automatický deploy z gitu, HTTPS, globální CDN | zdarma (free tier). Viz D-05 |
-| `_headers` | Security headers (CSP, X-Frame-Options, …) | — |
-| `_redirects` | Přesměrování (404 apod.) | — |
-| `wrangler.toml` | Konfigurace Cloudflare Pages projektu | — |
-| **Cloudflare Web Analytics** | Návštěvnost bez cookies a bez fingerprinting | zdarma |
-| **Doména** | generická `*.pages.dev` (např. `the-early-bowl.pages.dev`) | zdarma |
+| **GitHub Pages** | Hosting statického webu, HTTPS automaticky | zdarma. Viz D-17 (dříve Cloudflare, D-05) |
+| **GitHub Actions** (`upload-pages-artifact`) | Publikace složky `web/` na Pages — čistá publikace, **žádný build** | zdarma |
+| `.nojekyll` | Vypne Jekyll processing | — |
+| **Doména** | generická GitHub — `https://ameliesam.github.io/the-early-bowl/` | zdarma |
+| Analytics | **žádné** | školní prototyp |
 
-> Bez Google Analytics → **bez cookie lišty** (GDPR friendly). Viz [PRD.md](PRD.md) §7.7.
+> Pozn.: GitHub Pages **neumí custom HTTP hlavičky** (CSP/X-Frame-Options) ani `_redirects` jako Cloudflare — viz [PRD.md](PRD.md) §7.6. Web běží na **podcestě `/the-early-bowl/`** → relativní cesty. Bez analytics/cookies → **bez cookie lišty**.
 
 ---
 
-## 5. Formuláře a integrace
+## 5. Integrace
 
 | Nástroj | Účel | Cena |
 |---|---|---|
-| **Formspree** (nebo Web3Forms) | Odeslání kontaktního formuláře bez vlastního backendu | zdarma (50 zpráv/měsíc) |
-| **Google Maps embed** | Mapa lokace na stránce Kontakt | zdarma (iframe) |
+| **Google Maps embed** | Mapa lokace na stránce Kontakt (iframe) | zdarma |
+| **Instagram** | Proklik z webu (bez embed feedu) | zdarma |
+
+> **Bez kontaktního formuláře** (D-18) → žádný Formspree/backend. Objednává se telefonicky, e-mail jako `mailto:`.
 
 ---
 
@@ -99,16 +100,14 @@ Kompletní přehled nástrojů a technologií projektu **The Early Bowl**. Slou�
 
 | Kategorie | Náklad |
 |---|---|
-| Hosting (Cloudflare Pages) | **0 Kč** |
+| Hosting (GitHub Pages) | **0 Kč** |
 | Fonty (Google Fonts) | **0 Kč** |
-| Formulář (Formspree free) | **0 Kč** |
 | Mapy (Google Maps embed) | **0 Kč** |
-| Analytics (Cloudflare) | **0 Kč** |
-| Doména (generická `*.pages.dev`) | **0 Kč** |
+| Doména (generická `*.github.io`) | **0 Kč** |
 | AI nástroje (generování) | dle zvoleného plánu / kreditů |
 | **Web infrastruktura celkem** | **0 Kč** |
 
-> Celá web-infrastruktura běží zdarma (generická `*.pages.dev` doména). Vlastní doména je volitelná až do budoucna (~400 Kč/rok). Detailní rozpočet podniku v [rozpocet_sablona.md](../docs/rozpocet_sablona.md).
+> Celá web-infrastruktura běží zdarma na GitHub Pages (generická `*.github.io` doména). Vlastní doména je volitelná do budoucna (~400 Kč/rok). Detailní rozpočet podniku v [rozpocet_sablona.md](../docs/rozpocet_sablona.md).
 
 ---
 

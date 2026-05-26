@@ -29,8 +29,8 @@
 ### Branding & web (jednorázové)
 | Položka | Cena |
 |---|---|
-| Doména — generická `*.pages.dev` (Cloudflare) | **0 Kč** |
-| Hosting (Cloudflare Pages free tier) | **0 Kč** |
+| Doména — generická GitHub (`*.github.io`) | **0 Kč** |
+| Hosting (GitHub Pages) | **0 Kč** |
 | Logo + brand identita (vlastní práce + AI) | 0 Kč |
 | Tisk menu, vizitek, letáků (start: 500 ks) | 2 500 Kč |
 | **Celkem** | **~2 500 Kč** |
@@ -44,10 +44,10 @@
 | Nájem prostor (OD) | 25 000 Kč | 300 000 Kč | Ověřit, zda zahrnuje vytápění |
 | Energie (elektřina, voda) | 4 000 Kč | 48 000 Kč | Bez plynu (jen elektro) |
 | Účetní služby | 125 Kč | 1 500 Kč | Roční zpracování krabice účtenek |
-| Doména (generická `*.pages.dev`) | — | 0 Kč | Zdarma; vlastní doména volitelně později (~400 Kč/rok) |
-| Hosting (Cloudflare Pages) | — | 0 Kč | **Úspora ~1 800 Kč/rok** vs. tradiční hosting |
+| Doména (generická `*.github.io`) | — | 0 Kč | Zdarma; vlastní doména volitelně později (~400 Kč/rok) |
+| Hosting (GitHub Pages) | — | 0 Kč | **Úspora ~1 800 Kč/rok** vs. tradiční hosting |
 | Internet & telefon | 800 Kč | 9 600 Kč | |
-| Licence & SaaS (Formspree free, fonts free) | 0 Kč | 0 Kč | |
+| Licence & SaaS (fonty zdarma, bez formuláře/SaaS) | 0 Kč | 0 Kč | |
 | Pojištění odpovědnosti | 500 Kč | 6 000 Kč | |
 | **Celkem fixní** | **~30 425 Kč** | **~365 100 Kč** | |
 

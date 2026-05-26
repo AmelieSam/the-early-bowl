@@ -14,8 +14,8 @@
 | Aktuální datum | **2026-05-24** |
 | **Termín odevzdání** | **7 dní → do 2026-05-31** (web + dokumentace) |
 | Prezentace ve třídě | následně dle rozvrhu školy |
-| Lokalita podniku | Obchodní dům **Stará Breda, Opava** |
-| Hosting | **Cloudflare Pages** (free tier) |
+| Lokalita podniku | **Náměstí Republiky 159/10, Opava** |
+| Hosting | **GitHub Pages** (free) |
 | Kontakty na webu | **fiktivní** (tel. `+420 777 000 111`, `info@theearlybowl.cz`) |
 
 > **Harmonogram je napjatý (7 dní).** Práce na vizuálních assetech (Fáze B) a webu (Fáze C) běží paralelně; dokumentace (Fáze D) se píše průběžně, ne až na konci.
@@ -41,7 +41,7 @@ ZADANI explicitně dovoluje volbu nástrojů; níže shrnujeme všechna místa, 
 
 | Oblast | ZADANI navrhuje | Náš přístup | Odůvodnění |
 |---|---|---|---|
-| **CMS / web nástroj** | Webnode / Shoptet / WordPress / Google Sites / HTML | **Statický web v HTML/CSS/JS, generovaný s pomocí AI (Claude), deploy na Cloudflare Pages** | Plná kontrola nad designem a brandem; zdarma; nejlepší performance; demonstruje pokročilejší práci s AI nástroji |
+| **CMS / web nástroj** | Webnode / Shoptet / WordPress / Google Sites / HTML | **Statický web v HTML/CSS/JS, generovaný s pomocí AI (Claude), deploy na GitHub Pages, funguje i bez buildu (file://)** | Plná kontrola nad designem a brandem; zdarma; demonstruje pokročilejší práci s AI nástroji |
 | **Obrázky jídel** | „vlastní nebo vlastnoručně vygenerované fotografie" + DESIGN.md zmiňuje Inkscape | **AI-generovaná bitmapová grafika** (Recraft / Midjourney / DALL-E / Stable Diffusion) konzistentní se stylem loga | Rychlejší, výsledek vizuálně silnější, splňuje literu zadání („vygenerované"). Konzistenci zajistí společný prompt-template (viz DESIGN.md §7) |
 | **Propagační video** | „vlastní nebo vygenerované z fotografií + AI audio komentář" | **[HeyGen Hyperframes](https://github.com/heygen-com/hyperframes)** — napíšeme HTML, framework vyrenderuje video. **Bez mluveného komentáře** — sdělení nese on-screen text, audio max. royalty-free hudební podkres | HTML→video workflow je nativně vhodný pro AI agenty a umožňuje použít stejný brand stylesheet jako web → 100% vizuální konzistence. Vědomě se vzdáváme voiceoveru (ZADANI ho navrhuje, ale nevyžaduje) — text na obrazovce je čitelnější a méně rušivý |
 | **Slide deck prezentace** | (ZADANI nespecifikuje nástroj) | **[Marp](https://marp.app/)** — slidy psané v Markdownu, export do PDF/HTML | Verzovatelné v gitu, konzistentní s brand CSS tématem, rychlé |
@@ -64,7 +64,7 @@ ZADANI explicitně dovoluje volbu nástrojů; níže shrnujeme všechna místa, 
 | A1 | Finalizace značky: paleta, typografie, logo varianty (z [DESIGN.md](../specs/DESIGN.md)) | — |
 | A2 | **Favicon** (32×32, 16×16, apple-touch-icon) — výřez z loga | A1 |
 | A3 | **Master prompt** pro AI generování ilustrací jídel (viz DESIGN.md §7) | A1 |
-| A4 | Repo + Cloudflare Pages projekt na generické `*.pages.dev` doméně | — |
+| A4 | Repo + GitHub Pages (generická doména `ameliesam.github.io/the-early-bowl/`) | — |
 
 ### Fáze B — Vizuální assety (T+2 až T+4)
 
@@ -83,16 +83,17 @@ Probíhá paralelně s Fází B (web se staví na placeholderech, assety se post
 | Krok | Výstup | Závisí na |
 |---|---|---|
 | C1 | Projekt skeleton (HTML/CSS/JS, design tokens jako CSS custom properties z DESIGN.md) | A1 |
-| C1b | **Generátor menu** (`scripts/build-menu.mjs`) — z `web/data/menu.yaml` vyrobí `web/data/menu.json` (web) + `docs/menu-matrix.md` (docs); npm skript `build:menu`. Datový soubor už existuje (D-16) | A1 |
+| C1b | **Menu data layer** — `js/menu.js` + `js/vendor/yaml-mini.js` čtou inline YAML (zrcadlí `web/data/menu.yaml`) a renderují karty. **Bez JSON, bez buildu** (D-18, upravuje D-16) | A1 |
 | C2 | **Homepage** (`index.html`) — hero, value props, featured menu, roadmap, IG CTA, footer | C1, B2 |
-| C3 | **Menu** (`menu.html`) — vykreslení z `menu.json` (kategorie, karty s ID, ceny, dietní badges, allergen matrix) | C1, C1b, B1 |
-| C4 | **O nás** (`about.html`) — příběh, mise, hodnoty | C1 |
-| C5 | **Kontakt** (`contact.html`) — adresa, telefon, email, mapa, formulář (Formspree) | C1 |
+| C3 | **Menu** (`menu.html`) — vykreslení z `menu.yaml` (kategorie, karty s ID, ceny, **dietní ikony**) + **video placeholder** (S1) | C1, C1b, B1 |
+| C4 | **O nás** (`o-nas.html`) — příběh, mise, hodnoty | C1 |
+| C5 | **Kontakt** (`kontakt.html`) — adresa (Náměstí Republiky 159/10), telefon, e-mail, mapa. **Bez formuláře** | C1 |
 | C6 | **Obchodní podmínky / Privacy** (`podminky.html`) — pokrývá ZADANI „Obchodní podmínky" | C1 |
 | C7 | **stylesheet.html** — living style guide (showcase všech komponent z DESIGN.md) | C1 |
-| C8 | Mobilní responzivita + cross-browser test | C2–C7 |
-| C9 | SEO meta tagy, schema.org Restaurant, sitemap.xml, robots.txt | C2–C6 |
-| C10 | Deploy na Cloudflare Pages (`_headers`, `_redirects`, `wrangler.toml`) + HTTPS | C8, C9 |
+| C7b | **Optimalizace obrázků** — zmenšit + WebP + lazy-load (PNG jsou velké) | B1, B2 |
+| C8 | Mobilní responzivita + cross-browser test (Playwright) | C2–C7 |
+| C9 | SEO úměrně (title/description/OG + jednoduché JSON-LD, sitemap, robots) | C2–C6 |
+| C10 | Deploy na **GitHub Pages** (`.nojekyll`, Actions `upload-pages-artifact path: web`) + ověřit relativní cesty | C8, C9 |
 
 > **5 podstránek splněno** (Úvod / Menu / O nás / Kontakt / Obchodní podmínky). ZADANI vyžaduje minimálně 5.
 
@@ -120,7 +121,7 @@ Probíhá paralelně s Fází B (web se staví na placeholderech, assety se post
 5. **Marketingový plán** — Instagram + lokální partnership (z [marketing_plan_sablona.md](marketing_plan_sablona.md))
 6. **Reflexe tvorby** — co fungovalo, co ne, co příště jinak (vyplnit na konci)
 7. **Screenshot úvodní stránky**
-8. **Použité zdroje a nástroje** — AI nástroje (Claude, Recraft, HeyGen Hyperframes), Cloudflare Pages, Marp, Formspree, Google Fonts (úplný přehled v [TECH-STACK.md](../specs/TECH-STACK.md))
+8. **Použité zdroje a nástroje** — AI nástroje (Claude, Codex/ChatGPT Images 2.0, HeyGen Hyperframes), GitHub Pages, Marp, Google Fonts (úplný přehled v [TECH-STACK.md](../specs/TECH-STACK.md))
 
 ### Fáze E — Prezentace (T+9 až T+10)
 
@@ -141,7 +142,7 @@ Pro každé kritérium z ZADANI §4 mapujeme, kde se „vyhrávají body":
 ### 4.1 Technická funkčnost (25 b)
 
 - Všechny odkazy navigace fungují (C7)
-- Kontaktní formulář odesílá zprávu (C5 — Formspree)
+- Kontakt: telefon (`tel:`) a e-mail (`mailto:`) clickable, mapa se načte (bez formuláře)
 - Responzivita ověřena na 3+ breakpointech (C7)
 - Lighthouse skóre ≥ 90 (C8, C9)
 - HTTPS aktivní (C9)
@@ -179,8 +180,8 @@ Pro každé kritérium z ZADANI §4 mapujeme, kde se „vyhrávají body":
 | Riziko | Pravděpodobnost | Dopad | Mitigace |
 |---|---|---|---|
 | AI ilustrace nebudou stylově konzistentní | Střední | Vysoký | Master prompt v DESIGN.md §7, vždy reference image (logo), iterace |
-| Formspree free tier vyčerpán během testování | Nízká | Nízký | Mock submit pro vývoj, ostré odeslání jen pro finální test |
-| Cloudflare Pages deploy fails těsně před termínem | Nízká | Vysoký | Deploy během C2 (ne až na konci), staging URL na `*.pages.dev` |
+| Rozbité relativní cesty na GitHub Pages (`/the-early-bowl/`) nebo file:// | Střední | Vysoký | Relativní cesty, ověřit Playwrightem na serveru i přes file:// |
+| Velké PNG → pomalý web | Vysoká | Střední | Zmenšit + WebP + lazy-load (krok C7b) |
 | Dokumentace přeteče 10 stran | Střední | Střední | Sázet průběžně, ne na konci; striktní obrázky max ⅓ stránky |
 | Yogurt Bowl se zkazí cestou | Nízká | Střední | Suché ingredience zvlášť, smíchat na místě |
 | Telefon/adresa „placeholder" působí amatérsky | Vysoká | Nízký | Použít jasně fiktivní ale realistické (např. „+420 777 000 111", „<info@theearlybowl.cz>") s poznámkou v prezentaci že web je prototyp |
@@ -192,10 +193,10 @@ Pro každé kritérium z ZADANI §4 mapujeme, kde se „vyhrávají body":
 | Otázka | Rozhodnutí |
 |---|---|
 | Termín odevzdání | **7 dní → 2026-05-31** |
-| Hosting | **Cloudflare Pages** (free) |
-| Doména | **generická `*.pages.dev`** (např. `the-early-bowl.pages.dev`), zdarma |
+| Hosting | **GitHub Pages** (free) |
+| Doména | **generická GitHub** — `ameliesam.github.io/the-early-bowl/`, zdarma |
 | Ceny nápojů | **N1 = 25 Kč, N2 = 55 Kč, N3 = 35 Kč** (viz [menu_sablona.md](menu_sablona.md)) |
-| Lokalita | **Obchodní dům Stará Breda, Opava** (fiktivní, OK) |
+| Lokalita | **Náměstí Republiky 159/10, Opava** (fiktivní provoz) |
 | Telefon / email | **fiktivní** — `+420 777 000 111`, `info@theearlybowl.cz` |
 | Propagační video | **HeyGen Hyperframes** (HTML → video) |
 | Slide deck | **Marp** (Markdown → PDF) |

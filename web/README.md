@@ -1,62 +1,56 @@
 # web/ — zdrojový kód webu The Early Bowl
 
-Statický web (HTML/CSS/JS, bez build kroku). Deployuje se přímo tato složka na
-**Cloudflare Pages**. Specifikace: [PRD.md](../specs/PRD.md) · design: [DESIGN.md](../specs/DESIGN.md).
+Statický web (HTML/CSS/JS, **bez build kroku** — funguje i otevřením `index.html`).
+Hostuje se na **GitHub Pages**. Specifikace: [PRD.md](../specs/PRD.md) · design: [DESIGN.md](../specs/DESIGN.md).
+
+> **Cesty jsou relativní** (`css/…`, `images/…`, `menu.html`) — web běží na GitHub Pages pod podcestou `/the-early-bowl/` i přes `file://`. Nikdy nepoužívat root-absolutní `/css/…`.
 
 ## Struktura
 
 ```
 web/
 ├── index.html        # Úvod / homepage
-├── menu.html         # Menu + alergeny
+├── menu.html         # Menu (z menu.yaml) + video placeholder
 ├── o-nas.html        # Příběh značky
-├── kontakt.html      # Kontakt + formulář (Formspree)
+├── kontakt.html      # Kontakt (adresa, tel, e-mail, mapa) — bez formuláře
 ├── podminky.html     # Obchodní podmínky & GDPR
+├── 404.html          # Stránka nenalezeno
 ├── stylesheet.html   # Living style guide (noindex)
+├── .nojekyll         # vypne Jekyll na GitHub Pages
 ├── css/              # tokens → reset → base → components → pages
-├── js/               # nav.js, copy-id.js, form.js
-├── data/             # menu.yaml (zdroj pravdy) → menu.json (generovaný, čte web)
-├── images/           # menu/ ilustrace, hero, og, logo
-├── _headers          # bezpečnostní hlavičky (Cloudflare)
-├── _redirects        # pretty URL přesměrování
-├── wrangler.toml     # Cloudflare Pages konfigurace
+├── js/               # nav.js, copy-id.js (+ menu.js, vendor/yaml-mini.js — doplní vývoj)
+├── data/             # menu.yaml — ZDROJ PRAVDY pro menu (čte se přímo, bez JSON)
+├── images/           # menu/ ilustrace, hero, og, 404, logo, icons/ (✅ vygenerováno)
 ├── robots.txt
 └── sitemap.xml
 ```
 
-## Lokální vývoj
+## Lokální vývoj / náhled
 
 ```bash
-# jakýkoli statický server, např.:
-npx serve web
-#   nebo
+# stačí otevřít web/index.html v prohlížeči, nebo statický server:
 python3 -m http.server -d web 8080
+#   nebo
+npx serve web
 ```
 
-## Deploy (Cloudflare Pages)
+## Deploy (GitHub Pages)
 
-```bash
-npx wrangler pages deploy web
-```
-Nebo propojit GitHub repo v Cloudflare dashboardu a nastavit **build output
-directory = `web`** (žádný build command).
+Publikuje se obsah složky `web/` (žádný build). Doporučeně přes GitHub Actions:
+`actions/upload-pages-artifact` s `path: web` → `actions/deploy-pages`.
+URL: `https://ameliesam.github.io/the-early-bowl/`.
 
-## ⚠️ Co ještě chybí (binární assety — TODO)
+> GitHub Pages neumí custom HTTP hlavičky (CSP/X-Frame-Options) ani `_redirects` — viz [PRD.md](../specs/PRD.md) §7.6.
 
-Vygenerovat podle hotových promptů v [../docs/prompts/](../docs/prompts/README.md) (ChatGPT Images 2.0):
+## Stav assetů
 
-- [ ] `favicon.ico` + `apple-touch-icon.png` (prompt `favicon.md`)
-- [ ] `images/logo.png` / `images/logo-horizontal.png` (prompt `logo-varianty.md`)
-- [ ] `images/hero.png` (prompt `hero.md`)
-- [ ] `images/og.png` (prompt `og-image.md`)
-- [ ] `images/menu/*.png` — 10 ilustrací jídel (N1–N3, S1–S2, M1–M4, P1)
-- [ ] `images/404.png` (prompt `404.md`)
-- [ ] `images/icons/diet-*.png` — 4 dietní ikony
+✅ Obrázky vygenerované (Codex / ChatGPT Images 2.0) v `images/`.
+⏳ **Před nasazením optimalizovat** — PNG jsou velké (hero ~1,4 MB), zmenšit + WebP + lazy-load (PRD §7.4).
+⏳ Video přípravy S1 — zatím **placeholder** (bílý obdélník na stránce Menu), doplní se přes HeyGen Hyperframes.
 
-## Pořadí naplňování (viz ../PLAN.md Fáze C)
+## Pořadí vývoje (viz ../docs/PLAN.md Fáze C)
 
-1. `css/tokens.css` je hotový (design tokeny). Doplnit `pages.css` při tvorbě stránek.
-2. Naplnit obsah stránek dle wireframů v PRD §9 a textů v PRD §11.
-3. Vygenerovat a vložit obrázky.
-4. Doplnit Formspree `action` v `kontakt.html`.
-5. Otestovat (Lighthouse, a11y, Playwright) a deploynout.
+1. Skeleton + design tokeny hotové; doplnit `pages.css` při tvorbě stránek.
+2. **Menu data layer**: inline YAML blok (zrcadlí `data/menu.yaml`) + `js/vendor/yaml-mini.js` + `js/menu.js` → render karet a dietních ikon.
+3. Naplnit obsah stránek dle wireframů PRD §9 a textů PRD §11; dosadit obrázky.
+4. Optimalizovat obrázky; ověřit Playwrightem (file:// i server); deploy na GitHub Pages.

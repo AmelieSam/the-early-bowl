@@ -1,7 +1,0 @@
-# Cloudflare Pages konfigurace
-# Deploy lokálně:  npx wrangler pages deploy web
-name = "the-early-bowl"
-compatibility_date = "2026-05-24"
-
-# Adresář s hotovým webem (žádný build krok — statické HTML/CSS/JS)
-pages_build_output_dir = "."

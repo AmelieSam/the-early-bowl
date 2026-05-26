@@ -2,7 +2,7 @@
 
 Přehled vhodnosti jednotlivých položek menu pro běžné stravovací režimy a přehled obsažených alergenů. Slouží jako lidsky čitelný souhrn pro rozvahu a pro web (stránka Menu, PRD §5.2).
 
-> 🔗 **Zdroj dat:** strojově čitelným zdrojem pravdy je **[`web/data/menu.yaml`](../web/data/menu.yaml)** (rozhodnutí D-16). Z něj se plánovaným generátorem vyrobí jak data pro web (`menu.json`), tak tato matice. Do zprovoznění generátoru je tato matice udržovaná ručně podle [menu_sablona.md](menu_sablona.md).
+> 🔗 **Zdroj dat:** strojově čitelným zdrojem pravdy je **[`web/data/menu.yaml`](../web/data/menu.yaml)**. Web čte YAML přímo (D-18, žádný JSON, žádný build). **Tato souhrnná matice se na web nedává** — slouží jen jako interní dokument; na webu jsou jen dietní ikony u položek. Udržuje se ručně podle `menu.yaml` / [menu_sablona.md](menu_sablona.md).
 
 **Legenda:** ✅ vyhovuje / obsahuje · — nevyhovuje / neobsahuje · `*` lze upravit po domluvě · `**` ve veganské variantě · `✦` závisí na polévce dne
 
@@ -50,21 +50,20 @@ Přehled vhodnosti jednotlivých položek menu pro běžné stravovací režimy 
 
 ---
 
-## Návrh datové architektury menu
+## Datová architektura menu
 
-> **Rozhodnuto (D-16):** varianta YAML + generátor. Detail v [DENIK.md](DENIK.md).
+> **Rozhodnuto (D-16 → upraveno D-18):** zdroj pravdy je YAML; web ho čte přímo, **bez JSON a bez buildu**. Detail v [DENIK.md](DENIK.md).
 
-**Cíl:** jeden zdroj pravdy pro menu, ze kterého se plní web i tato matice, aby se při změně menu nezasahovalo do kódu stránek.
+**Cíl:** jeden zdroj pravdy pro menu, aby se při změně menu nezasahovalo do kódu stránek.
 
-- **Zdroj pravdy:** [`web/data/menu.yaml`](../web/data/menu.yaml) — položky + číselníky diet a alergenů + příznaky u každé položky.
-- **Generátor (plánovaný, PLAN Fáze C):** `menu.yaml` → `web/data/menu.json` (web) + `docs/menu-matrix.md` (tato matice).
-- **Web:** stránka Menu vykreslí karty a allergen matrix z `menu.json` (JS šablona), žádná data natvrdo v HTML.
-- **Do zprovoznění generátoru** je tato matice udržovaná ručně podle [menu_sablona.md](menu_sablona.md).
+- **Zdroj pravdy:** [`web/data/menu.yaml`](../web/data/menu.yaml) — položky + číselníky diet a alergenů + příznaky.
+- **Web:** stránka Menu vykreslí karty + **dietní ikony** přímo z YAML (inline blok + malý JS parser, žádný JSON, žádný build) — viz [PRD.md](../specs/PRD.md) §7.3.
+- **Tato matice** je interní dokument (na web nejde); udržuje se ručně podle `menu.yaml`.
 
 ---
 
 ## Reference
 
 - Menu (položky, ceny, popisy): [menu_sablona.md](menu_sablona.md)
-- Funkční požadavek na allergen matrix: [PRD.md](../specs/PRD.md) §5.2
-- Datový model menu (JSON/YAML): [PRD.md](../specs/PRD.md) §7.3
+- Dietní ikony u položek (na webu): [PRD.md](../specs/PRD.md) §5.2
+- Datový model menu (YAML): [PRD.md](../specs/PRD.md) §7.3

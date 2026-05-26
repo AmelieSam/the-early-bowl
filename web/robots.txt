@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /stylesheet.html
 
-Sitemap: https://the-early-bowl.pages.dev/sitemap.xml
+Sitemap: https://ameliesam.github.io/the-early-bowl/sitemap.xml
