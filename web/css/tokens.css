@@ -1,0 +1,46 @@
+/* =========================================================
+   tokens.css — Design tokens (single source: DESIGN.md §3–§5)
+   Importuje se jako první. Nikdy nepoužívej "magic numbers" v
+   ostatních CSS — vždy odkazuj na tyto proměnné.
+   ========================================================= */
+:root {
+  /* --- Barvy: základní (DESIGN.md §3) --- */
+  --cream:          #FAF6EE; /* hlavní pozadí */
+  --outline-brown:  #7A5843; /* texty, kontury, borders */
+
+  /* --- Barvy: akcenty --- */
+  --strawberry:     #E3413B; /* primární CTA */
+  --blueberry:      #4B679B; /* odkazy, sekundární */
+  --honey:          #F3C46B; /* zvýraznění, focus */
+
+  /* --- Barvy: podpůrné --- */
+  --leaf:           #7FA86B; /* healthy badge */
+  --deep-cocoa:     #4A3528; /* heading text */
+  --cream-shadow:   #EFE6D2; /* hover, dělení sekcí */
+  --milk:           #FFFCF6; /* karty / elevated povrchy */
+  --error:          #C8392E; /* validační chyby */
+  --success:        #5F8F4D; /* validační potvrzení */
+
+  /* --- Spacing (8px baseline, DESIGN.md §5.1) --- */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+
+  /* --- Border radius (DESIGN.md §5.4) --- */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* --- Kontejner (DESIGN.md §5.3) --- */
+  --container-max: 1100px;
+
+  /* --- Fonty (DESIGN.md §4) --- */
+  --font-head: 'Baloo 2', system-ui, sans-serif;
+  --font-body: 'Quicksand', system-ui, sans-serif;
+}

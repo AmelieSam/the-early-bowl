@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>The Early Bowl — Style Guide</title>
+  <meta name="description" content="Living style guide a ukázka design systému značky The Early Bowl.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================
+       DESIGN TOKENS  (zdroj: DESIGN.md §3, §4, §5)
+       ========================================================= */
+    :root {
+      /* --- Barvy: základní --- */
+      --cream:          #FAF6EE;
+      --outline-brown:  #7A5843;
+      /* --- Barvy: akcenty --- */
+      --strawberry:     #E3413B;
+      --blueberry:      #4B679B;
+      --honey:          #F3C46B;
+      /* --- Barvy: podpůrné --- */
+      --leaf:           #7FA86B;
+      --deep-cocoa:     #4A3528;
+      --cream-shadow:   #EFE6D2;
+      --milk:           #FFFCF6;
+      --error:          #C8392E;
+      --success:        #5F8F4D;
+
+      /* --- Spacing (8px baseline) --- */
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 32px;
+      --space-2xl: 48px;
+      --space-3xl: 64px;
+
+      /* --- Border radius --- */
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-pill: 999px;
+
+      /* --- Fonty --- */
+      --font-head: 'Baloo 2', system-ui, sans-serif;
+      --font-body: 'Quicksand', system-ui, sans-serif;
+    }
+
+    /* =========================================================
+       BASE
+       ========================================================= */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--outline-brown);
+      background: var(--cream);
+      padding: var(--space-2xl) var(--space-md);
+    }
+
+    .wrap { max-width: 1100px; margin: 0 auto; }
+
+    h1, h2, h3, h4 { font-family: var(--font-head); color: var(--outline-brown); }
+    h1 { font-size: 36px; font-weight: 700; line-height: 1.15; color: var(--deep-cocoa); }
+    h2 { font-size: 28px; font-weight: 600; line-height: 1.25; margin-top: var(--space-3xl); }
+    h3 { font-size: 22px; font-weight: 600; line-height: 1.3; margin-top: var(--space-xl); }
+    h4 { font-size: 18px; font-weight: 600; line-height: 1.4; }
+
+    @media (min-width: 1024px) {
+      h1 { font-size: 56px; }
+      h2 { font-size: 40px; }
+      h3 { font-size: 28px; }
+      h4 { font-size: 20px; }
+      body { font-size: 17px; }
+    }
+
+    p { max-width: 65ch; }
+    a { color: var(--blueberry); }
+    code {
+      font-family: ui-monospace, monospace;
+      background: var(--cream-shadow);
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+      font-size: 0.9em;
+    }
+    .small { font-size: 14px; color: var(--deep-cocoa); opacity: 0.75; }
+
+    .lead { font-size: 1.1em; max-width: 70ch; margin-top: var(--space-md); }
+
+    section { margin-bottom: var(--space-2xl); }
+    .sub { color: var(--deep-cocoa); opacity: 0.7; margin-bottom: var(--space-lg); }
+
+    hr {
+      border: none;
+      border-top: 2px dashed var(--cream-shadow);
+      margin: var(--space-2xl) 0;
+    }
+
+    /* =========================================================
+       SWATCHES (paleta)
+       ========================================================= */
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+    .swatch {
+      border: 2px solid var(--outline-brown);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--milk);
+    }
+    .swatch .chip { height: 72px; }
+    .swatch .meta { padding: var(--space-sm) var(--space-md); }
+    .swatch .name { font-family: var(--font-head); font-weight: 600; font-size: 14px; }
+    .swatch .hex { font-family: ui-monospace, monospace; font-size: 12px; opacity: 0.7; }
+
+    /* =========================================================
+       BUTTONS (DESIGN.md §6.1)
+       ========================================================= */
+    .btn {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-size: 16px;
+      font-weight: 600;
+      padding: 14px 24px;
+      border: 2px solid var(--outline-brown);
+      border-radius: var(--radius-md);
+      box-shadow: 3px 3px 0 var(--outline-brown);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      text-decoration: none;
+      line-height: 1;
+    }
+    .btn:hover { transform: translate(1px, 1px); box-shadow: 2px 2px 0 var(--outline-brown); }
+    .btn:active { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--outline-brown); }
+    .btn:focus-visible { outline: 3px solid var(--honey); outline-offset: 2px; }
+
+    .btn--primary { background: var(--strawberry); color: #fff; }
+    .btn--secondary { background: var(--cream); color: var(--outline-brown); }
+    .btn--ghost {
+      background: transparent;
+      color: var(--blueberry);
+      border: none;
+      box-shadow: none;
+      text-decoration: underline dashed 2px;
+      text-underline-offset: 4px;
+      padding: 14px 8px;
+    }
+    .btn--ghost:hover { transform: none; box-shadow: none; opacity: 0.8; }
+
+    .row { display: flex; flex-wrap: wrap; gap: var(--space-md); align-items: center; }
+
+    /* =========================================================
+       BADGES
+       ========================================================= */
+    .id-badge {
+      display: inline-block;
+      background: var(--outline-brown);
+      color: var(--cream);
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+    }
+    .diet {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 13px;
+      border: 1.5px solid var(--outline-brown);
+    }
+    .diet--vegan   { background: var(--leaf); color: #fff; }
+    .diet--gluten  { background: var(--honey); color: var(--outline-brown); }
+    .diet--lactose { background: var(--cream-shadow); color: var(--outline-brown); }
+    .diet--protein { background: var(--strawberry); color: #fff; }
+
+    /* =========================================================
+       CARDS (DESIGN.md §6.2)
+       ========================================================= */
+    .card {
+      background: var(--milk);
+      border: 2px solid var(--outline-brown);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: 4px 4px 0 var(--outline-brown);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--outline-brown); }
+
+    .menu-card { display: flex; gap: var(--space-md); align-items: flex-start; max-width: 460px; }
+    .menu-card__img {
+      flex: 0 0 96px;
+      width: 96px; height: 96px;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--outline-brown);
+      background: var(--cream-shadow) center/cover no-repeat;
+      display: grid; place-items: center;
+      font-size: 40px;
+    }
+    .menu-card__body { flex: 1; }
+    .menu-card__head { display: flex; justify-content: space-between; align-items: center; gap: var(--space-sm); }
+    .menu-card__title { font-family: var(--font-head); font-weight: 600; font-size: 18px; }
+    .menu-card__price { font-family: var(--font-head); font-weight: 700; font-size: 20px; color: var(--strawberry); white-space: nowrap; }
+    .menu-card__desc { font-size: 14px; margin: var(--space-xs) 0 var(--space-sm); }
+    .menu-card__tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: var(--space-sm); }
+
+    /* =========================================================
+       INPUTS (DESIGN.md §6.4)
+       ========================================================= */
+    .field { max-width: 420px; margin-bottom: var(--space-md); }
+    .field label { display: block; font-family: var(--font-head); font-weight: 600; font-size: 14px; margin-bottom: 6px; }
+    .field input, .field textarea {
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 16px;
+      background: var(--milk);
+      color: var(--outline-brown);
+      border: 2px solid var(--outline-brown);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+    }
+    .field input::placeholder, .field textarea::placeholder { color: var(--deep-cocoa); opacity: 0.5; }
+    .field input:focus, .field textarea:focus { outline: 3px solid var(--honey); outline-offset: 2px; }
+    .field--invalid input { border-color: var(--error); background: #FCEEEE; }
+    .field--invalid .hint { color: var(--error); }
+    .hint { font-size: 13px; margin-top: 4px; opacity: 0.8; }
+
+    /* =========================================================
+       TYPE SPECIMEN
+       ========================================================= */
+    .specimen > * { margin-bottom: var(--space-sm); }
+    .price-demo { font-family: var(--font-head); font-weight: 700; font-size: 22px; color: var(--strawberry); }
+
+    /* =========================================================
+       LAYOUT PRVKY
+       ========================================================= */
+    .doc-header {
+      background: var(--milk);
+      border: 2px solid var(--outline-brown);
+      border-radius: var(--radius-lg);
+      box-shadow: 4px 4px 0 var(--outline-brown);
+      padding: var(--space-xl);
+      margin-bottom: var(--space-2xl);
+    }
+    .tag {
+      display: inline-block;
+      background: var(--honey);
+      color: var(--outline-brown);
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 13px;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      margin-bottom: var(--space-md);
+    }
+    .spacing-demo { display: flex; align-items: flex-end; gap: var(--space-md); flex-wrap: wrap; margin-top: var(--space-lg); }
+    .spacing-demo .bar { background: var(--blueberry); border-radius: var(--radius-sm); }
+    .spacing-demo .bar span { display: block; text-align: center; font-size: 12px; margin-top: 4px; color: var(--outline-brown); }
+    .radius-demo { display: flex; gap: var(--space-md); flex-wrap: wrap; margin-top: var(--space-lg); }
+    .radius-demo div {
+      width: 88px; height: 88px;
+      background: var(--leaf);
+      border: 2px solid var(--outline-brown);
+      display: grid; place-items: center;
+      color: #fff; font-family: var(--font-head); font-size: 12px; text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="doc-header">
+      <span class="tag">Living Style Guide</span>
+      <h1>The Early Bowl — Design systém</h1>
+      <p class="lead">Tato stránka je živá ukázka všech vizuálních prvků webu. Definice a pravidla jsou v <code>DESIGN.md</code>; tady je vidíš v reálné implementaci. Stránka je <code>noindex</code> — neslouží návštěvníkům, ale vývoji a hodnocení.</p>
+    </header>
+
+    <!-- ============ BARVY ============ -->
+    <section>
+      <h2>1. Barevná paleta</h2>
+      <p class="sub">Smetanové pozadí, hnědé kontury, teplé akcenty z ingrediencí. Žádné neony, žádné studené tóny.</p>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="chip" style="background:#FAF6EE"></div><div class="meta"><div class="name">Cream</div><div class="hex">#FAF6EE</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#7A5843"></div><div class="meta"><div class="name">Outline Brown</div><div class="hex">#7A5843</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#E3413B"></div><div class="meta"><div class="name">Strawberry</div><div class="hex">#E3413B</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#4B679B"></div><div class="meta"><div class="name">Blueberry</div><div class="hex">#4B679B</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#F3C46B"></div><div class="meta"><div class="name">Honey</div><div class="hex">#F3C46B</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#7FA86B"></div><div class="meta"><div class="name">Leaf Green</div><div class="hex">#7FA86B</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#4A3528"></div><div class="meta"><div class="name">Deep Cocoa</div><div class="hex">#4A3528</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#EFE6D2"></div><div class="meta"><div class="name">Cream Shadow</div><div class="hex">#EFE6D2</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#FFFCF6;border-bottom:2px solid #7A5843"></div><div class="meta"><div class="name">Milk</div><div class="hex">#FFFCF6</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#C8392E"></div><div class="meta"><div class="name">Error</div><div class="hex">#C8392E</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#5F8F4D"></div><div class="meta"><div class="name">Success</div><div class="hex">#5F8F4D</div></div></div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- ============ TYPOGRAFIE ============ -->
+    <section>
+      <h2>2. Typografie</h2>
+      <p class="sub">Nadpisy: <strong>Baloo 2</strong> · Běžný text: <strong>Quicksand</strong>. Žádné kurzívy.</p>
+      <div class="specimen">
+        <h1>H1 — Zdravá snídaně. Každý den.</h1>
+        <h2 style="margin-top:0">H2 — Naše menu</h2>
+        <h3 style="margin-top:0">H3 — Sladké snídaně</h3>
+        <h4>H4 — Yogurt Bowl</h4>
+        <p>Body (Quicksand) — Svěží, chutné a dostupné, přesně tak, jak chceš ráno. Zavolej, vyzvedni, hotovo za pár minut.</p>
+        <p class="small">Small / caption — Ceny jsou uvedeny včetně DPH. Sezónní ovoce se mění dle nabídky.</p>
+        <p class="price-demo">90 Kč</p>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- ============ TLAČÍTKA ============ -->
+    <section>
+      <h2>3. Tlačítka</h2>
+      <p class="sub">„Press-down" efekt — při hoveru se tlačítko posune do svého stínu. Najeď myší.</p>
+      <div class="row">
+        <a href="#" class="btn btn--primary">Mrkni na menu</a>
+        <a href="#" class="btn btn--secondary">Sleduj nás</a>
+        <a href="#" class="btn btn--ghost">Kopírovat ID</a>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- ============ BADGES ============ -->
+    <section>
+      <h2>4. Badges</h2>
+      <h3>ID položek</h3>
+      <div class="row">
+        <span class="id-badge">N1</span>
+        <span class="id-badge">S1</span>
+        <span class="id-badge">M3</span>
+        <span class="id-badge">P1</span>
+      </div>
+      <h3>Dietní vlastnosti</h3>
+      <div class="row">
+        <span class="diet diet--vegan">🌱 Vegan</span>
+        <span class="diet diet--gluten">🌾 Bez lepku</span>
+        <span class="diet diet--lactose">🥛 Bez laktózy</span>
+        <span class="diet diet--protein">💪 Hodně proteinu</span>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- ============ KARTY ============ -->
+    <section>
+      <h2>5. Karty</h2>
+      <h3>Menu item card</h3>
+      <p class="sub">Najeď myší — karta se nadzvedne.</p>
+      <div class="menu-card card">
+        <div class="menu-card__img">🥣</div>
+        <div class="menu-card__body">
+          <div class="menu-card__head">
+            <span class="id-badge">S1</span>
+            <span class="menu-card__price">90 Kč</span>
+          </div>
+          <div class="menu-card__title">Yogurt Bowl</div>
+          <p class="menu-card__desc">Smetanový jogurt, domácí granola, čerstvé sezónní ovoce a kapka medu. Dokonalý start do dne.</p>
+          <div class="menu-card__tags">
+            <span class="diet diet--vegan">🌱 Vegetariánské</span>
+            <span class="diet diet--protein">💪 Protein</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>Obecná karta</h3>
+      <div class="card" style="max-width:460px">
+        <h4 style="margin-bottom:var(--space-sm)">⏰ Rychlé</h4>
+        <p style="margin:0">Zavolej, vyzvedni. Hotovo za pár minut. Žádné fronty, žádné komplikace.</p>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- ============ FORMULÁŘ ============ -->
+    <section>
+      <h2>6. Formulářové prvky</h2>
+      <div class="field">
+        <label for="name">Tvoje jméno</label>
+        <input id="name" type="text" placeholder="Např. Anna Nováková">
+      </div>
+      <div class="field">
+        <label for="email">Tvůj e-mail</label>
+        <input id="email" type="email" placeholder="anna@email.cz">
+      </div>
+      <div class="field field--invalid">
+        <label for="bad">Stav „invalid" (ukázka)</label>
+        <input id="bad" type="email" value="tohle-neni-email">
+        <div class="hint">Zkontroluj prosím formát e-mailu.</div>
+      </div>
+      <div class="field">
+        <label for="msg">Co potřebuješ?</label>
+        <textarea id="msg" rows="4" placeholder="Napiš nám…"></textarea>
+      </div>
+      <a href="#" class="btn btn--primary">Pošli zprávu</a>
+    </section>
+
+    <hr>
+
+    <!-- ============ SPACING & RADIUS ============ -->
+    <section>
+      <h2>7. Spacing &amp; Radius</h2>
+      <h3>Spacing scale (8px baseline)</h3>
+      <div class="spacing-demo">
+        <div><div class="bar" style="width:4px;height:4px"></div><span>xs 4</span></div>
+        <div><div class="bar" style="width:8px;height:8px"></div><span>sm 8</span></div>
+        <div><div class="bar" style="width:16px;height:16px"></div><span>md 16</span></div>
+        <div><div class="bar" style="width:24px;height:24px"></div><span>lg 24</span></div>
+        <div><div class="bar" style="width:32px;height:32px"></div><span>xl 32</span></div>
+        <div><div class="bar" style="width:48px;height:48px"></div><span>2xl 48</span></div>
+        <div><div class="bar" style="width:64px;height:64px"></div><span>3xl 64</span></div>
+      </div>
+
+      <h3>Border radius</h3>
+      <div class="radius-demo">
+        <div style="border-radius:8px">sm 8</div>
+        <div style="border-radius:16px">md 16</div>
+        <div style="border-radius:24px">lg 24</div>
+        <div style="border-radius:999px">pill</div>
+      </div>
+    </section>
+
+    <hr>
+
+    <footer style="text-align:center; padding-top:var(--space-lg)">
+      <p class="small">The Early Bowl · interní style guide · zdroj pravdy: <code>DESIGN.md</code></p>
+    </footer>
+
+  </div>
+</body>
+</html>

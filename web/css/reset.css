@@ -1,0 +1,12 @@
+/* =========================================================
+   reset.css — minimální moderní normalizace
+   ========================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; hyphens: auto; }
+body { min-height: 100vh; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+img, picture, svg, video { display: block; max-width: 100%; height: auto; }
+input, button, textarea, select { font: inherit; color: inherit; }
+ul[class], ol[class] { list-style: none; padding: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--honey); outline-offset: 2px; }

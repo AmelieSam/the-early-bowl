@@ -1,0 +1,9 @@
+# Cloudflare Pages — přesměrování
+# Formát:  /zdroj  /cil  kód
+# Pretty URL (bez .html) -> konkrétní soubor:
+/menu      /menu.html      301
+/o-nas     /o-nas.html     301
+/kontakt   /kontakt.html   301
+/podminky  /podminky.html  301
+
+# 404 řeší automaticky soubor 404.html (existuje; chybí už jen images/404.png)

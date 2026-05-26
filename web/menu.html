@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu — The Early Bowl</title>
+  <meta name="description" content="Celé menu The Early Bowl: nápoje, sladké a slané snídaně, obědová polévka. Ceny, alergeny a ID pro snadné objednání.">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/pages.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Přeskočit na hlavní obsah</a>
+
+  <header class="site-header">
+    <a class="logo" href="/index.html">The Early Bowl</a>
+    <nav aria-label="Hlavní navigace">
+      <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+      <ul class="nav-list">
+        <li><a href="/menu.html" aria-current="page">Menu</a></li>
+        <li><a href="/o-nas.html">O nás</a></li>
+        <li><a href="/kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="section container">
+      <h1>Naše menu</h1>
+      <!-- TODO: kategorie (Nápoje / Sladké / Slané / Obědy) s kartami .card,
+           .id-badge, cenou, popisem a .diet badges — data z menu_sablona.md.
+           Tlačítko "Kopírovat ID": <button class="copy-id" data-id="S1">Kopírovat ID</button>
+           Pod kartami allergen matrix tabulka (PRD §9.2). -->
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><strong>The Early Bowl</strong> · OD Stará Breda, Opava · 6:00–13:30</p>
+      <p><a href="tel:+420777000111">+420 777 000 111</a> · <a href="mailto:info@theearlybowl.cz">info@theearlybowl.cz</a></p>
+      <p><a href="/podminky.html">Obchodní podmínky &amp; ochrana údajů</a></p>
+    </div>
+  </footer>
+
+  <script src="/js/nav.js" defer></script>
+  <script src="/js/copy-id.js" defer></script>
+</body>
+</html>
