@@ -181,11 +181,21 @@ Explicitní záznam rozhodnutí. Formát: **co** / **proč** / **zvažované alt
 **Provedeno:**
 
 * ✅ Brainstorming konceptu snídaňové restaurace pro studenty a sportovce.
-* ✅ Konzultace se zadavatelem/vyučujícím (zaznamenáno v [zapis_konzultace.md](zapis_konzultace.md)).
+* ✅ Konzultace s taťkou (zaznamenáno v [zapis_konzultace.md](zapis_konzultace.md)).
 * ✅ Ustálení klíčových parametrů: provozní doba 6:00–13:30, kapacita ~15 míst, menu 6–10 fixních položek, cílová skupina, fázová roadmapa (předobjednávky → rozvoz → letní vozíček).
 * ✅ Ustálení vizuálního směru: unikátní hand-drawn „clipart/cartoon" styl.
 
 **💡 Zjištění:** Brzké ustálení konceptu a sepsání konzultace se ukázalo jako klíčové — sloužilo jako stabilní „kotva" při všech pozdějších rozhodnutích.
+ 
+---
+
+### ? 4. 2026 Nápad a logo
+nápad se snídaňovou restaurací
+kontrolování názvu(i domény) 
+ptaní se chatu GPT na název 
+dělání loga na geminy- hádání se s ním že nemůže upravovat fotky
+video s geminy 
+(skoušení webnoteu)
 
 ---
 
