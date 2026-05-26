@@ -48,9 +48,14 @@ URL: `https://ameliesam.github.io/the-early-bowl/`.
 ⏳ **Před nasazením optimalizovat** — PNG jsou velké (hero ~1,4 MB), zmenšit + WebP + lazy-load (PRD §7.4).
 ⏳ Video přípravy S1 — zatím **placeholder** (bílý obdélník na stránce Menu), doplní se přes HeyGen Hyperframes.
 
-## Pořadí vývoje (viz ../docs/PLAN.md Fáze C)
+## Stav vývoje
 
-1. Skeleton + design tokeny hotové; doplnit `pages.css` při tvorbě stránek.
-2. **Menu data layer**: inline YAML blok (zrcadlí `data/menu.yaml`) + `js/vendor/yaml-mini.js` + `js/menu.js` → render karet a dietních ikon.
-3. Naplnit obsah stránek dle wireframů PRD §9 a textů PRD §11; dosadit obrázky.
-4. Optimalizovat obrázky; ověřit Playwrightem (file:// i server); deploy na GitHub Pages.
+✅ **Web hotový** — všech 5 stránek + 404, responzivní, ověřeno Playwrightem (file:// i server, 0 JS chyb).
+Menu se renderuje z `data/menu.yaml` (přes `js/menu-data.js` → `js/vendor/yaml-mini.js` → `js/menu.js`).
+
+**Když měníš menu:** uprav `data/menu.yaml` a přegeneruj zrcadlo:
+```bash
+node scripts/build-menu-data.mjs   # menu.yaml → web/js/menu-data.js
+```
+
+**Zbývá (volitelné):** propagační video (HeyGen, místo placeholderu), případné doladění dle zpětné vazby, deploy na GitHub Pages.

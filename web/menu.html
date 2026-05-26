@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menu — The Early Bowl</title>
-  <meta name="description" content="Celé menu The Early Bowl: nápoje, sladké a slané snídaně, obědová polévka. Ceny, alergeny a ID pro snadné objednání.">
+  <meta name="description" content="Celé menu The Early Bowl: nápoje, sladké a slané snídaně a obědová polévka. Ceny, dietní ikony a ID pro snadné objednání telefonem.">
 
   <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
@@ -27,29 +28,52 @@
         <li><a href="menu.html" aria-current="page">Menu</a></li>
         <li><a href="o-nas.html">O nás</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a class="nav-ig" href="https://instagram.com/theearlybowl" target="_blank" rel="noopener" aria-label="Instagram">📷</a></li>
       </ul>
     </nav>
   </header>
 
   <main id="main">
     <section class="section container">
-      <h1>Naše menu</h1>
-      <!-- TODO (Fáze C3): vykreslit z web/data/menu.yaml (inline blok + js/vendor/yaml-mini.js
-           + js/menu.js) — kategorie, karty .card s .id-badge, cenou, popisem a DIETNÍMI IKONAMI.
-           Tlačítko "Kopírovat ID": <button class="copy-id" data-id="S1">Kopírovat ID</button>.
-           Žádná allergen tabulka. Níže VIDEO PLACEHOLDER (bílý obdélník) pro S1 (PRD §5.2/§9.2). -->
+      <div class="section__head">
+        <span class="eyebrow">6:00–13:30</span>
+        <h1>Naše menu</h1>
+        <p>Vyber si, zavolej a řekni nám ID jídla. Žádné komplikace. Ikonky u položek říkají, pro koho je jídlo vhodné.</p>
+      </div>
+
+      <!-- Menu se vykreslí z web/data/menu.yaml (přes menu-data.js + yaml-mini.js + menu.js) -->
+      <div id="menu-root">
+        <noscript><p>Pro zobrazení menu prosím zapni JavaScript, nebo nám zavolej na +420 777 000 111.</p></noscript>
+      </div>
+
+      <!-- Jak objednat -->
+      <div class="howto">
+        <h2>Jak objednat</h2>
+        <p>Zavolej na <a href="tel:+420777000111">+420 777 000 111</a> a řekni nám ID položek (např. „dvakrát <strong>S1</strong> a jeden <strong>N2</strong>"). Připravíme a dáme vědět. Tlačítkem „Kopírovat ID" si kód snadno přeneseš do SMS.</p>
+      </div>
+
+      <!-- Video placeholder (budoucí animace přípravy S1, pohled shora) -->
+      <div class="video-ph" role="img" aria-label="Místo pro budoucí video přípravy Yogurt Bowl">
+        <div>
+          <div class="video-ph__label">🎬 Brzy: video přípravy Yogurt Bowl</div>
+          <div class="video-ph__sub">animace shora ve stylu našich ilustrací</div>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container">
       <p><strong>The Early Bowl</strong> · Náměstí Republiky 159/10, Opava · 6:00–13:30</p>
-      <p><a href="tel:+420777000111">+420 777 000 111</a> · <a href="mailto:info@theearlybowl.cz">info@theearlybowl.cz</a></p>
+      <p><a href="tel:+420777000111">+420 777 000 111</a> · <a href="mailto:info@theearlybowl.cz">info@theearlybowl.cz</a> · <a href="https://instagram.com/theearlybowl" target="_blank" rel="noopener">Instagram</a></p>
       <p><a href="podminky.html">Obchodní podmínky &amp; ochrana údajů</a></p>
     </div>
   </footer>
 
   <script src="js/nav.js" defer></script>
   <script src="js/copy-id.js" defer></script>
+  <script src="js/menu-data.js" defer></script>
+  <script src="js/vendor/yaml-mini.js" defer></script>
+  <script src="js/menu.js" defer></script>
 </body>
 </html>

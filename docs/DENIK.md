@@ -85,7 +85,16 @@ Explicitní záznam rozhodnutí. Formát: **co** / **proč** / **zvažované alt
 * ✅ Z `kontakt.html` odebrán formulář; adresa všude → **Náměstí Republiky 159/10, Opava**; OG/JSON-LD + robots + sitemap → `ameliesam.github.io/the-early-bowl`; TODO komentáře sladěny (bez Formspree/matice).
 * ✅ `web/README.md` přepsán (GitHub Pages, relativní cesty, stav assetů, pořadí vývoje).
 
-**Další krok:** Vývoj webu (Fáze C) — doplnit menu data layer (inline YAML + `yaml-mini.js` + `menu.js`), obsah stránek, dietní ikony, video placeholder; optimalizovat obrázky; průběžně Playwright; deploy na GitHub Pages.
+**Provedeno (19. iterace — vývoj webu, autonomně):**
+
+* ✅ **Data layer:** `js/vendor/yaml-mini.js` (vlastní YAML parser pro náš subset, otestován v node), `js/menu-data.js` (zrcadlí `menu.yaml`, načítá se přes `<script>` → funguje i `file://`), `js/menu.js` (render menu po kategoriích + featured na homepage, dietní ikony z příznaků).
+* ✅ **copy-id.js** přepsán na event delegation (funguje pro dynamicky vykreslené karty).
+* ✅ **pages.css** — všechny sekce (hero, value props, featured, roadmap, IG CTA, menu grid + karty, dietní ikony, video placeholder, kontakt+mapa, prose, mobilní nav dropdown).
+* ✅ **Obsah všech stránek:** homepage (hero + 3 value props + featured + roadmap + IG CTA), menu (render z YAML + „jak objednat" + **video placeholder** S1), o-nás (příběh + hodnoty + logo), kontakt (kontaktní karta + **Google Maps embed** Náměstí Republiky), podmínky (GDPR bez sběru dat), 404.
+* ✅ **Optimalizace obrázků:** 15 MB → 6 MB; resize + WebP (`<picture>` s PNG fallbackem), hero 1,1 MB→73 KB WebP.
+* 🔬 **Playwright QA:** všechny stránky desktop + mobil, **0 JS chyb / 0 selhaných requestů**; menu = 10 karet/4 kategorie/21 dietních ikon, copy-id funguje, featured = 4; ověřeno i přes `file://` (10 karet, 10 obrázků). Mobilní menu = čistý rozbalovací panel.
+
+**Další krok:** Doladění detailů dle zpětné vazby; volitelně propagační video (HeyGen); deploy na GitHub Pages; sazba dokumentace + slide deck (Fáze D/E).
 
 ---
 

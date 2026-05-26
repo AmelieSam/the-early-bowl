@@ -6,7 +6,6 @@
   <title>The Early Bowl — Zdravá snídaně v Opavě | 6:00–13:30</title>
   <meta name="description" content="Zdravá snídaňová restaurace v Opavě. Bowly, toasty, vajíčka. Otevřeno 6:00–13:30. Objednej telefonem podle ID položky.">
 
-  <!-- Open Graph (PRD §5.2) -->
   <meta property="og:title" content="The Early Bowl — Zdravá snídaně">
   <meta property="og:description" content="Svěží, chutné a dostupné. Otevřeno 6:00–13:30 v Opavě.">
   <meta property="og:image" content="https://ameliesam.github.io/the-early-bowl/images/og.png">
@@ -26,7 +25,6 @@
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/pages.css">
 
-  <!-- JSON-LD Restaurant (PRD §7.5) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -34,7 +32,7 @@
     "name": "The Early Bowl",
     "image": "https://ameliesam.github.io/the-early-bowl/images/og.png",
     "description": "Zdravá snídaňová restaurace v Opavě, 6:00–13:30",
-    "address": { "@type": "PostalAddress", "addressLocality": "Opava", "addressCountry": "CZ" },
+    "address": { "@type": "PostalAddress", "streetAddress": "Náměstí Republiky 159/10", "addressLocality": "Opava", "postalCode": "746 01", "addressCountry": "CZ" },
     "telephone": "+420 777 000 111",
     "url": "https://ameliesam.github.io/the-early-bowl/",
     "openingHours": "Mo-Su 06:00-13:30",
@@ -54,28 +52,124 @@
         <li><a href="menu.html">Menu</a></li>
         <li><a href="o-nas.html">O nás</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a class="nav-ig" href="https://instagram.com/theearlybowl" target="_blank" rel="noopener" aria-label="Instagram">📷</a></li>
       </ul>
     </nav>
   </header>
 
   <main id="main">
-    <!-- HERO (PRD §9.1) -->
+    <!-- HERO -->
     <section class="section container hero">
-      <h1>Zdravá snídaně. Každý den.</h1>
-      <p>Svěží, chutné a dostupné — přesně tak, jak chceš ráno.</p>
-      <a class="btn btn--primary" href="menu.html">Mrkni na menu</a>
-      <!-- TODO: hero ilustrace (images/hero.png), value props 3×, featured menu, roadmap, IG CTA -->
+      <div class="hero__text">
+        <h1 class="hero__title">Zdravá snídaně.<br>Každý den.</h1>
+        <p class="hero__lead">Svěží, chutné a dostupné — přesně tak, jak chceš ráno. Otevřeno 6:00–13:30 v Opavě.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="menu.html">Mrkni na menu</a>
+          <a class="btn btn--secondary" href="https://instagram.com/theearlybowl" target="_blank" rel="noopener">Sleduj nás na IG</a>
+        </div>
+      </div>
+      <div class="hero__img">
+        <picture>
+          <source srcset="images/hero.webp" type="image/webp">
+          <img src="images/hero.png" alt="Snídaňové prostírání: miska s ovocem a granolou, čaj, čerstvý džus a ranní sluníčko" width="1280" height="853">
+        </picture>
+      </div>
+    </section>
+
+    <!-- VALUE PROPS -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="values">
+          <div class="value">
+            <div class="value__icon" aria-hidden="true">⏰</div>
+            <h3>Rychlé</h3>
+            <p>Zavolej, vyzvedni. Hotovo za pár minut, bez front.</p>
+          </div>
+          <div class="value">
+            <div class="value__icon" aria-hidden="true">🌱</div>
+            <h3>Zdravé</h3>
+            <p>Bez zbytečného cukru. Jen poctivé suroviny a chuť.</p>
+          </div>
+          <div class="value">
+            <div class="value__icon" aria-hidden="true">📍</div>
+            <h3>Dostupné</h3>
+            <p>V centru Opavy, otevřeno od šesti do půl druhé.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED MENU -->
+    <section class="section container">
+      <div class="section__head">
+        <span class="eyebrow">Naše klasiky</span>
+        <h2>Co u nás najdeš</h2>
+        <p>Pár oblíbených kousků. Celé menu i s cenami je o kliknutí dál.</p>
+      </div>
+      <div class="featured-grid" id="featured-root"><!-- vykreslí menu.js z menu.yaml --></div>
+      <div class="featured-more">
+        <a class="btn btn--primary" href="menu.html">Celé menu →</a>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow">Kam směřujeme</span>
+          <h2>Naše cesta</h2>
+          <p>Začínáme u misky. A máme plány.</p>
+        </div>
+        <div class="roadmap">
+          <div class="road">
+            <div class="road__icon" aria-hidden="true">🥣</div>
+            <div class="road__when">Teď</div>
+            <h3>Snídaně na místě</h3>
+            <p>Menu a obědové polévky, objednávka telefonem.</p>
+          </div>
+          <div class="road">
+            <div class="road__icon" aria-hidden="true">📱</div>
+            <div class="road__when">Brzy</div>
+            <h3>Předobjednávky</h3>
+            <p>Objednáš dopředu, vyzvedneš si připravené. A rezervace stolu.</p>
+          </div>
+          <div class="road">
+            <div class="road__icon" aria-hidden="true">🛵</div>
+            <div class="road__when">Pak</div>
+            <h3>Rozvoz</h3>
+            <p>Miska optimismu až k tobě.</p>
+          </div>
+          <div class="road">
+            <div class="road__icon" aria-hidden="true">🌳</div>
+            <div class="road__when">Sen</div>
+            <h3>Vozíček v parku</h3>
+            <p>Letní pojízdný stánek s miskami. Jednou.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTAGRAM CTA -->
+    <section class="section container">
+      <div class="igcta">
+        <h2>Co se dnes vaří?</h2>
+        <p>Každou neděli postneme menu na příští týden. Sleduj nás a neuteče ti denní polévka.</p>
+        <a class="btn btn--primary" href="https://instagram.com/theearlybowl" target="_blank" rel="noopener">📷 @theearlybowl</a>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container">
       <p><strong>The Early Bowl</strong> · Náměstí Republiky 159/10, Opava · 6:00–13:30</p>
-      <p><a href="tel:+420777000111">+420 777 000 111</a> · <a href="mailto:info@theearlybowl.cz">info@theearlybowl.cz</a></p>
+      <p><a href="tel:+420777000111">+420 777 000 111</a> · <a href="mailto:info@theearlybowl.cz">info@theearlybowl.cz</a> · <a href="https://instagram.com/theearlybowl" target="_blank" rel="noopener">Instagram</a></p>
       <p><a href="podminky.html">Obchodní podmínky &amp; ochrana údajů</a></p>
     </div>
   </footer>
 
   <script src="js/nav.js" defer></script>
+  <script src="js/menu-data.js" defer></script>
+  <script src="js/vendor/yaml-mini.js" defer></script>
+  <script src="js/menu.js" defer></script>
 </body>
 </html>
