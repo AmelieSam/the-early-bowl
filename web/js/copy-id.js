@@ -9,11 +9,11 @@
     if (!id) return;
 
     function done() {
-      var orig = btn.dataset.label || btn.textContent;
-      btn.dataset.label = orig;
+      if (btn.dataset.label === undefined) btn.dataset.label = btn.textContent;
+      var orig = btn.dataset.label;
       btn.classList.add('is-copied');
-      btn.textContent = 'Zkopírováno ✓';
-      setTimeout(function () { btn.textContent = orig; btn.classList.remove('is-copied'); }, 1500);
+      btn.textContent = btn.classList.contains('id-badge') ? '✓' : 'Zkopírováno ✓';
+      setTimeout(function () { btn.textContent = orig; btn.classList.remove('is-copied'); }, 1300);
     }
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(id).then(done).catch(fallback);

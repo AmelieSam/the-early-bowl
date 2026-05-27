@@ -3,7 +3,7 @@
    ========================================================= */
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
-html { -webkit-text-size-adjust: 100%; hyphens: auto; }
+html { -webkit-text-size-adjust: 100%; hyphens: manual; }
 body { min-height: 100vh; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 img, picture, svg, video { display: block; max-width: 100%; height: auto; }
 input, button, textarea, select { font: inherit; color: inherit; }

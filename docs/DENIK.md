@@ -102,6 +102,15 @@ Explicitní záznam rozhodnutí. Formát: **co** / **proč** / **zvažované alt
 * ✅ Tlačítka „Kopírovat ID" zarovnána na spodek karet (`margin-top:auto`).
 * 🔬 Ověřeno Playwrightem (server i file://): 0 chyb, layout opraven, piktogramy jednotné.
 
+**Provedeno (21. iterace — UX doladění karet dle zpětné vazby):**
+
+* ✅ **Cena vedle kódu** (kód + cena na jednom řádku) → název má plnou šířku.
+* ✅ **Název se nedělí** — vypnuto auto-dělení slov (`hyphens: manual`), konec „pome-rančový".
+* ✅ **Kopírování přesunuto na kód položky** — klik na badge `N2` zkopíruje ID (feedback „✓"); samostatné tlačítko „Kopírovat ID" odebráno.
+* ✅ **Vegetariánská ikona** vrácena jako **grafika** (inline SVG: leaf-green kruh, hnědá kontura, bílý lístek) ve stejné velikosti jako PNG ikony (34 px).
+* ✅ **bg-pattern** zviditelněn (opacity 0.05 → 0.14).
+* 🔬 Ověřeno Playwrightem: 0 chyb, badge=button kopíruje, 4 ikony 34×34, název na jednom řádku.
+
 **Další krok:** Volitelně propagační video (HeyGen); deploy na GitHub Pages; sazba dokumentace + slide deck (Fáze D/E).
 
 ---

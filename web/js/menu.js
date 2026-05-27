@@ -13,21 +13,29 @@
     glutenfree: 'images/icons/diet-bez-lepku.png',
     lactosefree: 'images/icons/diet-bez-laktozy.png'
   };
-  var DIET_TEXT = { vegetarian: 'V' };
-
   function esc(s) {
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
   function rel(p) { return String(p || '').replace(/^\//, ''); }
 
+  // Vegetariánská ikona — inline SVG v brand stylu (nemá PNG); stejná velikost jako ostatní.
+  function vegSVG(label, cls) {
+    return '<svg class="' + cls + '" viewBox="0 0 40 40" width="34" height="34" role="img" aria-label="' + esc(label) + '">' +
+      '<title>' + esc(label) + '</title>' +
+      '<circle cx="20" cy="20" r="17.5" fill="#7FA86B" stroke="#7A5843" stroke-width="2.5"/>' +
+      '<path d="M20 11 C27 15 27 25 20 30 C13 25 13 15 20 11 Z" fill="#fff"/>' +
+      '<path d="M20 13.5 L20 27.5" stroke="#7FA86B" stroke-width="1.7" stroke-linecap="round"/>' +
+      '</svg>';
+  }
+
   function dietChip(id, adjustable) {
     var label = (diets[id] || id) + (adjustable ? ' (po úpravě)' : '');
     var cls = 'diet-icon' + (adjustable ? ' diet-icon--adj' : '');
     if (DIET_ICON[id]) {
-      return '<img class="' + cls + '" src="' + DIET_ICON[id] + '" alt="" title="' + esc(label) + '" loading="lazy" width="36" height="36">';
+      return '<img class="' + cls + '" src="' + DIET_ICON[id] + '" alt="" title="' + esc(label) + '" loading="lazy" width="34" height="34">';
     }
-    var glyph = DIET_TEXT[id] || '•';
-    return '<span class="' + cls + ' diet-icon--veg" title="' + esc(label) + '" role="img" aria-label="' + esc(label) + '">' + glyph + '</span>';
+    if (id === 'vegetarian') return vegSVG(label, cls);
+    return '<span class="' + cls + ' diet-icon--veg" title="' + esc(label) + '" role="img" aria-label="' + esc(label) + '">•</span>';
   }
 
   function dietRow(item) {
@@ -51,14 +59,13 @@
       '<article class="menu-card card" id="' + esc(item.id) + '">' +
         '<div class="menu-card__img">' + picture(item.image, item.name, 'menu-card__photo') + '</div>' +
         '<div class="menu-card__body">' +
-          '<span class="id-badge">' + esc(item.id) + '</span>' +
-          '<div class="menu-card__titlerow">' +
-            '<h3 class="menu-card__title">' + esc(item.name) + '</h3>' +
+          '<div class="menu-card__head">' +
+            '<button class="id-badge copy-id" type="button" data-id="' + esc(item.id) + '" title="Klikni a zkopíruj ID" aria-label="Zkopírovat ID ' + esc(item.id) + '">' + esc(item.id) + '</button>' +
             '<span class="menu-card__price">' + esc(item.price) + ' Kč</span>' +
           '</div>' +
+          '<h3 class="menu-card__title">' + esc(item.name) + '</h3>' +
           '<p class="menu-card__desc">' + esc(item.description || '') + '</p>' +
           dietRow(item) +
-          '<button class="copy-id" type="button" data-id="' + esc(item.id) + '">Kopírovat ID</button>' +
         '</div>' +
       '</article>';
   }

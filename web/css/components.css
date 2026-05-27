@@ -27,12 +27,11 @@
 }
 .card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--outline-brown); }
 
-/* Menu card — obsahové bloky (layout: ID nahoře, název + cena na řádku) */
+/* Menu card — obsahové bloky (layout: kód + cena na řádku, název pod nimi v plné šířce) */
 .menu-card__body { display: flex; flex-direction: column; gap: var(--space-xs); flex: 1; }
-.menu-card .id-badge { align-self: flex-start; }
-.menu-card__titlerow { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-md); }
-.menu-card__title { font-family: var(--font-head); font-weight: 600; font-size: 18px; line-height: 1.25; }
+.menu-card__head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-sm); }
 .menu-card__price { font-family: var(--font-head); font-weight: 700; font-size: 20px; color: var(--strawberry); white-space: nowrap; }
+.menu-card__title { font-family: var(--font-head); font-weight: 600; font-size: 18px; line-height: 1.25; hyphens: manual; overflow-wrap: normal; }
 
 /* --- ID badge (§6.3) --- */
 .id-badge {
@@ -40,6 +39,11 @@
   font-family: var(--font-head); font-weight: 600; font-size: 14px; letter-spacing: 0.05em;
   padding: 4px 10px; border-radius: var(--radius-pill);
 }
+/* ID badge jako tlačítko pro kopírování (klik = zkopíruje ID) */
+button.id-badge { border: none; cursor: pointer; transition: background 0.15s ease, transform 0.1s ease; }
+button.id-badge:hover { background: var(--deep-cocoa); }
+button.id-badge:active { transform: scale(0.94); }
+button.id-badge.is-copied { background: var(--leaf); }
 
 /* --- Dietní badge (§6.5) --- */
 .diet {
