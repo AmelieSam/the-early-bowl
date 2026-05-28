@@ -42,6 +42,17 @@ Explicitní záznam rozhodnutí. Formát: **co** / **proč** / **zvažované alt
 
 ## Chronologie
 
+### 27. 5. 2026 — Video prompt pro sociální sítě
+
+**Provedeno (vstup zadavatele):**
+* ✅ Vytvořen prompt [`docs/prompts/video-yogurt-bowl.md`](prompts/video-yogurt-bowl.md) — krátké vertikální video (9:16, top-down) přípravy S1 Yogurt Bowl pro TikTok / IG Story.
+* ✅ Stylový blok převzat 1:1 z master style promptu (DESIGN.md §7.1) a stillu `s1-yogurt-bowl.md` → konzistence se zbytkem sady; rozšířeno o sekvenci akce, fixní top-down kameru a vertikální formát.
+* ✅ Přidán nový oddíl „Video" do [`docs/prompts/README.md`](prompts/README.md).
+
+**💡 Zjištění:** První pohyblivý asset v sadě. Stylový blok zůstává neměnný (drží brand), animuje se jen popis akce — stejné pravidlo jako u stillů (DESIGN.md §7.5).
+
+---
+
 ### 25. 5. 2026 — Brand story a generování obrázků
 
 **Provedeno (13. iterace, vstup zadavatele):**

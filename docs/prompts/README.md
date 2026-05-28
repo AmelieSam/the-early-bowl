@@ -47,6 +47,11 @@ Vizuální pravidla vychází z [DESIGN.md](../../specs/DESIGN.md) §7. Cíl: v�
 | [favicon.md](favicon.md) | `favicon.ico`, `apple-touch-icon.png` |
 | [logo-varianty.md](logo-varianty.md) | `images/logo.png`, `images/logo-horizontal.png` |
 
+### Video (sociální sítě → `web/images/video/`)
+| Soubor promptu | Cílový výstup | Formát |
+|---|---|---|
+| [video-yogurt-bowl.md](video-yogurt-bowl.md) | `video/yogurt-bowl-prep.mp4` | 9:16 short (TikTok / IG Story) |
+
 ### Dietní ikony (→ `web/images/icons/`)
 | Soubor promptu | Cílový obrázek |
 |---|---|
