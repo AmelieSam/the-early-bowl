@@ -117,6 +117,7 @@
 
 % --- Obrázky, tabulky, odkazy ---
 \usepackage{graphicx}
+\usepackage{placeins}     % \FloatBarrier — drží figure/table před daným místem
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{tabularx}
@@ -393,6 +394,9 @@ Pro ilustraci responzivního chování webu zachycuje obrázek~\ref{fig:hero-mob
   \label{fig:hero-mobile}
 \end{figure}
 
+\FloatBarrier
+\clearpage
+
 \section{Použité zdroje a nástroje}
 
 \subsection{Zjednodušený pracovní postup}
@@ -457,8 +461,12 @@ Projekt The Early Bowl ukázal, že i~středoškolský studentský projekt můž
   \url{https://chatgpt.com}
 
   \bibitem{gemini}
-  Google. \textit{Gemini, Gemini Veo, NotebookLM}. Dostupné z:\\
+  Google. \textit{Gemini} (jazykový model, generování loga a~videa Gemini Veo). Dostupné z:\\
   \url{https://gemini.google.com}
+
+  \bibitem{notebooklm}
+  Google. \textit{NotebookLM} (zpracování briefu, přepis konzultace). Dostupné z:\\
+  \url{https://notebooklm.google.com}
 
   \bibitem{vscode}
   Microsoft. \textit{Visual Studio Code}. Dostupné z:\\
