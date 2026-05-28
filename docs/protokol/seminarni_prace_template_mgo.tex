@@ -1,0 +1,300 @@
+% !TeX program = xelatex
+% Jednoducha LaTeX sablona seminární práce podle stylu MGO.
+% Kompilace: xelatex seminarni_prace_template.tex (2x kvuli obsahu a poctu stran)
+
+\documentclass[12pt,a4paper]{article}
+
+% --- Jazyk, typografie, fonty ---
+\usepackage{fontspec}
+\usepackage[czech]{babel}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{ragged2e}
+\usepackage{indentfirst}
+\usepackage{etoolbox}
+
+% ---------------------------------------------------------
+% FONTOVÁ ANALÝZA OFICIÁLNÍ MGO PŘEDLOHY
+% Zjištěno přímo z PDF pomocí pdffonts/pdftohtml:
+% - titulní strana:
+%   škola, autor, předmět, místo/rok .......... Cambria Regular 16 pt, patkové
+%   hlavní název .............................. Calibri Regular 28 pt, bezpatkové, NE tučné
+%   podnázev ................................... Calibri Regular 16 pt, bezpatkové, NE tučné
+% - běžný text a obsah ........................ Cambria Regular 12 pt, patkové
+% - nadpis Obsah a nadpisy 1./2./3. úrovně ..... Calibri Bold, bezpatkové, tučné
+% - záhlaví .................................... Cambria Italic 12 pt, patkové kurzívní
+% - zápatí s číslem stránky .................... Calibri Regular 10 pt, bezpatkové
+%
+% V tomto linuxovém prostředí nejsou Microsoft fonty dostupné, proto je
+% výchozí volba metrická alternativa: Caladea ≈ Cambria, Carlito ≈ Calibri.
+%
+% Pokud kompilujete na systému s Microsoft fonty, pro nejvěrnější výstup
+% nahraďte čtyři řádky níže těmito:
+%   \setmainfont{Cambria}
+%   \setsansfont{Calibri}
+%   \newfontfamily\mgobodyfont{Cambria}
+%   \newfontfamily\mgoheadingfont{Calibri}
+%   \newfontfamily\mgotitlefont{Calibri}
+%   \newfontfamily\mgofooterfont{Calibri}
+% ---------------------------------------------------------
+
+\setmainfont{Caladea}
+\setsansfont{Carlito}
+\newfontfamily\mgobodyfont{Caladea}
+\newfontfamily\mgoheadingfont{Carlito}
+\newfontfamily\mgotitlefont{Carlito}
+\newfontfamily\mgofooterfont{Carlito}
+
+\newcommand{\track}[2]{{\addfontfeatures{LetterSpace=#1}#2}}
+
+% --- Rozměry stránky ---
+\usepackage[
+  a4paper,
+  left=22mm,
+  right=22mm,
+  top=25mm,
+  bottom=25mm,
+  headheight=15pt,
+  headsep=8mm,
+  footskip=12mm
+]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage[absolute,overlay]{textpos}
+
+% --- Proměnné dokumentu ---
+\newcommand{\typprace}{Seminární práce}
+\newcommand{\nazevprace}{Název seminární práce}
+\newcommand{\podnazevprace}{popř. podnázev seminární práce}
+\newcommand{\autor}{jméno příjmení}
+\newcommand{\skola}{Mendelovo gymnázium, Opava, příspěvková organizace}
+\newcommand{\predmet}{Název předmětu}
+\newcommand{\misto}{Opava}
+\newcommand{\rok}{20\_\_}
+
+% --- Odstavce: 1,5 řádkování, blok, mezera před odstavcem ---
+\onehalfspacing
+\setlength{\parindent}{12mm}
+\setlength{\parskip}{9pt}
+\AtBeginDocument{\justifying}
+
+% První odstavec po nadpisu bez odsazení
+\makeatletter
+\patchcmd{\@afterheading}{\@afterindenttrue}{\@afterindentfalse}{}{}
+\makeatother
+
+% --- Záhlaví a zápatí ---
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{{\mgobodyfont\itshape \typprace{} --- \nazevprace}}
+\fancyfoot[C]{{\mgofooterfont\fontsize{10}{12}\selectfont \thepage/\pageref{LastPage}}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\fancypagestyle{front}{%
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+% --- Nadpisy: bezpatkové, tučné, podobně jako Calibri Bold ---
+\usepackage{titlesec}
+\titleformat{\section}
+  {\mgoheadingfont\fontsize{16}{19}\bfseries}
+  {\thesection}{1.35em}{}
+\titleformat{\subsection}
+  {\mgoheadingfont\fontsize{14}{17}\bfseries}
+  {\thesubsection}{1.2em}{}
+\titleformat{\subsubsection}
+  {\mgoheadingfont\fontsize{12}{14.5}\bfseries}
+  {\thesubsubsection}{1.2em}{}
+
+\titlespacing*{\section}{0pt}{18pt}{6pt}
+\titlespacing*{\subsection}{0pt}{12pt}{3pt}
+\titlespacing*{\subsubsection}{0pt}{9pt}{3pt}
+
+% --- Obsah: tečky a odsazení pro dlouhé položky ---
+\usepackage{tocloft}
+\renewcommand{\contentsname}{Obsah}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsubsecleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftsecnumwidth}{2.5em}
+\setlength{\cftsubsecnumwidth}{3.2em}
+\setlength{\cftsubsubsecnumwidth}{4.1em}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+% TOC v originálu: nadpis Calibri Bold 16 pt, položky Cambria 12 pt bez tučného řezu.
+\renewcommand{\cfttoctitlefont}{\mgoheadingfont\fontsize{16}{19}\bfseries}
+\renewcommand{\cftsecfont}{\normalfont}
+\renewcommand{\cftsecpagefont}{\normalfont}
+\renewcommand{\cftsubsecfont}{\normalfont}
+\renewcommand{\cftsubsecpagefont}{\normalfont}
+\renewcommand{\cftsubsubsecfont}{\normalfont}
+\renewcommand{\cftsubsubsecpagefont}{\normalfont}
+
+
+% --- Seznamy ---
+\usepackage{enumitem}
+\setlist[itemize]{label=--, leftmargin=12mm, itemsep=0pt, topsep=3pt}
+\setlist[enumerate]{leftmargin=12mm, itemsep=0pt, topsep=3pt}
+
+% --- Obrázky, tabulky, odkazy ---
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\usepackage{csquotes}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+% --- Pomocné příkazy ---
+\newcommand{\blankpage}{\newpage\thispagestyle{front}\null\newpage}
+
+\begin{document}
+
+% =========================================================
+% Titulní strana - absolutní pozice podle původního PDF
+% =========================================================
+\thispagestyle{front}
+\begin{titlepage}
+\setlength{\TPHorizModule}{1mm}
+\setlength{\TPVertModule}{1mm}
+
+% Školní řádek: Cambria 16 pt Regular, patkové
+\begin{textblock*}{210mm}(0mm,25mm)
+\centering {\mgobodyfont\fontsize{16}{19}\selectfont\mdseries \skola}
+\end{textblock*}
+
+% Autor: Cambria 16 pt Regular, patkové, roztažené znaky
+\begin{textblock*}{210mm}(0mm,80mm)
+\centering {\mgobodyfont\fontsize{16}{19}\selectfont\mdseries\track{11}{\autor}}
+\end{textblock*}
+
+% Název: Calibri 28 pt Regular, bezpatkové, NE tučné, roztažené znaky
+\begin{textblock*}{210mm}(0mm,115mm)
+\centering {\mgotitlefont\fontsize{28}{33}\selectfont\mdseries\track{8}{\nazevprace}}
+\end{textblock*}
+
+% Podnázev: Calibri 16 pt Regular, bezpatkové, NE tučné
+\begin{textblock*}{210mm}(0mm,129mm)
+\centering {\mgotitlefont\fontsize{16}{19}\selectfont\mdseries\track{14}{\podnazevprace}}
+\end{textblock*}
+
+% Předmět: Cambria 16 pt Regular, patkové
+\begin{textblock*}{210mm}(0mm,163mm)
+\centering {\mgobodyfont\fontsize{16}{19}\selectfont\mdseries\track{6}{\typprace{} do předmětu \predmet}}
+\end{textblock*}
+
+% Místo a rok: Cambria 16 pt Regular, patkové
+\begin{textblock*}{210mm}(0mm,256mm)
+\centering {\mgobodyfont\fontsize{16}{19}\selectfont\mdseries\track{12}{\misto{} \rok}}
+\end{textblock*}
+
+\end{titlepage}
+
+\blankpage
+
+% =========================================================
+% Prohlášení
+% =========================================================
+\thispagestyle{front}
+\vspace*{12cm}
+Prohlašuji, že jsem tuto seminární práci vypracoval(a) samostatně na základě uvedených pramenů a literatury.
+
+\vspace{1.5cm}
+\noindent V~\misto{} dne \today \hfill Podpis: \rule{45mm}{0.4pt}
+
+\blankpage
+
+% =========================================================
+% Obsah
+% =========================================================
+\thispagestyle{front}
+\tableofcontents
+\newpage
+
+% =========================================================
+% Vlastní text práce
+% =========================================================
+\section{Nadpis první úrovně}
+První odstavec za nadpisem začíná bez odsazení. Text je zarovnán do bloku, má velikost 12~pt, řádkování 1,5 a odstavce mají menší mezeru před sebou. Sem vložte úvodní část seminární práce.
+
+Další odstavce už mají odsazený první řádek. Tato šablona je určena jako jednoduchý základ pro seminární práci: titulní strana, prohlášení, obsah, číslované nadpisy, záhlaví, zápatí, poznámky pod čarou, seznamy, obrázky, tabulky a seznam použitých zdrojů.
+
+\section{Dlouhý nadpis první úrovně, který přesahuje délku jednoho řádku a ukazuje, jak se nadpis zalomí}
+Ukázkový text kapitoly. Vlastní obsah nahraďte svým textem.
+
+\subsection{Nadpis druhé úrovně}
+Text podkapitoly.
+
+\subsection{Dlouhý nadpis druhé úrovně, který přesahuje délku jednoho řádku a ukazuje zalomení}
+Text další podkapitoly.
+
+\subsubsection{Nadpis třetí úrovně}
+Text části třetí úrovně.
+
+\section{Seznamy}
+Ukázka nečíslovaného seznamu:
+\begin{itemize}
+  \item první položka,
+  \item druhá položka,
+  \item třetí položka.
+\end{itemize}
+
+Ukázka víceúrovňového číslovaného seznamu:
+\begin{enumerate}[label=\arabic*)]
+  \item První položka
+  \begin{enumerate}[label=\alph*)]
+    \item Vnořená položka
+    \item Vnořená položka
+    \begin{enumerate}[label=\roman*)]
+      \item Další úroveň
+      \item Další úroveň
+    \end{enumerate}
+  \end{enumerate}
+  \item Druhá položka
+\end{enumerate}
+
+\section{Obrázky}
+Obrázek lze vložit standardním prostředím \texttt{figure}. Popisek je pod obrázkem a na obrázek se lze odkazovat v textu, například Obrázek~\ref{fig:ukazka}.
+
+\begin{figure}[h]
+  \centering
+  \fbox{\rule{0pt}{45mm}\rule{0.75\textwidth}{0pt}}
+  \caption{Ukázkový prostor pro obrázek.}
+  \label{fig:ukazka}
+\end{figure}
+
+\section{Tabulky}
+Tabulka může mít jednoduchý akademický vzhled s výraznější hlavičkou.
+
+\begin{table}[h]
+  \centering
+  \caption{Ukázková tabulka}
+  \begin{tabularx}{\textwidth}{|Y|Y|Y|Y|}
+    \hline
+    \textbf{1. buňka} & \textbf{2. buňka} & \textbf{3. buňka} & \textbf{4. buňka} \\
+    \hline
+    Text & Text & Text & Text \\
+    \hline
+    Text & Text & Text & Text \\
+    \hline
+  \end{tabularx}
+  \label{tab:ukazka}
+\end{table}
+
+\section{Citace a poznámky}
+Krátkou poznámku lze vložit pod čarou.\footnote{Toto je ukázková poznámka pod čarou.} Odkaz na zdroj lze psát ručně, například podle autora a roku vydání, nebo využít citační balíčky podle požadavků školy.
+
+\section{Použité zdroje}
+\begin{thebibliography}{9}
+  \bibitem{zdroj1}
+  PŘÍJMENÍ, Jméno. \textit{Název knihy}. Místo vydání: Nakladatel, rok. ISBN.
+\end{thebibliography}
+
+\end{document}
