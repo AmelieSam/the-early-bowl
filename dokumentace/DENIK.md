@@ -44,6 +44,20 @@ Explicitní záznam rozhodnutí. Formát: **co** / **proč** / **zvažované alt
 
 ## Chronologie
 
+### 28. 5. 2026 — Ucelené dokumenty cenotvorba & marketing-plan
+
+**Provedeno (vstup zadavatele):**
+
+* ✅ Vytvořen **[cenotvorba.md](cenotvorba.md)** — ucelený dokument pro praktickou část projektové dokumentace (ZADANI §2B „Cenotvorba"). 9 sekcí: filozofie ceníku, přehled menu, food cost per položka (vč. dekompozice M1), anchor strategie, výrobní cena per zákazník, break-even analýza (4 scénáře), financování startu, citlivostní analýza, shrnutí pro PDF. Vychází z `rozpocet_sablona.md` (zdroj čísel) a `menu_sablona.md`; vše je „kvalifikovaný odhad" kalibrovaný podle běžných sazeb 2026 (Opava).
+* ✅ Vytvořen **[marketing-plan.md](marketing-plan.md)** — sourozenecký dokument k cenotvorbě. 10 sekcí: východiska, 3 detailní primární persony (Tereza/Michal/Jana) + sekundární long-tail, pozicionování vůči konkurenci (5 kategorií), vizuální identita jako marketing, online kanály (IG primárně, web/FB/TikTok), offline (gym, letáky, WOM, PR), lokální SEO + GBP, marketingová roadmapa (pre-launch → měsíc 7+), KPI tabulka 3/6 měsíců, reflexe omezení.
+* ✅ Aktualizován **README.md** — nové dokumenty zařazeny jako *finální ucelené dokumenty (primární zdroj pro PDF)*, šablony `_sablona.md` přesunuty pod *pracovní podklady*.
+
+**💡 Zjištění:** Šablony (`rozpocet_sablona.md`, `marketing_plan_sablona.md`) byly **dobrým podkladem pro datový obsah** (tabulky, čísla), ale jako přímý vstup do PDF jim chyběl narativ a propojení. Nové dokumenty drží stejná čísla, ale stavějí kolem nich příběh — break-even není jen tabulka, je to fáze 4–6 měsíců ztráty s konkrétní rezervou; persony nejsou jen jméno + věk, mají triggerový moment a kanál objevení. Šablony zůstávají jako workbook, finální dokumenty jdou do PDF.
+
+**Další krok:** Sazba projektové dokumentace v LaTeX (`protokol/seminarni_prace_template_mgo.tex`) — zahrnout cenotvorba.md a marketing-plan.md do praktické části.
+
+---
+
 ### 28. 5. 2026 — Migrace struktury repa pro GitHub Pages
 
 **Provedeno (vstup zadavatele):**

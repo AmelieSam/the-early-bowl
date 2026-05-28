@@ -21,10 +21,16 @@
 * **[docs/](docs/)** — statický web (HTML/CSS/JS); hostuje GitHub Pages přímo z `/docs`. Detaily v [docs/README.md](docs/README.md).
 
 ### 📊 Vstupy pro projektovou dokumentaci
+
+**Finální ucelené dokumenty** (primární zdroj pro PDF):
+* **[cenotvorba.md](dokumentace/cenotvorba.md)** — filozofie ceníku, food cost per položka, anchor strategie, break-even, financování, citlivostní analýza.
+* **[marketing-plan.md](dokumentace/marketing-plan.md)** — cílová skupina (3 persony), pozicionování, online/offline kanály, lokální SEO, KPI, roadmapa.
 * **[menu_sablona.md](dokumentace/menu_sablona.md)** — finální menu s ID, popisy, cenami.
 * **[menu-matrix.md](dokumentace/menu-matrix.md)** — matice vhodnosti pro diety a obsažených alergenů.
-* **[marketing_plan_sablona.md](dokumentace/marketing_plan_sablona.md)** — marketingová strategie a persony.
-* **[rozpocet_sablona.md](dokumentace/rozpocet_sablona.md)** — počáteční investice, fixní/variabilní náklady, cenotvorba, financování.
+
+**Pracovní podklady** (zdrojové sešity, ze kterých vznikly finální verze):
+* **[rozpocet_sablona.md](dokumentace/rozpocet_sablona.md)** — pracovní rozpočet (počáteční investice, fixní/variabilní náklady, cash flow scénáře).
+* **[marketing_plan_sablona.md](dokumentace/marketing_plan_sablona.md)** — pracovní marketingový sešit.
 
 ## Klíčové vlastnosti projektu
 
