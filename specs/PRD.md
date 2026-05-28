@@ -6,7 +6,7 @@
 
 > **Vizuální identita:** Tento dokument **nedefinuje** barvy, fonty ani ilustrační styl. Single source of truth je [DESIGN.md](DESIGN.md). PRD určuje **co** se staví a **jak funguje**; DESIGN určuje **jak to vypadá**.
 >
-> **Plán a termíny:** viz [PLAN.md](../docs/PLAN.md).
+> **Plán a termíny:** viz [PLAN.md](../dokumentace/PLAN.md).
 
 ---
 
@@ -60,7 +60,7 @@ Web je **prezentační, ne e-shop**. Online platby ani košík nejsou v Fázi 1 
 | Personál | 1 osoba na směnu (2–3 brigádníci v rotaci) |
 | Menu | 10 položek (3 nápoje, 2 sladké, 4 slané, 1 obědová polévka) |
 
-Detailní menu viz [menu_sablona.md](../docs/menu_sablona.md). Cenotvorba a marže viz [rozpocet_sablona.md](../docs/rozpocet_sablona.md).
+Detailní menu viz [menu_sablona.md](../dokumentace/menu_sablona.md). Cenotvorba a marže viz [rozpocet_sablona.md](../dokumentace/rozpocet_sablona.md).
 
 ---
 
@@ -84,8 +84,8 @@ Detailní menu viz [menu_sablona.md](../docs/menu_sablona.md). Cenotvorba a mar�
 
 #### Dietní ikony u položek
 
-* U každé položky se zobrazí **ikony diet**, pro které je vhodná (bez lepku, bez laktózy, vegan, vegetariánské) — zdroj: `diet_suitable` v [`menu.yaml`](../web/data/menu.yaml), ikony `web/images/icons/diet-*.png`.
-* **Žádná souhrnná allergen tabulka na webu.** Kompletní matice diet/alergenů zůstává jen jako interní dokument [menu-matrix.md](../docs/menu-matrix.md).
+* U každé položky se zobrazí **ikony diet**, pro které je vhodná (bez lepku, bez laktózy, vegan, vegetariánské) — zdroj: `diet_suitable` v [`menu.yaml`](../docs/data/menu.yaml), ikony `docs/images/icons/diet-*.png`.
+* **Žádná souhrnná allergen tabulka na webu.** Kompletní matice diet/alergenů zůstává jen jako interní dokument [menu-matrix.md](../dokumentace/menu-matrix.md).
 
 #### Video (placeholder pro Fázi B)
 
@@ -130,9 +130,9 @@ Detailní menu viz [menu_sablona.md](../docs/menu_sablona.md). Cenotvorba a mar�
 | Vrstva | Volba | Důvod |
 |---|---|---|
 | Frontend | **HTML5 + CSS3 + Vanilla JS** (žádný framework) | Statické stránky nepotřebují React. |
-| Build | **Žádný** — web funguje otevřením `index.html` | Bez build pipeline; deployují se přímo statické soubory ze `web/`. |
+| Build | **Žádný** — web funguje otevřením `index.html` | Bez build pipeline; deployují se přímo statické soubory z `docs/`. |
 | AI codegen | **Claude** (přes Claude Code) | Generování HTML/CSS/JS s důsledným použitím design tokens. |
-| Grafika | **✅ hotovo** — vygenerováno **Codexem** (ChatGPT Images 2.0) dle promptů v [`docs/prompts/`](../docs/prompts/) | Bitmapy ve stylu loga, uloženo v `web/images/` (10 jídel, hero, OG, 404, logo, ikony, favicon). |
+| Grafika | **✅ hotovo** — vygenerováno **Codexem** (ChatGPT Images 2.0) dle promptů v [`dokumentace/prompts/`](../dokumentace/prompts/) | Bitmapy ve stylu loga, uloženo v `docs/images/` (10 jídel, hero, OG, 404, logo, ikony, favicon). |
 | Video | **[HeyGen Hyperframes](https://github.com/heygen-com/hyperframes)** — **zatím jen placeholder** | Animované video přípravy S1 se doplní později; teď bílý obdélník na stránce Menu (§5.2). Bez voiceoveru. |
 | Hosting | **GitHub Pages** (free) | Statický hosting přímo z repozitáře, HTTPS automaticky. **Neumí custom HTTP hlavičky ani `_redirects`** (viz §7.6). |
 | Doména | **generická GitHub** — `https://ameliesam.github.io/the-early-bowl/` | Zdarma. Web běží na **podcestě `/the-early-bowl/`** → nutné **relativní cesty** k assetům (viz §6.1). |
@@ -141,7 +141,7 @@ Detailní menu viz [menu_sablona.md](../docs/menu_sablona.md). Cenotvorba a mar�
 ### 7.2 Struktura projektu
 
 ```
-web/                         # deploy root pro GitHub Pages (publikuje se obsah této složky)
+docs/                         # deploy root pro GitHub Pages (publikuje se obsah této složky)
 ├── index.html              # Homepage
 ├── menu.html
 ├── o-nas.html
@@ -177,21 +177,21 @@ web/                         # deploy root pro GitHub Pages (publikuje se obsah 
 
 > **stylesheet.html** je interní referenční stránka (není v navigaci ani v sitemap). Slouží jako živá ukázka všech design tokens a komponent z [DESIGN.md](DESIGN.md).
 >
-> **Deploy:** obsah `web/` se publikuje na GitHub Pages (např. GitHub Actions `upload-pages-artifact` s `path: web`, čistě publikace bez buildu; nebo větev/složka v nastavení Pages).
+> **Deploy:** v GitHub Settings → Pages je source nastaven na `main` branch, folder `/docs` — GitHub Pages publikuje obsah složky přímo, **bez build kroku a bez GitHub Actions**. Soubor `.nojekyll` v `docs/` vypíná Jekyll, takže se servírují přesně ty soubory, které commituješ.
 
 ### 7.3 Data — menu z YAML (bez JSON, bez buildu)
 
-**Zdroj pravdy = [`web/data/menu.yaml`](../web/data/menu.yaml)** (číselníky diet/alergenů, kategorie, 10 položek s cenami a příznaky). Menu na webu se renderuje z těchto dat — **žádné položky natvrdo v HTML**, při změně menu se needituje kód stránky. **Žádný `menu.json` se nevytváří** (rozhodnutí D-16 upraveno → D-18).
+**Zdroj pravdy = [`docs/data/menu.yaml`](../docs/data/menu.yaml)** (číselníky diet/alergenů, kategorie, 10 položek s cenami a příznaky). Menu na webu se renderuje z těchto dat — **žádné položky natvrdo v HTML**, při změně menu se needituje kód stránky. **Žádný `menu.json` se nevytváří** (rozhodnutí D-16 upraveno → D-18).
 
 **Jak to čte web bez buildu a i přes `file://`:**
 
-* Data jsou na stránce vložená jako **inline blok** `<script type="text/yaml" id="menu-data">…</script>`, jehož obsah **zrcadlí `web/data/menu.yaml`** (kanonický editovatelný zdroj).
+* Data jsou na stránce vložená jako **inline blok** `<script type="text/yaml" id="menu-data">…</script>`, jehož obsah **zrcadlí `docs/data/menu.yaml`** (kanonický editovatelný zdroj).
 * `js/vendor/yaml-mini.js` (malý parser bez závislostí) ho naparsuje, `js/menu.js` vykreslí karty a dietní ikony.
 * Důvod inline místo `fetch('data/menu.yaml')`: `fetch` se na `file://` v Chrome blokuje, a my chceme, aby web fungoval i pouhým otevřením `index.html`.
 
-> **Synchronizace:** `web/data/menu.yaml` je zdroj, inline blok je jeho kopie. Při ~10 zřídka měněných položkách stačí ruční sync (volitelně jednoduchý `cp`/node snippet — **ne build krok**). Tatáž data plní i „featured" položky na homepage.
+> **Synchronizace:** `docs/data/menu.yaml` je zdroj, inline blok je jeho kopie. Při ~10 zřídka měněných položkách stačí ruční sync (volitelně jednoduchý `cp`/node snippet — **ne build krok**). Tatáž data plní i „featured" položky na homepage.
 
-Kompletní matice diet/alergenů zůstává jen jako interní dokument [menu-matrix.md](../docs/menu-matrix.md) (na web nejde — jen ikony u položek, §5.2).
+Kompletní matice diet/alergenů zůstává jen jako interní dokument [menu-matrix.md](../dokumentace/menu-matrix.md) (na web nejde — jen ikony u položek, §5.2).
 
 ### 7.4 Performance cíle (realistické pro školní projekt)
 
@@ -413,7 +413,7 @@ Kompletní matice diet/alergenů zůstává jen jako interní dokument [menu-mat
 * [ ] Všechny odkazy fungují (žádné `#` placeholdery), **cesty relativní**
 * [ ] Web funguje otevřením `index.html` (file://) i na GitHub Pages (`/the-early-bowl/`)
 * [ ] Všechny obrázky mají alt text a jsou optimalizované (WebP, zmenšené)
-* [ ] Menu (10 položek + ceny + dietní ikony) odpovídá [`menu.yaml`](../web/data/menu.yaml)
+* [ ] Menu (10 položek + ceny + dietní ikony) odpovídá [`menu.yaml`](../docs/data/menu.yaml)
 * [ ] Žádný typo (korektura 2 osobami)
 * [ ] Telefon, e-mail a adresa správné
 * [ ] Favicon a apple-touch-icon nastaveny
@@ -549,9 +549,9 @@ Web je hotový, když:
 | Dokument | Účel |
 |---|---|
 | [ZADANI.md](../ZADANI.md) | Zdroj všech školních požadavků |
-| [PLAN.md](../docs/PLAN.md) | Harmonogram a deliverables |
+| [PLAN.md](../dokumentace/PLAN.md) | Harmonogram a deliverables |
 | [DESIGN.md](DESIGN.md) | **Single source of truth pro design** |
-| [menu_sablona.md](../docs/menu_sablona.md) | Finální menu (ID, popisy, ceny) |
-| [marketing_plan_sablona.md](../docs/marketing_plan_sablona.md) | Marketing strategie (vstup pro dokumentaci) |
-| [rozpocet_sablona.md](../docs/rozpocet_sablona.md) | Rozpočet a cenotvorba (vstup pro dokumentaci) |
-| [zapis_konzultace.md](../docs/zapis_konzultace.md) | Originální brief — zachovat beze změn |
+| [menu_sablona.md](../dokumentace/menu_sablona.md) | Finální menu (ID, popisy, ceny) |
+| [marketing_plan_sablona.md](../dokumentace/marketing_plan_sablona.md) | Marketing strategie (vstup pro dokumentaci) |
+| [rozpocet_sablona.md](../dokumentace/rozpocet_sablona.md) | Rozpočet a cenotvorba (vstup pro dokumentaci) |
+| [zapis_konzultace.md](../dokumentace/zapis_konzultace.md) | Originální brief — zachovat beze změn |

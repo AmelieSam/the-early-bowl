@@ -1,6 +1,6 @@
 # Prompt — Pozadí / opakující se vzor
 
-**Cílový soubor:** `web/images/bg-pattern.png`
+**Cílový soubor:** `docs/images/bg-pattern.png`
 **Použití:** jemný dekorativní podklad sekcí (velmi nízký kontrast, aby nerušil text).
 **Výstup:** 1024×1024 px · PNG · **bezešvý (seamless tile)** · smetanové pozadí.
 **Reference:** přilož `assets/Theearlybowlmiska.png`.

@@ -2,7 +2,7 @@
 
 Přehled vhodnosti jednotlivých položek menu pro běžné stravovací režimy a přehled obsažených alergenů. Slouží jako lidsky čitelný souhrn pro rozvahu a pro web (stránka Menu, PRD §5.2).
 
-> 🔗 **Zdroj dat:** strojově čitelným zdrojem pravdy je **[`web/data/menu.yaml`](../web/data/menu.yaml)**. Web čte YAML přímo (D-18, žádný JSON, žádný build). **Tato souhrnná matice se na web nedává** — slouží jen jako interní dokument; na webu jsou jen dietní ikony u položek. Udržuje se ručně podle `menu.yaml` / [menu_sablona.md](menu_sablona.md).
+> 🔗 **Zdroj dat:** strojově čitelným zdrojem pravdy je **[`web/data/menu.yaml`](../docs/data/menu.yaml)**. Web čte YAML přímo (D-18, žádný JSON, žádný build). **Tato souhrnná matice se na web nedává** — slouží jen jako interní dokument; na webu jsou jen dietní ikony u položek. Udržuje se ručně podle `menu.yaml` / [menu_sablona.md](menu_sablona.md).
 
 **Legenda:** ✅ vyhovuje / obsahuje · — nevyhovuje / neobsahuje · `*` lze upravit po domluvě · `**` ve veganské variantě · `✦` závisí na polévce dne
 
@@ -56,7 +56,7 @@ Přehled vhodnosti jednotlivých položek menu pro běžné stravovací režimy 
 
 **Cíl:** jeden zdroj pravdy pro menu, aby se při změně menu nezasahovalo do kódu stránek.
 
-- **Zdroj pravdy:** [`web/data/menu.yaml`](../web/data/menu.yaml) — položky + číselníky diet a alergenů + příznaky.
+- **Zdroj pravdy:** [`web/data/menu.yaml`](../docs/data/menu.yaml) — položky + číselníky diet a alergenů + příznaky.
 - **Web:** stránka Menu vykreslí karty + **dietní ikony** přímo z YAML (inline blok + malý JS parser, žádný JSON, žádný build) — viz [PRD.md](../specs/PRD.md) §7.3.
 - **Tato matice** je interní dokument (na web nejde); udržuje se ručně podle `menu.yaml`.
 

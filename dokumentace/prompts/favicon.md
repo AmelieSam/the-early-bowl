@@ -1,6 +1,6 @@
 # Prompt — Favicon / app ikona
 
-**Cílový soubor:** `web/images/icon-source.png` → export do `favicon.ico` (32/16 px) a `apple-touch-icon.png` (180 px).
+**Cílový soubor:** `docs/images/icon-source.png` → export do `favicon.ico` (32/16 px) a `apple-touch-icon.png` (180 px).
 **Použití:** ikona v záložce prohlížeče a na domovské obrazovce (DESIGN.md §2.2).
 **Výstup:** 1024×1024 px · PNG · **transparentní pozadí** · jeden objekt s malým okrajem (čitelný i v malém).
 **Reference:** přilož `assets/Theearlybowlmiska.png`.

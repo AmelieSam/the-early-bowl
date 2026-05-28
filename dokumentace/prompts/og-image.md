@@ -1,6 +1,6 @@
 # Prompt — Open Graph / sdílecí obrázek
 
-**Cílový soubor:** `web/images/og.png`
+**Cílový soubor:** `docs/images/og.png`
 **Použití:** náhled při sdílení webu (Facebook, Instagram, Messenger…). Cíl 1200×630 px.
 **Výstup:** **landscape 1536×1024 px** · PNG · smetanové pozadí. Po vygenerování **ořízni na 1200×630**.
 **Reference:** přilož `assets/Theearlybowlmiska.png`.

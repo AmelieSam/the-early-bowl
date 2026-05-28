@@ -2,7 +2,7 @@
 
 Kompletní přehled nástrojů a technologií projektu **The Early Bowl**. Slouží zároveň jako podklad pro sekci „Použité zdroje a nástroje" v projektové dokumentaci ([ZADANI.md](../ZADANI.md) §2B) a jako reference, proč byl každý nástroj zvolen.
 
-> Rozhodnutí o klíčových nástrojích jsou logována v [DENIK.md](../docs/DENIK.md) (Decision log `D-NN`).
+> Rozhodnutí o klíčových nástrojích jsou logována v [DENIK.md](../dokumentace/DENIK.md) (Decision log `D-NN`).
 
 ---
 
@@ -14,7 +14,7 @@ Kompletní přehled nástrojů a technologií projektu **The Early Bowl**. Slou�
 | **CSS3** (custom properties, Flexbox, Grid) | Vzhled, design tokens, responzivita | Design tokens z [DESIGN.md](DESIGN.md) jako CSS proměnné | zdarma |
 | **Vanilla JavaScript (ES6+)** | Interaktivita (mobilní menu, copy-to-clipboard, validace formuláře) | 5 statických stránek nepotřebuje framework → Lighthouse 100 | zdarma |
 
-> **Žádný framework** (React/Vue/…) — vědomé rozhodnutí kvůli jednoduchosti a výkonu. Viz [DENIK.md](../docs/DENIK.md) D-03.
+> **Žádný framework** (React/Vue/…) — vědomé rozhodnutí kvůli jednoduchosti a výkonu. Viz [DENIK.md](../dokumentace/DENIK.md) D-03.
 
 ---
 
@@ -41,7 +41,7 @@ Kompletní přehled nástrojů a technologií projektu **The Early Bowl**. Slou�
 | Nástroj | Použití | Proč nahrazen |
 |---|---|---|
 | **NotebookLM** | Zpracování briefu / kontextu (18.–23.5.) | Užitečné pro sumarizaci, ne pro tvorbu webu |
-| **Google Stitch** | Pokus o generování návrhu webu (23.5.) | ❌ Nekvalitní vstup = nekvalitní výstup; viz [DENIK.md](../docs/DENIK.md) |
+| **Google Stitch** | Pokus o generování návrhu webu (23.5.) | ❌ Nekvalitní vstup = nekvalitní výstup; viz [DENIK.md](../dokumentace/DENIK.md) |
 | **Gemini (free), GitHub Copilot (free)** | Pokus o generování | ❌ Free-tier nedostatečný pro kvalitní práci |
 
 ---
@@ -51,7 +51,7 @@ Kompletní přehled nástrojů a technologií projektu **The Early Bowl**. Slou�
 | Nástroj | Účel | Cena |
 |---|---|---|
 | **GitHub Pages** | Hosting statického webu, HTTPS automaticky | zdarma. Viz D-17 (dříve Cloudflare, D-05) |
-| **GitHub Actions** (`upload-pages-artifact`) | Publikace složky `web/` na Pages — čistá publikace, **žádný build** | zdarma |
+| **Source: `main` / `/docs`** | GH Pages servíruje přímo složku `/docs` z `main` větve — **bez Actions, bez build kroku** (D-20) | — |
 | `.nojekyll` | Vypne Jekyll processing | — |
 | **Doména** | generická GitHub — `https://ameliesam.github.io/the-early-bowl/` | zdarma |
 | Analytics | **žádné** | školní prototyp |
@@ -107,7 +107,7 @@ Kompletní přehled nástrojů a technologií projektu **The Early Bowl**. Slou�
 | AI nástroje (generování) | dle zvoleného plánu / kreditů |
 | **Web infrastruktura celkem** | **0 Kč** |
 
-> Celá web-infrastruktura běží zdarma na GitHub Pages (generická `*.github.io` doména). Vlastní doména je volitelná do budoucna (~400 Kč/rok). Detailní rozpočet podniku v [rozpocet_sablona.md](../docs/rozpocet_sablona.md).
+> Celá web-infrastruktura běží zdarma na GitHub Pages (generická `*.github.io` doména). Vlastní doména je volitelná do budoucna (~400 Kč/rok). Detailní rozpočet podniku v [rozpocet_sablona.md](../dokumentace/rozpocet_sablona.md).
 
 ---
 
@@ -117,5 +117,5 @@ Kompletní přehled nástrojů a technologií projektu **The Early Bowl**. Slou�
 |---|---|
 | [PRD.md](PRD.md) | Funkční a technická specifikace (§7 detailní tech řešení) |
 | [DESIGN.md](DESIGN.md) | Vizuální identita, fonty, AI prompty |
-| [PLAN.md](../docs/PLAN.md) | Harmonogram a odchylky od ZADANI |
-| [DENIK.md](../docs/DENIK.md) | Decision log — proč byl který nástroj zvolen |
+| [PLAN.md](../dokumentace/PLAN.md) | Harmonogram a odchylky od ZADANI |
+| [DENIK.md](../dokumentace/DENIK.md) | Decision log — proč byl který nástroj zvolen |

@@ -2,7 +2,7 @@
 
 **Status:** Single source of truth pro veškerá designová rozhodnutí.
 **Kotva:** Logo `../assets/Theearlybowlmiska.png` — všechny barvy, kontury a styl ilustrací z něj přímo vychází.
-**Živá implementace:** [`web/stylesheet.html`](../web/stylesheet.html) — všechny tokeny a komponenty z tohoto dokumentu jako funkční HTML/CSS ukázka. Tokeny jsou v [`web/css/tokens.css`](../web/css/tokens.css).
+**Živá implementace:** [`docs/stylesheet.html`](../docs/stylesheet.html) — všechny tokeny a komponenty z tohoto dokumentu jako funkční HTML/CSS ukázka. Tokeny jsou v [`docs/css/tokens.css`](../docs/css/tokens.css).
 
 ---
 
@@ -81,7 +81,7 @@ Barvy vychází z tónů snídaňových ingrediencí a teplého ranního světla
 * **Body text:** **Quicksand** (Google Fonts) — čistý, geometrický, mírně zaoblený. Alternativa: Nunito Sans.
 
 > **⚠️ Čeština — důležité (ověřeno Playwrightem 24. 5. 2026):**
-> Původně byla pro nadpisy zvolena **Fredoka**, ale vizuální test odhalil, že **Fredoka nemá vlastní glyfy pro české háčky** (`ě č ř š ž ň ť ď`) — prohlížeč je dotahoval ze systémového fallbacku, takže háček byl tenký a stylově nesedící k tučnému fontu. **Fredoka proto zamítnuta** (rozhodnutí D-13 v [DENIK.md](../docs/DENIK.md)).
+> Původně byla pro nadpisy zvolena **Fredoka**, ale vizuální test odhalil, že **Fredoka nemá vlastní glyfy pro české háčky** (`ě č ř š ž ň ť ď`) — prohlížeč je dotahoval ze systémového fallbacku, takže háček byl tenký a stylově nesedící k tučnému fontu. **Fredoka proto zamítnuta** (rozhodnutí D-13 v [DENIK.md](../dokumentace/DENIK.md)).
 >
 > **Baloo 2** renderuje kompletní českou diakritiku správně a konzistentně (ověřeno `document.fonts.check(font, "ě")` → `true` + screenshotem).
 >
@@ -229,7 +229,7 @@ Malé kulaté chips, kolorované podle významu:
 
 Veškerá doprovodná grafika (jídla, hero, dekorace) je generována **AI** (cílový nástroj: **ChatGPT Images 2.0**). Cílem je vizuál konzistentní s logem.
 
-> 📁 **Hotové copy-paste prompty** pro každý obrázek jsou v [`../docs/prompts/`](../docs/prompts/README.md) — jeden soubor na obrázek (10 jídel, hero, OG, 404, pattern, favicon, logo, 4 dietní ikony). Sekce §7.1–§7.4 níže jsou referenční „zdroj pravdy" stylu, ze kterého ty prompty vychází.
+> 📁 **Hotové copy-paste prompty** pro každý obrázek jsou v [`../dokumentace/prompts/`](../dokumentace/prompts/README.md) — jeden soubor na obrázek (10 jídel, hero, OG, 404, pattern, favicon, logo, 4 dietní ikony). Sekce §7.1–§7.4 níže jsou referenční „zdroj pravdy" stylu, ze kterého ty prompty vychází.
 
 ### 7.1 Master style prompt (základ pro každé generování)
 ```

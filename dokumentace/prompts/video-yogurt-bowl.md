@@ -1,9 +1,9 @@
 # Prompt — Video: příprava Yogurt Bowl (top-down)
 
-**Cílový soubor:** `web/images/video/yogurt-bowl-prep.mp4`
+**Cílový soubor:** `docs/images/video/yogurt-bowl-prep.mp4`
 **Použití:** krátký vertikální klip pro **TikTok / Instagram Story / Reels** — ukázka přípravy vlajkové položky S1 Yogurt Bowl.
 **Výstup:** **vertikální 9:16 (1080×1920 px)** · 5–10 s · MP4 · bez zvuku (hudba se dodá při střihu).
-**Cílový nástroj:** AI video (Sora 2 / Veo 3 / Runway). Přilož jako reference `assets/Theearlybowlmiska.png` + hotový still `web/images/menu/s1-yogurt-bowl.png`, ať model drží linku a barvy.
+**Cílový nástroj:** AI video (Sora 2 / Veo 3 / Runway). Přilož jako reference `assets/Theearlybowlmiska.png` + hotový still `docs/images/menu/s1-yogurt-bowl.png`, ať model drží linku a barvy.
 **Kamera:** statický **top-down** (pohled přímo shora na stůl), žádné nakloněné úhly.
 
 ## Prompt (kopíruj celé)

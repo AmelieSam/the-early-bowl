@@ -1,6 +1,6 @@
 # Prompt — Ikona „Vegan"
 
-**Cílový soubor:** `web/images/icons/diet-vegan.png`
+**Cílový soubor:** `docs/images/icons/diet-vegan.png`
 **Použití:** dietní badge u položek menu (DESIGN.md §6.5).
 **Výstup:** 1024×1024 px · PNG · **transparentní pozadí** · jeden kulatý symbol, čitelný i malý.
 **Reference:** přilož `assets/Theearlybowlmiska.png`.

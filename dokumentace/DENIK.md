@@ -37,10 +37,41 @@ Explicitní záznam rozhodnutí. Formát: **co** / **proč** / **zvažované alt
 | **D-16** | 25.5. | Menu jako data = **`web/data/menu.yaml`** (zdroj pravdy) + plánovaný generátor → `menu.json` (web) a `menu-matrix.md` (docs) | Pohodlná editace s komentáři, jeden zdroj → web i matice nedriftují, menu se mění bez zásahu do kódu stránek | Čisté JSON bez buildu (bez komentářů, ruční matice); menu natvrdo v HTML |
 | **D-17** | 25.5. | Hosting **Cloudflare Pages → GitHub Pages** (generická doména `ameliesam.github.io/the-early-bowl/`) | Pokyn zadavatele | Cloudflare (D-05, nahrazeno); vlastní doména. Dopad: GH Pages neumí custom HTTP hlavičky/`_redirects`, web běží na podcestě → **relativní cesty** |
 | **D-18** | 25.5. | **Upřesnění MVP webu** (před vývojem): bez kontaktního formuláře, bez email notifikací, **bez allergen tabulky na webu** (jen dietní ikony u položek), sociální sítě jen **IG proklik**, menu čteno **přímo z `menu.yaml`** (inline blok + malý JS parser, **žádný JSON, žádný build**, funguje i přes `file://`), video jen **placeholder** (HeyGen později), realistické performance cíle, SEO úměrně | Pokyn zadavatele; jednoduchost, statický web bez backendu, splnitelné cíle | Generátor `menu.json` (z D-16 — zrušeno); formulář (Formspree); souhrnná matice na webu; Twitter/FB |
+| **D-19** | 28.5. | Propagační video vygenerováno v **Google Gemini Veo** (text-to-video z promptu `dokumentace/prompts/video-yogurt-bowl.md`), nahrazuje HeyGen Hyperframes z D-10 | Dostupný nástroj, rychlý výsledek bez nutnosti HTML→video pipeline; jediný klip stačí pro IG/TikTok placeholder | HeyGen Hyperframes (D-10, nahrazeno); Sora/Runway/Kling |
+| **D-20** | 28.5. | **Struktura repa upravena kvůli GH Pages**: `web/` → **`docs/`** (deploy root pro GH Pages source `main`/`/docs`), bývalé `docs/` → **`dokumentace/`** (projektová dokumentace, šablony, prompts, protokol). GH Pages publikuje přímo `/docs` bez Actions/buildu. | GitHub Pages servíruje `index.html` jen z rootu nebo `/docs`; přímý source je jednodušší než GH Actions workflow (D-17 byl bez konkrétního mechanismu) | Hosting přes GH Actions `upload-pages-artifact` z `web/` (více konfigurace); přesun webu do rootu (smíchal by meta soubory s webem) |
 
 ---
 
 ## Chronologie
+
+### 28. 5. 2026 — Migrace struktury repa pro GitHub Pages
+
+**Provedeno (vstup zadavatele):**
+
+* 🧭 Rozhodnutí **D-20** — GitHub Pages servíruje `index.html` jen z rootu nebo `/docs`. Aby web mohl bydlet v `/docs` bez GH Actions, byly složky přejmenovány:
+  * `web/` → **`docs/`** (deploy root pro GH Pages)
+  * původní `docs/` → **`dokumentace/`** (projektová dokumentace — DENIK, PLAN, prompts, protokol, šablony, menu-matrix)
+* ✅ Přejmenování přes `git mv` (zachová historii souborů).
+* ✅ Aktualizovány vzájemné odkazy: `README.md` (rozcestník), `specs/PRD.md` (vč. §7.2 struktura, §7.3 zdroj YAML), `specs/DESIGN.md` (cesty na stylesheet/tokens), `specs/TECH-STACK.md` (deploy mechanismus), `dokumentace/prompts/*.md` (cílové cesty obrázků), `dokumentace/menu-matrix.md` (link na menu.yaml). Historické záznamy v `DENIK.md` ponechány s původními cestami (historie se nepřepisuje); aktivní odkazy opraveny inline poznámkou.
+* ✅ PRD §7.2 deploy poznámka přepsána: source = `main` branch, folder `/docs`, **bez Actions**, `.nojekyll` vypíná Jekyll.
+
+**Další krok:** v GitHub Settings → Pages přepnout source na `main` / `/docs` (zatím nastaveno staré). Pak ověřit živý web na `https://ameliesam.github.io/the-early-bowl/`.
+
+---
+
+### 28. 5. 2026 — Propagační video (Gemini Veo) a LaTeX šablona dokumentace
+
+**Provedeno:**
+
+* ✅ **Propagační video vygenerováno v Google Gemini Veo** podle promptu [`dokumentace/prompts/video-yogurt-bowl.md`](prompts/video-yogurt-bowl.md) (top-down příprava S1 Yogurt Bowl, 9:16, bez voiceoveru). Uloženo jako [`docs/images/video.mp4`](../docs/images/video.mp4) (~1,6 MB).
+* 🧭 Rozhodnutí **D-19** — Gemini Veo nahrazuje původně plánovaný HeyGen Hyperframes (D-10). HTML→video pipeline se ukázala jako zbytečná komplikace, text-to-video z brand promptu dal použitelný klip rychleji.
+* ✅ Vytvořena **[LaTeX šablona seminární práce](protokol/seminarni_prace_template_mgo.tex)** podle stylu MGO (XeLaTeX, Cambria 16 pt titulní strana — analýza fontů z oficiální MGO předlohy přes `pdffonts`/`pdftohtml`). Podklad pro sazbu finální projektové dokumentace.
+
+**⚠️ TODO (zbývá):** osadit `video.mp4` do `docs/menu.html` místo stávajícího `<div class="video-ph">` placeholderu (poster z hero ilustrace, `<video controls muted playsinline>`).
+
+**💡 Zjištění:** Rozhodnutí D-10 (HeyGen) bylo learning — nakonec zvítězil jednodušší nástroj, který už uměl text-to-video ve stylu, který stačil. Lekce: nevolit nástroj dopředu, dokud není potřeba.
+
+---
 
 ### 27. 5. 2026 — Video prompt pro sociální sítě
 
@@ -79,7 +110,7 @@ Explicitní záznam rozhodnutí. Formát: **co** / **proč** / **zvažované alt
 **Provedeno (16. iterace, vstup zadavatele):**
 
 * 🧭 Rozhodnutí **D-16** — varianta **A (YAML + generátor)**.
-* ✅ Vytvořen datový soubor **[`web/data/menu.yaml`](../web/data/menu.yaml)** se 10 položkami + číselníky diet a alergenů + příznaky (`diet_suitable` / `diet_adjustable` / `allergens` / `allergens_adjustable` / `varies`). PRD §7.3 aktualizováno.
+* ✅ Vytvořen datový soubor **[`web/data/menu.yaml`](../docs/data/menu.yaml)** se 10 položkami + číselníky diet a alergenů + příznaky (`diet_suitable` / `diet_adjustable` / `allergens` / `allergens_adjustable` / `varies`). PRD §7.3 aktualizováno. *(pozn.: po migraci 28.5. žije v `docs/data/menu.yaml` — viz D-20)*
 * 📌 **Generátor** (`menu.yaml → menu.json` + `menu-matrix.md`) odložen na později — zařazeno do [PLAN.md](PLAN.md) Fáze C.
 
 **Provedeno (17. iterace, vstup zadavatele — předvývojová revize PRD):**

@@ -11,7 +11,7 @@ Vizuální pravidla vychází z [DESIGN.md](../../specs/DESIGN.md) §7. Cíl: v�
 3. Zkopíruj **celý prompt** z příslušného souboru (je samostatný — obsahuje stylový blok i zadání).
 4. Nastav **rozměr a pozadí** podle hlavičky „Výstup" v daném souboru (čtverec 1024×1024 pro jídla a ikony, landscape pro hero/OG; transparentní pozadí kde je uvedeno).
 5. Vygeneruj 3–4 varianty, vyber nejbližší stylu loga. Při nesouladu uprav **jen zadání subjektu**, nikdy stylový blok (drží konzistenci celé sady).
-6. Ulož pod cílovým názvem (viz „Cílový soubor" v hlavičce) do `web/images/...`.
+6. Ulož pod cílovým názvem (viz „Cílový soubor" v hlavičce) do `docs/images/...`.
 7. Po dokončení sady projdi všechny vedle sebe a ověř jednotnou tloušťku kontur a sytost barev.
 
 ## Tipy ke konzistenci
@@ -23,7 +23,7 @@ Vizuální pravidla vychází z [DESIGN.md](../../specs/DESIGN.md) §7. Cíl: v�
 
 ## Seznam promptů
 
-### Menu (10 položek → `web/images/menu/`)
+### Menu (10 položek → `docs/images/menu/`)
 | ID | Soubor promptu | Cílový obrázek |
 |---|---|---|
 | N1 | [n1-voda-s-citronem.md](n1-voda-s-citronem.md) | `menu/n1-voda.png` |
@@ -47,12 +47,12 @@ Vizuální pravidla vychází z [DESIGN.md](../../specs/DESIGN.md) §7. Cíl: v�
 | [favicon.md](favicon.md) | `favicon.ico`, `apple-touch-icon.png` |
 | [logo-varianty.md](logo-varianty.md) | `images/logo.png`, `images/logo-horizontal.png` |
 
-### Video (sociální sítě → `web/images/video/`)
+### Video (sociální sítě → `docs/images/video/`)
 | Soubor promptu | Cílový výstup | Formát |
 |---|---|---|
 | [video-yogurt-bowl.md](video-yogurt-bowl.md) | `video/yogurt-bowl-prep.mp4` | 9:16 short (TikTok / IG Story) |
 
-### Dietní ikony (→ `web/images/icons/`)
+### Dietní ikony (→ `docs/images/icons/`)
 | Soubor promptu | Cílový obrázek |
 |---|---|
 | [icon-vegan.md](icon-vegan.md) | `icons/diet-vegan.png` |

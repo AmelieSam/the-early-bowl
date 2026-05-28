@@ -1,7 +1,7 @@
 # Prompt — Hero ilustrace (homepage)
 
-**Cílový soubor:** `web/images/hero.png`
-**Použití:** velký obrázek v hero sekci homepage (`web/index.html`).
+**Cílový soubor:** `docs/images/hero.png`
+**Použití:** velký obrázek v hero sekci homepage (`docs/index.html`).
 **Výstup:** **landscape 1536×1024 px** · PNG · pozadí smetanové (`#FAF6EE`, ne transparentní).
 **Reference:** přilož `assets/Theearlybowlmiska.png`.
 **Kompozice:** scéna vpravo/uprostřed, **vlevo nech klidnější plochu** pro překryv nadpisu H1 z HTML.

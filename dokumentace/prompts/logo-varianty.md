@@ -1,6 +1,6 @@
 # Prompt — Logo varianty (transparentní + horizontální lockup)
 
-**Cílové soubory:** `web/images/logo.png` (transparentní), `web/images/logo-horizontal.png` (vodorovný lockup do hlavičky).
+**Cílové soubory:** `docs/images/logo.png` (transparentní), `docs/images/logo-horizontal.png` (vodorovný lockup do hlavičky).
 **Použití:** logo v hlavičce webu, patičce, sociálních sítích.
 **Výstup:** transparentní PNG; vodorovná verze cca 1536×1024 (kolem loga nech místo).
 **Reference:** přilož `assets/Theearlybowlmiska.png` — to je **zdroj pravdy**, nové varianty se mu musí podobat.
