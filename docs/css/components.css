@@ -71,7 +71,9 @@ button.id-badge.is-copied { background: var(--leaf); }
   display: flex; align-items: center; justify-content: space-between;
   padding: var(--space-md); border-bottom: 2px solid var(--cream-shadow);
 }
-.site-header .logo { font-family: var(--font-head); font-weight: 700; font-size: 20px; text-decoration: none; color: var(--outline-brown); }
+.site-header .logo { display: inline-flex; align-items: center; gap: var(--space-sm); font-family: var(--font-head); font-weight: 700; font-size: 20px; text-decoration: none; color: var(--outline-brown); line-height: 1; }
+.site-header .logo__icon { width: 40px; height: 40px; display: block; }
+.site-header .logo__text { display: inline-block; }
 .nav-list { display: flex; gap: var(--space-lg); }
 .nav-toggle { display: none; background: none; border: none; font-size: 24px; cursor: pointer; }
 
