@@ -42,7 +42,7 @@
 \newcommand{\typprace}{Závěrečný projekt}
 \newcommand{\nazevprace}{The Early Bowl}
 \newcommand{\podnazevprace}{snídaňová restaurace pro studenty a sportovce}
-\newcommand{\autor}{Amélie Sam}
+\newcommand{\autor}{Amélie Šamárková}
 \newcommand{\skola}{Mendelovo gymnázium, Opava, příspěvková organizace}
 \newcommand{\predmet}{informatika}
 \newcommand{\misto}{Opava}
@@ -192,9 +192,15 @@ Prohlašuji, že jsem tento závěrečný projekt vypracovala samostatně na zá
 \section*{Úvod}
 \addcontentsline{toc}{section}{Úvod}
 
-Cílem projektu bylo navrhnout fiktivní snídaňovou restauraci \textbf{The Early Bowl} a vytvořit pro ni kompletní webovou prezentaci. Restaurace má sídlit v~centru Opavy (Náměstí Republiky 159/10, OD Stará Breda), otevřeno 6:00--13:30, a~cílí na studenty Slezské univerzity a~sportovce z~nedalekého fitness centra. Web slouží jako digitální vizitka: menu, příběh značky, kontakt a~otvírací doba. Tato dokumentace popisuje teoretická východiska tvorby webu i~konkrétní cestu, kterou projekt prošel.
+Cílem projektu bylo navrhnout fiktivní snídaňovou restauraci \textbf{The Early Bowl} a vytvořit pro ni kompletní webovou prezentaci. Restaurace má sídlit v~centru Opavy (Náměstí Republiky 159/10, OD Stará Breda), otevřeno 6:00--13:30, a~cílí na středoškolské a~vysokoškolské studenty a~sportovce z~fitnescentra. Web slouží jako digitální vizitka: menu, příběh značky, kontakt a~otvírací doba. Tato dokumentace popisuje teoretická východiska tvorby webu i~konkrétní cestu, kterou projekt prošel.
 
-Živý web je dostupný na adrese \url{https://ameliesam.github.io/the-early-bowl/}, zdrojové soubory v~repozitáři \url{https://github.com/AmelieSam/the-early-bowl}.
+Projekt vědomě následuje princip \textbf{spec-driven development} -- nejdřív vznikla pořádná dokumentace značky a~specifikace webu (paleta, fonty, persony, datový model menu), teprve potom z~ní AI nástroje generovaly samotný kód. AI je tu výkonný spolupracovník, ne náhrada za promyšlený záměr.
+
+Živý web:\\
+\url{https://ameliesam.github.io/the-early-bowl/}
+
+\noindent Zdrojové soubory:\\
+\url{https://github.com/AmelieSam/the-early-bowl}
 
 % =========================================================
 % A. TEORETICKÁ ČÁST
@@ -219,11 +225,11 @@ Pro tento projekt jsme zvolili „čistý" stack bez frameworků jako React nebo
 
 \subsection{Co je CMS a proč jsme ho nepoužili}
 
-\textbf{CMS} (Content Management System) jako WordPress, Webnode nebo Shoptet je hotová „továrna na weby" -- uživatel klikáním sestaví stránku, aniž by psal kód. Výhodou je rychlost a~komfort, nevýhodou závislost na platformě, slabší výkon a~omezená kontrola nad vzhledem. Pro tento projekt jsme chtěli plnou kontrolu nad brandem a~maximální výkon, proto byl zvolen statický web psaný „ručně" (s~pomocí AI nástrojů -- viz praktická část).
+\textbf{CMS} (Content Management System) jako WordPress, Webnode nebo Shoptet je hotová „továrna na weby" -- uživatel klikáním sestaví stránku, aniž by psal kód. Výhodou je rychlost a~komfort, nevýhodou závislost na platformě a~měsíční poplatky. Naše statické řešení má navíc \textbf{nulové náklady na provoz a~správu} (žádný měsíční hosting, žádné aktualizace pluginů, žádné bezpečnostní záplaty) -- to je s~redakčními systémy a~placenými hostingy nesrovnatelná výhoda.
 
 \subsection{Responzivita}
 
-Více než polovina uživatelů dnes prohlíží web na mobilu. \textbf{Responzivní design} znamená, že web automaticky přizpůsobuje rozložení velikosti obrazovky. Realizuje se v~CSS pomocí relativních jednotek (\texttt{\%}, \texttt{rem}), flexibilního layoutu (Flexbox, Grid) a~takzvaných \emph{media queries}, které mění styl podle šířky displeje.
+Více než polovina uživatelů dnes prohlíží web na mobilu. \textbf{Responzivní design} znamená, že web sám přizpůsobí rozložení velikosti obrazovky -- na telefonu se mění menu na rozbalovací, sloupce se skládají pod sebe a~fotky se zmenšují tak, aby se nemusely posouvat do stran.
 
 \section{Základy UX/UI}
 
@@ -232,10 +238,10 @@ Více než polovina uživatelů dnes prohlíží web na mobilu. \textbf{Responzi
 \subsection{Co dělá web přehledným}
 
 \begin{enumerate}[label=\arabic*.]
-  \item \textbf{Jasná navigace} -- uživatel musí kdykoliv vědět, kde je a~jak se dostane domů. V~našem webu je horní menu (Úvod, Menu, O~nás, Kontakt, Podmínky) na každé stránce stejné.
+  \item \textbf{Jasná navigace} -- uživatel musí kdykoliv vědět, kde je a~jak se dostane domů. V~našem webu je horní menu (Menu, O~nás, Kontakt) na každé stránce stejné.
   \item \textbf{Vizuální hierarchie} -- důležité prvky (cena, tlačítko „kontaktovat") musí být na první pohled výraznější než vedlejší informace. Realizuje se velikostí, barvou a~prostorem.
   \item \textbf{Pravidlo tří kliků} -- uživatel by měl ke kterékoliv informaci dorazit nejvýše třemi kliky. U~pětistránkového webu je to triviální.
-  \item \textbf{Kontrast a čitelnost} -- text musí mít proti pozadí dostatečný kontrastní poměr (norma WCAG~2.1~AA vyžaduje 4{,}5\,:\,1). Naše paleta (hnědá \texttt{\#7A5843} na smetanové \texttt{\#FAF6EE}) má poměr 6{,}8\,:\,1.
+  \item \textbf{Kontrast a čitelnost} -- text musí mít proti pozadí dostatečný kontrast, aby se dal pohodlně přečíst i~na mobilu na slunci. Naše hnědé písmo na smetanovém pozadí ho má s~rezervou.
   \item \textbf{Rychlost} -- pokud se stránka načítá déle než 3~sekundy, polovina návštěvníků odejde. Proto jsme obrázky komprimovali do formátu WebP, hero foto kleslo z~1{,}1~MB na 73~kB.
 \end{enumerate}
 
@@ -264,20 +270,20 @@ Veškerý obsah na webu -- texty, ilustrace, video -- vytvořila autorka projekt
 % =========================================================
 \section{Příběh značky}
 
-The Early Bowl se zrodila z~osobní zkušenosti. Hledali jsme v~Opavě místo, kde si dáme pořádnou snídani před přednáškou, a~nenašli. Většina kaváren v~centru otevírá až po osmé, restaurace až po desáté, a~pekárny mají sice levné, ale jednotvárné a~nezdravé pečivo. Studenti, kteří přijdou na ranní přednášku na lačno, sportovci po cvičení ani lidé jdoucí do ranní směny nemají kam zajít.
+The Early Bowl se zrodila z~osobní zkušenosti. Hledali jsme v~Opavě místo, kde si dáme pořádnou snídani, a~nenašli jsme. Většina kaváren v~centru otevírá až po osmé, restaurace až po desáté, a~pekárny mají sice levné, ale jednotvárné a~nezdravé pečivo. Studenti, kteří přijdou na ranní přednášku na lačno, sportovci po cvičení ani lidé jdoucí do ranní směny nemají kam zajít.
 
 Tak vznikl koncept \emph{„misky optimismu pro ranní lidi"} -- fyzické místo otevřené už od šesti hodin ráno, kde si zákazník během pěti minut objedná zdravou, čerstvou snídani za přijatelnou cenu a~nemusí kvůli ní vstávat hodinu předem. Tři pilíře značky znějí jednoduše: \textbf{rychlé, zdravé, dostupné}. Každé rozhodnutí -- od ceníku přes vizuální styl až po komunikaci na Instagramu -- musí jeden z~těchto pilířů podpořit. Nejde tedy o~„další moderní bistro", ale o~cílený zásah do jasně definované mezery na opavském trhu.
 
 \section{Vizuální identita}
 
-Vizuální styl značky stojí na \textbf{logu} (keramická miska s~jogurtem, granolou a~ovocem), které autorka vytvořila nejprve ručně a~poté přes Google Gemini. Z~loga jsme odvodili celý design systém -- paletu, kresebný styl ilustrací jídel i~typografii.
+Vizuální styl značky stojí na \textbf{logu} (keramická miska s~jogurtem, granolou a~ovocem), které jsem vytvořila nejprve ručně a~poté přes Google Gemini. Z~loga jsme odvodili celý design systém -- paletu, kresebný styl ilustrací jídel i~typografii.
 
 \subsection{Paleta a její psychologie}
 
 \begin{itemize}
   \item \textbf{Smetanová} (\texttt{\#FAF6EE}) jako hlavní pozadí. Místo „nemocniční bílé" působí teple, evokuje mléko, jogurt, ranní světlo.
   \item \textbf{Čokoládová hnědá} (\texttt{\#7A5843}) pro texty a~kontury -- barva pražené kávy, granoly, sourdough. Působí důvěryhodně, „doma upečeně".
-  \item \textbf{Jahodová červená} (\texttt{\#E3413B}) pro tlačítka a~akce -- energie, chuť, optimismus. Behaviorálně přitahuje pozornost.
+  \item \textbf{Jahodová červená} (\texttt{\#E3413B}) pro tlačítka a~akce -- energie, chuť, optimismus, přitahuje pozornost.
   \item \textbf{Borůvková modrá} (\texttt{\#4B679B}) pro odkazy.
   \item \textbf{Medová žlutá} (\texttt{\#F3C46B}) pro důležité informace.
   \item \textbf{Listová zelená} (\texttt{\#7FA86B}) pro „healthy" ikony (vegan, bez lepku).
@@ -295,7 +301,7 @@ Při testování fontů se ukázal důležitý detail. Původně zvolená \textb
 
 \subsection{Filozofie ceníku}
 
-Záměrně držíme \textbf{jednoduchý dvouhladinový ceník}: 90 nebo 110~Kč u~jídel, 25--55~Kč u~nápojů. Zákazník nemusí počítat, ceník se vejde na vizitku. Jednoduchost je sama o~sobě hodnotou značky.
+Záměrně držíme \textbf{jednoduchý dvouhladinový ceník}: 90 nebo 110~Kč u~jídel, 25--55~Kč u~nápojů. Zákazník se nemusí rozhodovat podle ceny, ale podle toho, na~co má chuť. Jednoduchost je sama o~sobě hodnotou značky.
 
 \subsection{Náklady a marže}
 
@@ -338,7 +344,7 @@ Cílíme na \textbf{tři primární persony}, které dohromady vytvoří přibli
   \item \textbf{Jana (35), pracující na ranní směně} -- vezme si „něco po cestě", ale nechce croissant z~benzínky. Trigger: Google search „snídaně Opava". Střední frekvence, velmi loajální zákaznice.
 \end{itemize}
 
-Sekundárně cílíme na středoškoláky (TikTok publikum, brand evangelisté) a~o~víkendech na místní rodiče s~dětmi.
+Sekundárně cílíme na \textbf{středoškoláky} -- ti často nesnídají vůbec (ráno spěch, peníze v~kapse, nechuť k~pekárně) a~jsou navíc TikTok publikem a~přirozenými brand evangelisty. O~víkendech doplňují cílovku místní rodiče s~dětmi.
 
 \section{Marketingový plán}
 
@@ -360,9 +366,11 @@ Google Business Profile s~otvírací dobou, fotkami a~aktivním sběrem recenzí
 
 \subsection{Co bylo nejnáročnější}
 
-Největším úkolem nebyla samotná tvorba kódu, ale \textbf{vytvoření kvalitního zadání pro AI nástroje}. První pokusy s~nástrojem Google Stitch (generátor návrhů webu) selhaly, protože jsem mu dala slabý kontext -- výstupy byly generické a~nepoužitelné. Free verze Gemini a~GitHub Copilotu rovněž nestačily. Ukázalo se, že platí pravidlo \emph{„garbage in, garbage out"}: nejdřív musí vzniknout pořádná dokumentace značky (paleta, fonty, příběh, persony) a~teprve pak má smysl pustit AI ke generování webu.
+Největším úkolem nebyla samotná tvorba kódu, ale \textbf{vytvoření kvalitního zadání pro AI nástroje} -- tedy přesně to, čemu se říká \emph{spec-driven development}. První pokusy s~nástrojem Google Stitch (generátor návrhů webu) selhaly, protože jsem mu dala slabý kontext -- výstupy byly generické a~nepoužitelné. Free verze Gemini a~GitHub Copilotu rovněž nestačily. Ukázalo se, že platí pravidlo \emph{„garbage in, garbage out"}: nejdřív musí vzniknout pořádná specifikace (paleta, fonty, příběh, persony, datový model menu) a~teprve pak má smysl pustit AI ke generování webu.
 
-Druhým zákeřným problémem byly \textbf{české háčky ve fontu Fredoka}. Vypadalo to v~pořádku, dokud jsem se nepodívala vedle sebe na „č" a~„c". Naučila jsem se, že u~každého fontu je nutné explicitně otestovat český pangram (\emph{Příliš žluťoučký kůň úpěl ďábelské ódy}), ne se spoléhat na to, že „je tam latin-ext".
+\subsection{Placené versus bezplatné AI nástroje}
+
+Velkým poznatkem bylo, jak zásadní rozdíl je mezi \textbf{bezplatnými} a~\textbf{placenými} verzemi AI nástrojů. Free verze Gemini, GitHub Copilotu a~podobné jsou užitečné na rychlé pokusy, ale pro reálnou práci s~rozsáhlejším kontextem (celý projektový spec, několik souborů zároveň) selhávají -- krátí kontext, halucinují, vyrábějí generický výstup. Placené verze (Claude Code s~tarifem Max, ChatGPT Plus, Gemini Advanced) za řádově 500--2\,000~Kč/měsíc poskytují kvalitativně jinou úroveň práce. \textbf{Doporučení:} kdo to s~podobným projektem myslí vážně, ať si předplatí alespoň jeden profesionální AI nástroj. Vrátí se to v~desetinásobku času.
 
 \subsection{Co mě naopak bavilo}
 
@@ -376,7 +384,7 @@ Nejdřív bych investovala víc času do dokumentace značky a~teprve potom zač
 
 \section{Screenshot úvodní stránky}
 
-Pro ilustraci responzivního chování webu zachycuje obrázek~\ref{fig:hero-mobile} úvodní stránku v~mobilním zobrazení (viewport iPhone 13~Pro, 390$\times$844, DPR~3). Screenshot byl pořízen automatizovaně přes nástroj Playwright -- nahrál se lokální HTTP server složky \texttt{docs/}, prohlížeč Chromium otevřel \texttt{index.html}, počkal na načtení fontů a~uložil snímek viewportu.
+Pro ilustraci responzivního chování webu zachycuje obrázek~\ref{fig:hero-mobile} úvodní stránku v~mobilním zobrazení (viewport iPhone 13~Pro, 390$\times$844, DPR~3). Screenshot byl pořízen automatizovaně přes nástroj Playwright.
 
 \begin{figure}[h]
   \centering
@@ -390,9 +398,9 @@ Pro ilustraci responzivního chování webu zachycuje obrázek~\ref{fig:hero-mob
 \subsection{Zjednodušený pracovní postup}
 
 \begin{enumerate}[label=\arabic*.]
-  \item \textbf{Idea a koncept} (duben 2026) -- nápad snídaňové restaurace; ověření dostupnosti názvu a~domény; první návrhy loga v~Google Gemini.
-  \item \textbf{Konzultace s otcem} (rodičem s~podnikatelskou zkušeností) -- zapsáno do dokumentu \texttt{zapis\_konzultace.md}, který se v~celém projektu stal stabilní „kotvou".
-  \item \textbf{Strukturování kontextu} -- sepsání produktového požadavku, design systému a~brandového příběhu jako Markdown dokumentů ve VS~Code. Tato fáze trvala záměrně několik dní, protože všechno další z~ní stavělo.
+  \item \textbf{Idea a koncept} (duben 2026) -- nápad snídaňové restaurace; ověření dostupnosti názvu; první návrhy loga v~Google Gemini.
+  \item \textbf{Konzultace s otcem} (s~IT zkušeností a~znalcem AI nástrojů) -- celá konzultace nahrána na diktafon, převod do textového zápisu pak vytvořen pomocí NotebookLM. Dokument \texttt{zapis\_konzultace.md} se v~celém projektu stal stabilní „kotvou".
+  \item \textbf{Strukturování kontextu (spec-driven development)} -- sepsání produktového požadavku, design systému a~brandového příběhu jako Markdown dokumentů ve VS~Code. Tato fáze trvala záměrně několik dní, protože všechno další z~ní stavělo.
   \item \textbf{Generování ilustrací} -- 21~obrázků (jídla, hero, OG obrázek, 404 stránka, dietní ikony, favicon, logo varianty) vygenerováno přes textové prompty v~nástroji Codex podle stylového bloku odvozeného z~loga.
   \item \textbf{Tvorba webu} -- pět HTML stránek, CSS s~designovými tokeny, vanilla JavaScript pro interaktivitu. Veškerý kód vznikal v~dialogu s~nástrojem Claude Code; já zadávala požadavky a~kontrolovala výstup v~prohlížeči.
   \item \textbf{Datový model menu} -- položky menu uloženy v~souboru \texttt{menu.yaml} jako jediný zdroj pravdy. Web čte YAML přímo v~prohlížeči přes vlastní mini-parser; jakákoliv změna položky či ceny stačí na jediném místě.
@@ -424,7 +432,6 @@ Pro ilustraci responzivního chování webu zachycuje obrázek~\ref{fig:hero-mob
 \begin{itemize}
   \item \textbf{Google Stitch} -- generátor návrhů webu. Bez kvalitního kontextu dával jen šedivé generické šablony. Poučení: kvalita výstupu AI je rovna kvalitě vstupu.
   \item \textbf{Webnode / Shoptet} (zvažováno na začátku) -- pohodlné, ale neumožnily by plnou kontrolu nad vzhledem značky a~vlastním stylem.
-  \item \textbf{Font Fredoka} -- vypadal hezky, ale nepodporoval české háčky. Vyměněn za Baloo~2.
   \item \textbf{HeyGen Hyperframes} (původně plánováno pro video) -- zbytečně složitá HTML$\rightarrow$video pipeline. Nahrazeno přímým textovým zadáním do Gemini Veo.
   \item \textbf{Cloudflare Pages} (původně zvolený hosting) -- nahrazeno GitHub Pages kvůli jednoduchosti a~integraci s~repozitářem.
 \end{itemize}
@@ -437,27 +444,41 @@ Pro ilustraci responzivního chování webu zachycuje obrázek~\ref{fig:hero-mob
 
 Projekt The Early Bowl ukázal, že i~středoškolský studentský projekt může mít produkční kvalitu -- pokud se začne pořádnou dokumentací značky a~teprve potom se sáhne po nástrojích. AI nástroje (Claude Code, Codex, Gemini Veo) celý vývoj radikálně zrychlily, ale samy o~sobě by nic nevyřešily: každý jejich výstup musel projít lidskou kontrolou a~navazoval na pečlivě promyšlený kontext. Web je živý na adrese \url{https://ameliesam.github.io/the-early-bowl/} a~slouží jako vizuální i~obsahová prezentace fiktivního, ale poctivě promyšleného opavského podnikatelského záměru.
 
-\section*{Použité zdroje}
-\addcontentsline{toc}{section}{Použité zdroje}
+\section*{Použité zdroje a nástroje}
+\addcontentsline{toc}{section}{Použité zdroje a nástroje}
 
 \begin{thebibliography}{9}
-  \bibitem{wcag}
-  W3C. \textit{Web Content Accessibility Guidelines (WCAG) 2.1}. World Wide Web Consortium, 2018. Dostupné z: \url{https://www.w3.org/TR/WCAG21/}
+  \bibitem{claude}
+  Anthropic. \textit{Claude Code} (model Opus 4.7). Dostupné z:\\
+  \url{https://claude.com/claude-code}
 
-  \bibitem{gdpr}
-  Evropský parlament. \textit{Nařízení (EU) 2016/679 o ochraně fyzických osob v~souvislosti se zpracováním osobních údajů (GDPR)}. 2016.
+  \bibitem{codex}
+  OpenAI. \textit{ChatGPT (Codex, ChatGPT Images)}. Dostupné z:\\
+  \url{https://chatgpt.com}
 
-  \bibitem{ariely}
-  ARIELY, Dan. \textit{Predictably Irrational: The Hidden Forces That Shape Our Decisions}. New York: HarperCollins, 2008. ISBN 978-0-06-135323-9.
+  \bibitem{gemini}
+  Google. \textit{Gemini, Gemini Veo, NotebookLM}. Dostupné z:\\
+  \url{https://gemini.google.com}
 
-  \bibitem{ghpages}
-  GitHub, Inc. \textit{GitHub Pages Documentation}. Dostupné z: \url{https://docs.github.com/en/pages}
+  \bibitem{vscode}
+  Microsoft. \textit{Visual Studio Code}. Dostupné z:\\
+  \url{https://code.visualstudio.com}
+
+  \bibitem{github}
+  GitHub, Inc. \textit{GitHub a GitHub Pages}. Dostupné z:\\
+  \url{https://github.com}
 
   \bibitem{googlefonts}
-  Google. \textit{Google Fonts -- Baloo~2, Quicksand}. Dostupné z: \url{https://fonts.google.com}
+  Google. \textit{Google Fonts -- Baloo~2, Quicksand}. Dostupné z:\\
+  \url{https://fonts.google.com}
+
+  \bibitem{playwright}
+  Microsoft. \textit{Playwright -- end-to-end testing for modern web apps}. Dostupné z:\\
+  \url{https://playwright.dev}
 
   \bibitem{repo}
-  SAM, Amélie. \textit{The Early Bowl -- zdrojové soubory projektu}. GitHub, 2026. Dostupné z: \url{https://github.com/AmelieSam/the-early-bowl}
+  ŠAMÁRKOVÁ, Amélie. \textit{The Early Bowl -- zdrojové soubory projektu}. GitHub, 2026. Dostupné z:\\
+  \url{https://github.com/AmelieSam/the-early-bowl}
 \end{thebibliography}
 
 \end{document}

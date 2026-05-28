@@ -2,17 +2,24 @@
 
 *Projektová dokumentace k závěrečnému projektu z informatiky „Můj online business".*
 
-**Autor:** Amélie Sam
+**Autor:** Amélie Šamárková
 **Škola:** Mendelovo gymnázium, Opava
 **Předmět:** Informatika
 **Místo a rok:** Opava 2026
-**Odkaz na web:** <https://ameliesam.github.io/the-early-bowl/>
+
+**Odkaz na web:**
+<https://ameliesam.github.io/the-early-bowl/>
+
+**Zdrojové soubory:**
+<https://github.com/AmelieSam/the-early-bowl>
 
 ---
 
 ## Úvod
 
-Cílem projektu bylo navrhnout fiktivní snídaňovou restauraci **The Early Bowl** a vytvořit pro ni kompletní webovou prezentaci. Restaurace má sídlit v centru Opavy (Náměstí Republiky 159/10, OD Stará Breda), otevřeno 6:00–13:30, a cílí na studenty Slezské univerzity a sportovce z nedalekého fitness centra. Web slouží jako digitální vizitka: menu, příběh značky, kontakt a otvírací doba. Tato dokumentace popisuje teoretická východiska tvorby webu i konkrétní cestu, jak projekt vznikal.
+Cílem projektu bylo navrhnout fiktivní snídaňovou restauraci **The Early Bowl** a vytvořit pro ni kompletní webovou prezentaci. Restaurace má sídlit v centru Opavy (Náměstí Republiky 159/10, OD Stará Breda), otevřeno 6:00–13:30, a cílí na středoškolské a vysokoškolské studenty a sportovce z fitnescentra. Web slouží jako digitální vizitka: menu, příběh značky, kontakt a otvírací doba. Tato dokumentace popisuje teoretická východiska tvorby webu i konkrétní cestu, jak projekt vznikal.
+
+Projekt vědomě následuje princip **spec-driven development** — nejdřív vznikla pořádná dokumentace značky a specifikace webu (paleta, fonty, persony, datový model menu), teprve potom z ní AI nástroje generovaly samotný kód. AI je tu výkonný spolupracovník, ne náhrada za promyšlený záměr.
 
 ---
 
@@ -36,11 +43,11 @@ Pro tento projekt jsme zvolili „**čistý**" stack bez frameworků jako React 
 
 ### Co je CMS a proč jsme ho nepoužili
 
-**CMS** (Content Management System) jako WordPress, Webnode nebo Shoptet je hotová „továrna na weby" — uživatel klikáním sestaví stránku, aniž by psal kód. Výhodou je rychlost a komfort, nevýhodou závislost na platformě, slabší výkon a omezená kontrola nad vzhledem. Pro tento projekt jsme chtěli **plnou kontrolu nad brandem** a maximální výkon, proto byl zvolen statický web psaný „ručně" (s pomocí AI nástrojů — viz praktická část).
+**CMS** (Content Management System) jako WordPress, Webnode nebo Shoptet je hotová „továrna na weby" — uživatel klikáním sestaví stránku, aniž by psal kód. Výhodou je rychlost a komfort, nevýhodou závislost na platformě a měsíční poplatky. Naše statické řešení má navíc **nulové náklady na provoz a správu** (žádný měsíční hosting, žádné aktualizace pluginů, žádné bezpečnostní záplaty) — to je s redakčními systémy a placenými hostingy nesrovnatelná výhoda.
 
 ### Responzivita
 
-Více než polovina uživatelů dnes prohlíží web na mobilu. **Responzivní design** znamená, že web automaticky přizpůsobuje rozložení velikosti obrazovky. Realizuje se v CSS pomocí relativních jednotek (`%`, `rem`), flexibilního layoutu (Flexbox, Grid) a tzv. **media queries**, které mění styl podle šířky displeje.
+Více než polovina uživatelů dnes prohlíží web na mobilu. **Responzivní design** znamená, že web sám přizpůsobí rozložení velikosti obrazovky — na telefonu se mění menu na rozbalovací, sloupce se skládají pod sebe a fotky se zmenšují tak, aby se nemusely posouvat do stran.
 
 ## 2. Základy UX/UI
 
@@ -48,10 +55,10 @@ Více než polovina uživatelů dnes prohlíží web na mobilu. **Responzivní d
 
 ### Co dělá web přehledným
 
-1. **Jasná navigace** — uživatel musí kdykoliv vědět, kde je a jak se dostane domů. V našem webu je horní menu (Úvod, Menu, O nás, Kontakt, Podmínky) na každé stránce stejné.
+1. **Jasná navigace** — uživatel musí kdykoliv vědět, kde je a jak se dostane domů. V našem webu je horní menu (Menu, O nás, Kontakt) na každé stránce stejné.
 2. **Vizuální hierarchie** — důležité prvky (cena, tlačítko „kontaktovat") musí být na první pohled výraznější než vedlejší informace. Realizuje se pomocí velikosti, barev a prostoru.
 3. **Pravidlo tří kliků** — uživatel by měl ke kterékoliv informaci dorazit nejvýše třemi kliky. U pětistránkového webu je to triviální.
-4. **Kontrast a čitelnost** — text musí mít proti pozadí dostatečný kontrastní poměr (norma WCAG 2.1 AA vyžaduje 4,5 : 1). Naše paleta (hnědá `#7A5843` na smetanové `#FAF6EE`) má poměr 6,8 : 1.
+4. **Kontrast a čitelnost** — text musí mít proti pozadí dostatečný kontrast, aby se dal pohodlně přečíst i na mobilu na slunci. Naše hnědé písmo na smetanovém pozadí ho má s rezervou.
 5. **Rychlost** — pokud se stránka načítá déle než 3 sekundy, polovina návštěvníků odejde. Proto jsme obrázky komprimovali do formátu **WebP**, hero foto kleslo z 1,1 MB na 73 kB.
 
 ### Proč je uživatelská přívětivost důležitá
@@ -82,19 +89,19 @@ Veškerý obsah na webu — texty, ilustrace, video — vytvořila autorka proje
 
 ## 4. Příběh značky
 
-The Early Bowl se zrodila z osobní zkušenosti. *„Hledali jsme v Opavě místo, kde si dáme pořádnou snídani před přednáškou, a nenašli."* Většina kaváren v centru otevírá až po osmé, restaurace až po desáté, a pekárny mají sice levné, ale jednotvárné a nezdravé pečivo. Studenti, kteří přijdou na ranní přednášku na lačno, sportovci po cvičení ani lidé jdoucí do ranní směny nemají kam zajít.
+The Early Bowl se zrodila z osobní zkušenosti. *„Hledali jsme v Opavě místo, kde si dáme pořádnou snídani, a nenašli jsme."* Většina kaváren v centru otevírá až po osmé, restaurace až po desáté, a pekárny mají sice levné, ale jednotvárné a nezdravé pečivo. Studenti, kteří přijdou na ranní přednášku na lačno, sportovci po cvičení ani lidé jdoucí do ranní směny nemají kam zajít.
 
 Tak vznikl koncept **„miska optimismu pro ranní lidi"** — fyzické místo otevřené už od 6:00, kde si zákazník během pěti minut objedná zdravou, čerstvou snídani za přijatelnou cenu a nemusí kvůli ní vstávat hodinu předem. Tři pilíře značky znějí jednoduše: **rychlé, zdravé, dostupné**. Každé rozhodnutí — od ceníku přes vizuální styl až po komunikaci na Instagramu — musí jeden z těchto pilířů podpořit. Nejde tedy o „další moderní bistro", ale o cílený zásah do jasně definované mezery na opavském trhu.
 
 ## 5. Vizuální identita
 
-Vizuální styl značky stojí na **logu** (keramická miska s jogurtem, granolou a ovocem), které autorka vytvořila nejprve ručně a poté přes Google Gemini. Z loga jsme odvodili celý design systém — paletu, kresebný styl ilustrací jídel i typografii.
+Vizuální styl značky stojí na **logu** (keramická miska s jogurtem, granolou a ovocem), které jsem vytvořila nejprve ručně a poté přes Google Gemini. Z loga jsme odvodili celý design systém — paletu, kresebný styl ilustrací jídel i typografii.
 
 ### Paleta a její psychologie
 
 * **Smetanová** (`#FAF6EE`) jako hlavní pozadí. Místo „nemocniční bílé" působí teple, evokuje mléko, jogurt, ranní světlo.
 * **Čokoládová hnědá** (`#7A5843`) pro texty a kontury — barva pražené kávy, granoly, sourdough. Působí důvěryhodně, „doma upečeně".
-* **Jahodová červená** (`#E3413B`) pro tlačítka a akce — energie, chuť, optimismus. Behaviorálně přitahuje pozornost.
+* **Jahodová červená** (`#E3413B`) pro tlačítka a akce — energie, chuť, optimismus, přitahuje pozornost.
 * **Borůvková modrá** (`#4B679B`) pro odkazy.
 * **Medová žlutá** (`#F3C46B`) pro důležité informace.
 * **Listová zelená** (`#7FA86B`) pro „healthy" ikony (vegan, bez lepku).
@@ -112,7 +119,7 @@ Při testování fontů se ukázal důležitý detail: původně zvolená **Fred
 
 ### Filozofie ceníku
 
-Záměrně držíme **jednoduchý dvouhladinový ceník**: 90 nebo 110 Kč u jídel, 25–55 Kč u nápojů. Zákazník nemusí počítat. Jednoduchost je sama o sobě hodnotou značky.
+Záměrně držíme **jednoduchý dvouhladinový ceník**: 90 nebo 110 Kč u jídel, 25–55 Kč u nápojů. Zákazník se nemusí rozhodovat podle ceny, ale podle toho, na co má chuť. Jednoduchost je sama o sobě hodnotou značky.
 
 ### Náklady a marže
 
@@ -143,7 +150,7 @@ Cílíme na **tři primární persony**, které dohromady dělají ~80 % očeká
 * **Michal (28), sportovec po ranním tréninku** — cvičí v 5:45, v 7:00 hladový po sprše. Chce pořádnou snídani s proteinem, ne shake. Trigger: plakát v gymu. Vysoká útrata (~165 Kč), 2–3× týdně.
 * **Jana (35), pracující na ranní směně** — vezme si „něco po cestě", ale nechce croissant z benzínky. Trigger: Google search „snídaně Opava". Střední frekvence, velmi loajální.
 
-Sekundárně cílíme na středoškoláky (TikTok publikum, brand evangelisté) a o víkendech na místní rodiče s dětmi.
+Sekundárně cílíme na **středoškoláky** — ti často nesnídají vůbec (ráno spěch, peníze v kapse, nechuť k pekárně) a jsou navíc TikTok publikem a přirozenými brand evangelisty. O víkendech doplňují cílovku místní rodiče s dětmi.
 
 ## 8. Marketingový plán
 
@@ -159,9 +166,11 @@ Marketingový rozpočet je vědomě nízký — **1 750 Kč měsíčně**. To vy
 
 ### Co bylo nejnáročnější
 
-Největším úkolem nebyla samotná tvorba kódu, ale **vytvoření kvalitního zadání pro AI nástroje**. První pokusy s nástrojem Google Stitch (generátor návrhů webu) selhaly, protože jsem mu dala slabý kontext — výstupy byly generické a nepoužitelné. Free verze Gemini a GitHub Copilotu rovněž nestačily. Ukázalo se, že platí pravidlo *„garbage in, garbage out"*: nejdřív musí vzniknout pořádná dokumentace značky (paleta, fonty, příběh, persony) a teprve pak má smysl pustit AI ke generování webu.
+Největším úkolem nebyla samotná tvorba kódu, ale **vytvoření kvalitního zadání pro AI nástroje** — tedy přesně to, čemu se říká *spec-driven development*. První pokusy s nástrojem Google Stitch (generátor návrhů webu) selhaly, protože jsem mu dala slabý kontext — výstupy byly generické a nepoužitelné. Free verze Gemini a GitHub Copilotu rovněž nestačily. Ukázalo se, že platí pravidlo *„garbage in, garbage out"*: nejdřív musí vzniknout pořádná specifikace (paleta, fonty, příběh, persony, datový model menu) a teprve pak má smysl pustit AI ke generování webu.
 
-Druhým zákeřným problémem byly **české háčky ve fontu Fredoka**. Vypadalo to v pořádku, dokud jsem se nepodívala vedle sebe na „č" a „c". Naučila jsem se, že u každého fontu je nutné explicitně otestovat český pangram (`Příliš žluťoučký kůň úpěl ďábelské ódy`), ne se spoléhat na to, že „je tam latin-ext".
+### Placené vs. bezplatné AI nástroje
+
+Velkým poznatkem bylo, jak zásadní rozdíl je mezi **bezplatnými** a **placenými** verzemi AI nástrojů. Free verze Gemini, GitHub Copilotu a podobné jsou užitečné na rychlé pokusy, ale pro reálnou práci s rozsáhlejším kontextem (celý projektový spec, několik souborů zároveň) selhávají — krátí kontext, halucinují, vyrábějí generický výstup. Placené verze (Claude Code s tarifem Max, ChatGPT Plus, Gemini Advanced) za řádově 500–2 000 Kč/měsíc poskytují kvalitativně jinou úroveň práce. **Doporučení:** kdo to s podobným projektem myslí vážně, ať si předplatí alespoň jeden profesionální AI nástroj. Vrátí se to v desetinásobku času.
 
 ### Co mě naopak bavilo
 
@@ -175,17 +184,17 @@ Nejdřív bych investovala víc času do **dokumentace značky** a teprve potom 
 
 ## 10. Screenshot úvodní stránky
 
-*(V LaTeX verzi vložen screenshot úvodní stránky webu — soubor `protokol/screenshot-uvodni-stranka.png`. Zachycen je hero header s logem a sloganem „Misku optimismu si zasloužíš ráno", tři value props pruhy a první sekce featured položek z menu.)*
+Screenshot úvodní stránky webu v mobilním zobrazení (iPhone 13 Pro) pořízen automatizovaně přes nástroj Playwright.
 
-![Úvodní stránka webu The Early Bowl](../docs/images/hero.webp)
+![Úvodní stránka webu The Early Bowl v mobilním zobrazení](protokol/screenshot-mobile.png)
 
 ## 11. Použité zdroje a nástroje
 
 ### Zjednodušený pracovní postup
 
-1. **Idea a koncept** (duben 2026) — nápad snídaňové restaurace; ověření dostupnosti názvu a domény; první návrhy loga v Google Gemini.
-2. **Konzultace s otcem** (rodičem s podnikatelskou zkušeností) — zapsáno do dokumentu `zapis_konzultace.md`, který se v celém projektu stal stabilní „kotvou".
-3. **Strukturování kontextu** — sepsání produktového požadavku (PRD), design systému (DESIGN) a brandového příběhu jako Markdown dokumentů ve VS Code. Tato fáze trvala záměrně několik dní, protože všechno další z ní stavělo.
+1. **Idea a koncept** (duben 2026) — nápad snídaňové restaurace; ověření dostupnosti názvu; první návrhy loga v Google Gemini.
+2. **Konzultace s otcem** (s IT zkušeností a znalcem AI nástrojů) — celá konzultace nahrána na diktafon, převod do textového zápisu pak vytvořen pomocí NotebookLM. Dokument `zapis_konzultace.md` se v celém projektu stal stabilní „kotvou".
+3. **Strukturování kontextu (spec-driven development)** — sepsání produktového požadavku (PRD), design systému (DESIGN) a brandového příběhu jako Markdown dokumentů ve VS Code. Tato fáze trvala záměrně několik dní, protože všechno další z ní stavělo.
 4. **Generování ilustrací** — 21 obrázků (jídla, hero, OG obrázek, 404 stránka, dietní ikony, favicon, logo varianty) vygenerováno přes textové prompty v nástroji Codex podle stylového bloku odvozeného z loga.
 5. **Tvorba webu** — pět HTML stránek, CSS s designovými tokeny, vanilla JavaScript pro interaktivitu. Veškerý kód vznikal v dialogu s nástrojem Claude Code; já zadávala požadavky a kontrolovala výstup v prohlížeči.
 6. **Datový model menu** — položky menu uloženy v souboru `menu.yaml` jako jediný zdroj pravdy. Web čte YAML přímo v prohlížeči přes vlastní mini-parser; jakákoliv změna položky či ceny stačí na jediném místě.
@@ -213,7 +222,6 @@ Nejdřív bych investovala víc času do **dokumentace značky** a teprve potom 
 
 * **Google Stitch** — generátor návrhů webu. Bez kvalitního kontextu dával jen šedivé generické šablony. Poučení: kvalita výstupu AI je rovna kvalitě vstupu.
 * **Webnode / Shoptet** (zvažováno na začátku) — pohodlné, ale neumožnily by plnou kontrolu nad vzhledem značky a vlastním stylem.
-* **Font Fredoka** — vypadal hezky, ale nepodporoval české háčky. Vyměněn za Baloo 2.
 * **HeyGen Hyperframes** (původně plánováno pro video) — zbytečně složitá HTML→video pipeline. Nahrazeno přímým textovým zadáním do Gemini Veo.
 * **Cloudflare Pages** (původně zvolený hosting) — nahrazeno GitHub Pages kvůli jednoduchosti a integraci s repozitářem.
 
@@ -227,10 +235,11 @@ Projekt The Early Bowl ukázal, že i středoškolský studentský projekt můž
 
 ## Reference
 
-* Celý zdrojový kód a dokumenty projektu: <https://github.com/AmelieSam/the-early-bowl>
-* Detailní cenotvorba: `dokumentace/cenotvorba.md`
-* Detailní marketingový plán: `dokumentace/marketing-plan.md`
-* Specifikace webu (PRD): `specs/PRD.md`
-* Design systém: `specs/DESIGN.md`
-* Použité technologie: `specs/TECH-STACK.md`
-* Laboratorní deník projektu (postup a rozhodnutí): `dokumentace/DENIK.md`
+* **Claude Code** (Anthropic) — <https://claude.com/claude-code>
+* **Codex / ChatGPT Images** (OpenAI) — <https://chatgpt.com>
+* **Google Gemini, Gemini Veo, NotebookLM** (Google) — <https://gemini.google.com>
+* **VS Code** (Microsoft) — <https://code.visualstudio.com>
+* **GitHub + GitHub Pages** — <https://github.com>
+* **Google Fonts** — <https://fonts.google.com>
+* **Playwright** — <https://playwright.dev>
+* **Zdrojové soubory projektu** — <https://github.com/AmelieSam/the-early-bowl>
