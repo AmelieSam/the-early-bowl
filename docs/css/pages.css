@@ -81,12 +81,6 @@ body::before {
 .road p { font-size: 0.95rem; }
 @media (min-width: 768px) { .roadmap { grid-template-columns: repeat(4, 1fr); } }
 
-/* Instagram CTA */
-.igcta { text-align: center; background: var(--honey); border: 2px solid var(--outline-brown);
-  border-radius: var(--radius-lg); box-shadow: 5px 5px 0 var(--outline-brown); padding: var(--space-2xl) var(--space-lg); }
-.igcta h2 { margin-bottom: var(--space-sm); }
-.igcta p { margin: 0 auto var(--space-lg); max-width: 46ch; }
-
 /* =========================================================
    MENU
    ========================================================= */
