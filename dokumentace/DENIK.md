@@ -67,7 +67,12 @@ Explicitní záznam rozhodnutí. Formát: **co** / **proč** / **zvažované alt
 * 🧭 Rozhodnutí **D-19** — Gemini Veo nahrazuje původně plánovaný HeyGen Hyperframes (D-10). HTML→video pipeline se ukázala jako zbytečná komplikace, text-to-video z brand promptu dal použitelný klip rychleji.
 * ✅ Vytvořena **[LaTeX šablona seminární práce](protokol/seminarni_prace_template_mgo.tex)** podle stylu MGO (XeLaTeX, Cambria 16 pt titulní strana — analýza fontů z oficiální MGO předlohy přes `pdffonts`/`pdftohtml`). Podklad pro sazbu finální projektové dokumentace.
 
-**⚠️ TODO (zbývá):** osadit `video.mp4` do `docs/menu.html` místo stávajícího `<div class="video-ph">` placeholderu (poster z hero ilustrace, `<video controls muted playsinline>`).
+**Provedeno (osazení na web):**
+
+* ✅ Placeholder `<div class="video-ph">` v `docs/menu.html` nahrazen reálným `<figure class="video">` s `<video controls muted playsinline preload="metadata">` a posterem ze stillu `images/menu/s1-yogurt-bowl.webp`.
+* ✅ CSS `.video-ph*` (dashed border, label/sub) v `pages.css` přepsán na `.video` (čistý rámeček v brand barvě, italic figcaption pod videem).
+* 🔬 Playwright check: video se renderuje 1036×583 px (aspect ratio přesně 1.778 ≈ 16:9), readyState 4, controls aktivní, **0 JS chyb, 0 failed requests**.
+* 💡 **Zjištění:** Veo vygenerovalo **16:9 (1280×720)**, ne 9:16 jak žádal prompt. Vyhovuje to ale stávajícímu layoutu menu (široká karta v textovém sloupci); pro IG Story / TikTok by potřebovalo crop nebo druhý generát.
 
 **💡 Zjištění:** Rozhodnutí D-10 (HeyGen) bylo learning — nakonec zvítězil jednodušší nástroj, který už uměl text-to-video ve stylu, který stačil. Lekce: nevolit nástroj dopředu, dokud není potřeba.
 

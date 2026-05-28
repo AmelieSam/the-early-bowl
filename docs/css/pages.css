@@ -113,12 +113,13 @@ img.diet-icon, svg.diet-icon { object-fit: contain; }
   border-radius: var(--radius-lg); box-shadow: 4px 4px 0 var(--outline-brown); padding: var(--space-xl); }
 .howto p { margin-inline: auto; max-width: 50ch; }
 
-/* Video placeholder (budoucí HeyGen video S1) */
-.video-ph { margin-top: var(--space-2xl); background: #fff; border: 3px dashed var(--outline-brown);
-  border-radius: var(--radius-lg); aspect-ratio: 16 / 9; display: grid; place-items: center;
-  text-align: center; padding: var(--space-lg); }
-.video-ph__label { font-family: var(--font-head); font-weight: 600; color: var(--deep-cocoa); opacity: 0.7; }
-.video-ph__sub { font-size: 13px; color: var(--deep-cocoa); opacity: 0.55; margin-top: 4px; }
+/* Propagační video (Gemini Veo, 16:9) */
+.video { margin: var(--space-2xl) 0 0; }
+.video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9;
+  background: var(--deep-cocoa); border: 2px solid var(--outline-brown);
+  border-radius: var(--radius-lg); }
+.video figcaption { margin-top: var(--space-sm); font-size: 14px; color: var(--deep-cocoa);
+  opacity: 0.7; text-align: center; font-style: italic; }
 
 /* =========================================================
    KONTAKT
